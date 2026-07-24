@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Cormorant Garamond", serif;
+}
+body {
+  background: #d8d8bf;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+
+  .navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    color: #fff8e8;
+    padding: 20px 0;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    ul li a {
+      font-size: 1.125rem;
+      padding: 10px 10px;
+      color: #fff8e8;
+    }
+
+    ul li a:hover {
+      color: #f4c542;
+      border-bottom: 3px solid #f4c542;
+    }
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    cursor: pointer;
+  }
+}
+
+.hero_bg {
+  background-image: url(/assets/img/hero.jpg);
+  background-position: center;
+  background-size: cover;
+
+  .bg_transparent {
+    background: rgba(0, 0, 0, 0.51);
+
+    .hero_flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 5rem;
+
+      .hero_info {
+        h1 {
+          font-size: 5rem;
+          color: #fff8e8;
+          margin-bottom: 20px;
+          line-height: 1.04;
+        }
+
+        p {
+          font-size: 1.8rem;
+          color: #d6c8b8;
+          font-weight: 600;
+        }
+      }
+
+      .hero_img {
+        margin-bottom: 2rem;
+        img {
+          width: clamp(25rem, 36vw, 35rem);
+          max-width: none;
+          height: auto;
+        }
+      }
+    }
+  }
+}

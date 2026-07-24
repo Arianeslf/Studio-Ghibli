@@ -4,26 +4,73 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Studio Ghibli</title>
+    <!-- fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- css -->
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
-  <body class="body">
-    <header class="container">
-        <div class="navegation">
-            <H1>Mundo Ghibli</H1>
-            <nav aria-label="categorias">
-                <ul class="menu">
-                    <li>Início</li>
-                    <li>Filmes</li>
-                    <li>Personagens</li>
-                    <li>Músicas</li>
-                    <li>Sobre</li>
-                </ul>
-            </nav>
+  <body>
+    <header aria-label="Navegação do site">
+      <div class="container">
+        <div class="navigation">
+          <h1>MUNDO GHIBLI</h1>
+          <nav aria-label="categorias">
+            <ul class="menu">
+              <li><a href="#INICIO">Início</a></li>
+              <li><a href="#FILMES">Filmes</a></li>
+              <li><a href="#PERSONAGENS">Personagens</a></li>
+              <li><a href="#MÚSICAS">Músicas</a></li>
+              <li><a href="#SOBRE">Sobre</a></li>
+            </ul>
+          </nav>
+          <div class="icon">
+            <img src="/assets/img/boxicons_search.svg" alt="Ícone de busca" />
+            <img
+              src="/assets/img/boxicons_heart-filled.svg"
+              alt="Ícone de favorito"
+            />
+          </div>
         </div>
+      </div>
     </header>
-    <main class="container">
-        <section class="hero_bg"></section>
+    <main aria-label="Sobre o Site">
+      <section class="hero_bg">
+        <div class="bg_transparent">
+          <div class="container">
+            <div class="hero_flex">
+              <div class="hero_info">
+                <h1>Descubra a magia do Studio Ghibli</h1>
+                <p>
+                  Explore histórias inesquecíveis, mundos encantados e
+                  personagens que conquistaram gerações. Conheça todos os filmes
+                  do Studio Ghibli e encontre sua próxima aventura.
+                </p>
+                <div class="buttons">
+                  <button class="btn">Explorar filmes</button>
+                  <button class="btn">Conhecer o Studio</button>
+                </div>
+              </div>
+              <div class="hero_img">
+                <img
+                  src="/assets/img/recorte.png"
+                  alt="Recorte do Studio Ghibli"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer class="container"></footer>
+    <footer aria-label="Informações finais">
+      <div class="container">
+        <div class="caixa_footer"></div>
+      </div>
+    </footer>
   </body>
 </html>
