@@ -309,5 +309,36 @@ main {
         }
       }
     }
+
+    .lista_filmes {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+
+      .card {
+        border: 2px solid #d6c8b8;
+        border-radius: 15px;
+        overflow: hidden;
+
+        .info_card{
+          padding: 1rem;
+
+          p {
+          display: flex;
+
+          img{
+            width: 17;
+          }
+          }
+
+          .favorito{
+            display: flex;
+            justify-content: space-between;
+            
+          }
+        }
+
+      }
+    }
   }
 }
