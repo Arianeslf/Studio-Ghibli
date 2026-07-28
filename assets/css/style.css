@@ -185,29 +185,31 @@ main {
 
         .buttons {
           display: flex;
-          gap: 20px;
+          gap: 15px;
           margin-top: 50px;
 
           .btn-primary {
             background: #f4c542;
             color: #1a1510;
-            padding: 0.8rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 999px;
-            font-size: 1.5rem;
+            font-size: 1rem;
             font-weight: bold;
             border: none;
             transition: 0.3s ease;
+            font-family: "Nunito", sans-serif;
           }
 
           .btn-secondary {
             background: transparent;
             color: #fff8e8;
-            padding: 0.8rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 999px;
-            font-size: 1.5rem;
+            font-size: 1rem;
             font-weight: bold;
             border: 2px solid #fff8e8;
             transition: 0.3s ease;
+            font-family: "Nunito", sans-serif;
           }
 
           .btn-primary:hover {
@@ -320,24 +322,100 @@ main {
         border-radius: 15px;
         overflow: hidden;
 
-        .info_card{
+        .info_card {
           padding: 1rem;
+          position: relative;
+
+          h3 {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 3px;
+            color: #fff8e8;
+          }
 
           p {
-          display: flex;
+            color: #c8bba8;
+            .ano {
+              font-family: "Cinzel", serif;
+              font-size: 0.8rem;
+              font-weight: 600;
+            }
 
-          img{
-            width: 17;
-          }
+            .ponto {
+              color: #f4c542;
+              font-size: 1.2rem;
+            }
           }
 
-          .favorito{
+          .favorito {
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            
+            margin-top: 5px;
+
+            p {
+              font-family: "Cinzel", serif;
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              margin: 0;
+              font-size: 0.9rem;
+            }
+
+            p::before {
+              content: "";
+              width: 17px;
+              height: 17px;
+              display: block;
+              background-image: url("/assets/img/boxicons_star-filled.svg");
+              position: relative;
+              top: -1px;
+            }
+
+            > img {
+              width: 22px;
+              height: 22px;
+              cursor: pointer;
+              transition:
+                transform 0.3s ease,
+                opacity 0.2s ease;
+            }
+
+            > img:hover {
+              transform: scale(1.18);
+              opacity: 0;
+            }
+
+            &:has(> img:hover)::after {
+              opacity: 1;
+              transform: scale(1.18);
+            }
+
+            &::after {
+              content: "";
+              position: absolute;
+              right: 1rem;
+
+              width: 22px;
+              height: 22px;
+
+              background: url("/assets/img/boxicons_heart-filled.svg") center /
+                contain no-repeat;
+
+              filter: invert(81%) sepia(85%) saturate(631%) hue-rotate(345deg)
+                brightness(101%);
+
+              opacity: 0;
+              pointer-events: none;
+              transform: scale(0.8);
+
+              transition:
+                opacity 0.2s ease,
+                transform 0.3s ease;
+            }
           }
         }
-
       }
     }
   }
