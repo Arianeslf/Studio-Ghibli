@@ -21,37 +21,48 @@
         <header aria-label="Navegação do site">
           <div class="container">
             <div class="navigation">
-              <h1>MUNDO GHIBLI</h1>
-              <nav aria-label="categorias">
+              <a href="#inicio" class="logo">MUNDO GHIBLI</a>
+
+              <nav class="nav-menu" id="nav-menu">
                 <ul class="menu">
-                  <li><a href="#INICIO">Início</a></li>
-                  <li><a href="#FILMES">Filmes</a></li>
-                  <li><a href="#PERSONAGENS">Personagens</a></li>
-                  <li><a href="#MÚSICAS">Músicas</a></li>
-                  <li><a href="#SOBRE">Sobre</a></li>
+                  <li><a href="#inicio">Início</a></li>
+                  <li><a href="#filmes">Filmes</a></li>
+                  <li><a href="#personagens">Personagens</a></li>
+                  <li><a href="#musicas">Músicas</a></li>
+                  <li><a href="#sobre">Sobre</a></li>
                 </ul>
               </nav>
+
               <div class="icon">
                 <div class="search-box">
                   <input type="search" placeholder="Pesquisar..." />
 
-                  <img
-                    src="/assets/img/boxicons_search.svg"
-                    alt="Ícone de busca"
-                  />
+                  <img src="/assets/img/boxicons_search.svg" alt="Pesquisar" />
                 </div>
 
                 <img
+                  class="heart-header"
                   src="/assets/img/boxicons_heart-filled.svg"
-                  alt="Ícone de favorito"
+                  alt="Favoritos"
                 />
+
+                <button
+                  class="menu-toggle"
+                  aria-label="Abrir menu"
+                  aria-expanded="false"
+                  aria-controls="nav-menu"
+                >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </button>
               </div>
             </div>
           </div>
         </header>
         <main aria-label="Sobre o Site">
           <!-- primeira seção -->
-          <section class="hero_bg">
+          <section class="hero_bg"  id="inicio">
             <img
               data-speed=".6"
               src="/assets/img/hero.jpg"
@@ -62,7 +73,7 @@
               <div class="container">
                 <div class="hero_flex">
                   <div class="hero_info">
-                    <h1>Descubra a magia<br />do Studio Ghibli</h1>
+                    <h1>Descubra a magia do Studio Ghibli</h1>
                     <p>
                       Explore histórias inesquecíveis, mundos encantados e
                       personagens que conquistaram gerações. Conheça todos os
@@ -86,7 +97,7 @@
           </section>
 
           <!-- segunda seção -->
-          <section class="filme_bg" id="FILMES">
+          <section class="filme_bg" id="filmes">
             <div class="container">
               <div class="info_filmes">
                 <div class="topo_da_secao">
