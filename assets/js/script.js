@@ -17,8 +17,6 @@ function animarPagina() {
   });
 }
 
-window.addEventListener("load", animarPagina);
-
 gsap.from(".card", {
   opacity: 0,
   filter: "blur(10px)",
@@ -30,6 +28,8 @@ gsap.from(".card", {
     scrub: true,
   },
 });
+
+window.addEventListener("load", animarPagina);
 
 // menu hamburguer
 
