@@ -208,15 +208,14 @@ function abrirResultado() {
       height: 0,
       opacity: 0,
       marginTop: 0,
-      y: 20,
+      y: 15,
     },
     {
       height: "auto",
       opacity: 1,
-      marginTop: 70,
+      marginTop: window.innerWidth <= 600 ? 24 : 48,
       y: 0,
-
-      duration: 0.7,
+      duration: 0.65,
       ease: "power3.out",
     },
   );
