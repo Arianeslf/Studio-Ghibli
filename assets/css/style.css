@@ -1524,39 +1524,281 @@ main {
     }
   }
 
-  /* TABLET */
+  /* resposivo */
+  .secao_humor {
+    /* TABLET */
 
-  @media (max-width: 900px) {
-    .conteudo_humor {
-      .opcoes_humor {
-        flex-wrap: wrap;
+    @media (max-width: 1024px) {
+      padding: 80px 30px;
 
-        .botao_humor {
-          width: 45%;
+      .conteudo_humor {
+        width: 100%;
+
+        .cabecalho_humor {
+          max-width: 700px;
+
+          h2 {
+            font-size: 3.2rem;
+          }
+
+          p {
+            max-width: 620px;
+            font-size: 0.95rem;
+          }
+        }
+
+        .opcoes_humor {
+          max-width: 760px;
+
+          flex-wrap: wrap;
+          gap: 14px;
+
+          .botao_humor {
+            width: calc(50% - 7px);
+            max-width: 250px;
+            height: 54px;
+          }
+        }
+
+        .resultado_filme {
+          .card_resultado {
+            width: min(620px, 100%);
+
+            grid-template-columns: 220px 1fr;
+
+            .imagem_resultado {
+              min-height: 220px;
+            }
+
+            .informacoes_resultado {
+              padding: 20px;
+
+              .titulo_resultado {
+                font-size: 1.45rem;
+              }
+            }
+          }
         }
       }
     }
-  }
 
-  /* CELULAR */
+    /* TABLET PEQUENO */
 
-  @media (max-width: 650px) {
-    .resultado_filme {
-      .card_resultado {
-        width: min(330px, 100%);
+    @media (max-width: 768px) {
+      padding: 75px 24px;
 
-        grid-template-columns: 1fr;
+      .conteudo_humor {
+        .cabecalho_humor {
+          .subtitulo_humor {
+            font-size: 0.7rem;
+            letter-spacing: 0.16em;
+          }
 
-        .imagem_resultado {
-          height: 185px;
-          min-height: 0;
+          h2 {
+            font-size: 2.8rem;
+            line-height: 1.05;
+          }
 
-          .sombra_imagem {
-            background: linear-gradient(
-              to bottom,
-              transparent 45%,
-              rgba(12, 19, 42, 0.8)
-            );
+          p {
+            font-size: 0.9rem;
+
+            br {
+              display: none;
+            }
+          }
+        }
+
+        .opcoes_humor {
+          width: min(520px, 100%);
+
+          margin-top: 38px;
+
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+
+          gap: 12px;
+
+          .botao_humor {
+            width: 100%;
+            max-width: none;
+
+            height: 52px;
+
+            font-size: 0.78rem;
+          }
+        }
+
+        .resultado_filme {
+          .card_resultado {
+            width: min(560px, 100%);
+
+            grid-template-columns: 190px 1fr;
+
+            .imagem_resultado {
+              min-height: 205px;
+            }
+
+            .informacoes_resultado {
+              padding: 18px;
+
+              .titulo_resultado {
+                font-size: 1.35rem;
+              }
+
+              .descricao_resultado {
+                font-size: 0.72rem;
+              }
+
+              .rodape_resultado {
+                .assistir_resultado {
+                  padding: 7px 13px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /* CELULAR */
+
+    @media (max-width: 560px) {
+      padding: 65px 18px;
+
+      .conteudo_humor {
+        .cabecalho_humor {
+          .subtitulo_humor {
+            margin-bottom: 14px;
+
+            font-size: 0.64rem;
+          }
+
+          h2 {
+            font-size: 2.3rem;
+
+            line-height: 1;
+          }
+
+          p {
+            margin-top: 18px;
+
+            font-size: 0.84rem;
+            line-height: 1.5;
+          }
+        }
+
+        .opcoes_humor {
+          width: 100%;
+
+          margin-top: 34px;
+
+          grid-template-columns: repeat(2, 1fr);
+
+          gap: 10px;
+
+          .botao_humor {
+            height: 50px;
+
+            padding: 0 10px;
+
+            border-radius: 9px;
+
+            font-size: 0.72rem;
+
+            &:hover {
+              transform: none;
+            }
+          }
+        }
+
+        .resultado_filme {
+          .card_resultado {
+            width: min(340px, 100%);
+
+            grid-template-columns: 1fr;
+
+            border-radius: 14px;
+
+            .imagem_resultado {
+              width: 100%;
+
+              height: 180px;
+              min-height: 0;
+
+              .capa_resultado {
+                object-position: center;
+              }
+
+              .sombra_imagem {
+                background: linear-gradient(
+                  to bottom,
+                  transparent 55%,
+                  rgba(12, 19, 42, 0.75)
+                );
+              }
+            }
+
+            .informacoes_resultado {
+              padding: 17px;
+
+              .titulo_resultado {
+                font-size: 1.4rem;
+              }
+
+              .descricao_resultado {
+                font-size: 0.72rem;
+                line-height: 1.5;
+              }
+
+              .genero_resultado {
+                margin-top: 9px;
+              }
+
+              .rodape_resultado {
+                margin-top: 13px;
+                padding-top: 12px;
+
+                .assistir_resultado {
+                  padding: 7px 12px;
+
+                  font-size: 0.64rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /* CELULAR PEQUENO */
+
+    @media (max-width: 390px) {
+      padding-inline: 14px;
+
+      .conteudo_humor {
+        .cabecalho_humor {
+          h2 {
+            font-size: 2rem;
+          }
+        }
+
+        .opcoes_humor {
+          grid-template-columns: 1fr;
+
+          width: min(280px, 100%);
+
+          .botao_humor {
+            height: 48px;
+          }
+        }
+
+        .resultado_filme {
+          .card_resultado {
+            width: 100%;
+
+            .imagem_resultado {
+              height: 165px;
+            }
           }
         }
       }
