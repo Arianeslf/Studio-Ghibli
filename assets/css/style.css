@@ -2123,8 +2123,6 @@ main {
       }
 
       &:hover {
-        transform: translateY(-6px);
-
         border-color: #f4c542;
 
         box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
