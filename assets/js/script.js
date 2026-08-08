@@ -431,3 +431,289 @@ gsap.from(".opcoes_humor", {
     once: true,
   },
 });
+
+/* ==========================================
+   FILMES POR CATEGORIA
+========================================== */
+
+const filmesCategorias = {
+  aventura: [
+    {
+      titulo: "O Menino e a Garça",
+      ano: "2023",
+      genero: "Fantasia, Aventura",
+      imagem: "assets/img/menino-garca.png",
+      nota: "4.6",
+    },
+
+    {
+      titulo: "Ponyo",
+      ano: "2008",
+      genero: "Fantasia, Família",
+      imagem: "assets/img/ponyo.png",
+      nota: "4.7",
+    },
+
+    {
+      titulo: "Nausicaä do Vale do Vento",
+      ano: "1984",
+      genero: "Fantasia, Aventura",
+      imagem: "assets/img/nausicaa.png",
+      nota: "4.7",
+    },
+
+    {
+      titulo: "O Castelo no Céu",
+      ano: "1986",
+      genero: "Aventura, Fantasia",
+      imagem: "assets/img/castelo-ceu.png",
+      nota: "4.8",
+    },
+  ],
+
+  fantasia: [
+    {
+      titulo: "O Reino dos Gatos",
+      ano: "2002",
+      genero: "Fantasia, Aventura",
+      imagem: "assets/img/reino-dos-gatos.png",
+      nota: "4.6",
+    },
+
+    {
+      titulo: "Ponyo",
+      ano: "2008",
+      genero: "Fantasia, Família",
+      imagem: "assets/img/ponyo.png",
+      nota: "4.7",
+    },
+
+    {
+      titulo: "O Conto da Princesa Kaguya",
+      ano: "2013",
+      genero: "Fantasia, Drama",
+      imagem: "assets/img/princesa-kaguya.png",
+      nota: "4.8",
+    },
+
+    {
+      titulo: "O Castelo no Céu",
+      ano: "1986",
+      genero: "Fantasia, Aventura",
+      imagem: "assets/img/castelo-ceu.png",
+      nota: "4.8",
+    },
+  ],
+
+  romance: [
+    {
+      titulo: "Sussurros do Coração",
+      ano: "1995",
+      genero: "Romance, Drama",
+      imagem: "assets/img/sussurros-do-coracao.png",
+      nota: "4.8",
+    },
+
+    {
+      titulo: "Da Colina Kokuriko",
+      ano: "2011",
+      genero: "Romance, Drama",
+      imagem: "assets/img/colina-kokuriko.png",
+      nota: "4.6",
+    },
+
+    {
+      titulo: "O Vento se Levanta",
+      ano: "2013",
+      genero: "Romance, Drama",
+      imagem: "assets/img/vento-se-levanta.png",
+      nota: "4.7",
+    },
+
+    {
+      titulo: "Memórias de Ontem",
+      ano: "1991",
+      genero: "Romance, Drama",
+      imagem: "assets/img/memorias-de-ontem.png",
+      nota: "4.7",
+    },
+  ],
+
+  infantil: [
+    {
+      titulo: "Ponyo",
+      ano: "2008",
+      genero: "Fantasia, Família",
+      imagem: "assets/img/ponyo.png",
+      nota: "4.7",
+    },
+
+    {
+      titulo: "Meus Vizinhos os Yamadas",
+      ano: "1999",
+      genero: "Comédia, Família",
+      imagem: "assets/img/yamadas.png",
+      nota: "4.5",
+    },
+
+    {
+      titulo: "O Reino dos Gatos",
+      ano: "2002",
+      genero: "Fantasia, Família",
+      imagem: "assets/img/reino-dos-gatos.png",
+      nota: "4.6",
+    },
+
+    {
+      titulo: "Arrietty",
+      ano: "2010",
+      genero: "Fantasia, Família",
+      imagem: "assets/img/arrietty.png",
+      nota: "4.7",
+    },
+  ],
+};
+
+const listaCategorias = document.querySelector(".lista_categorias");
+
+const filtrosCategorias = document.querySelectorAll(".filtro_categoria");
+
+function criarCardCategoria(filme) {
+  return `
+    <article class="card">
+
+      <div class="card-image">
+
+        <img
+          src="${filme.imagem}"
+          alt="${filme.titulo}"
+        >
+
+        <div class="card-rating">
+          <span>★</span>
+          ${filme.nota}
+        </div>
+
+
+        <div class="card-overlay">
+
+          <button class="watch-button">
+            <span>✦</span>
+              Sobre o filme
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="info_card">
+
+        <h3>
+          ${filme.titulo}
+        </h3>
+
+
+        <div class="movie-details">
+
+          <p>
+            ${filme.ano} • ${filme.genero}
+          </p>
+
+
+          <button
+            class="heart-button"
+            aria-label="Favoritar ${filme.titulo}"
+          >
+
+            <img
+              src="assets/img/boxicons_heart.svg"
+              alt=""
+            >
+
+          </button>
+
+        </div>
+
+
+        <div class="card-line"></div>
+
+
+        <div class="card-footer">
+
+          <span class="quality">
+            HD
+          </span>
+
+        <button class="watch-link">
+           Assistir agora
+          </button>
+        </div>
+
+      </div>
+
+    </article>
+  `;
+}
+
+function mostrarCategoria(categoria) {
+  const filmes = filmesCategorias[categoria];
+
+  listaCategorias.innerHTML = filmes.map(criarCardCategoria).join("");
+
+  listaCategorias.querySelectorAll(".watch-link").forEach((botao) => {
+    botao.textContent = "Assistir agora";
+  });
+
+  const cards = listaCategorias.querySelectorAll(".card");
+
+  gsap.fromTo(
+    cards,
+    {
+      opacity: 0,
+      y: 25,
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.55,
+      stagger: 0.08,
+      ease: "power2.out",
+      clearProps: "transform",
+    },
+  );
+
+  ativarFavoritos();
+}
+
+filtrosCategorias.forEach((botao) => {
+  botao.addEventListener("click", () => {
+    if (botao.classList.contains("ativo")) {
+      return;
+    }
+
+    const categoria = botao.dataset.categoria;
+
+    filtrosCategorias.forEach((item) => {
+      item.classList.remove("ativo");
+    });
+
+    botao.classList.add("ativo");
+
+    const cardsAtuais = listaCategorias.querySelectorAll(".card");
+
+    gsap.to(cardsAtuais, {
+      opacity: 0,
+      y: 15,
+
+      duration: 0.3,
+      stagger: 0.04,
+
+      ease: "power2.in",
+
+      onComplete: () => {
+        mostrarCategoria(categoria);
+      },
+    });
+  });
+});
