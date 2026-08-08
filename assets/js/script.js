@@ -17,17 +17,31 @@ function animarPagina() {
   });
 }
 
-gsap.from(".card", {
-  opacity: 0,
-  filter: "blur(10px)",
-  stagger: 0.3,
-  scrollTrigger: {
-    trigger: ".lista_filmes",
-    start: "0% 80%",
-    end: "100% 80%",
-    scrub: true,
+gsap.fromTo(
+  ".card",
+  {
+    opacity: 0,
+    y: 50,
+    filter: "blur(10px)",
   },
-});
+  {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    duration: 0.8,
+    stagger: 0.13,
+    ease: "power1.out",
+
+    scrollTrigger: {
+      trigger: ".lista_filmes",
+      start: "top 80%",
+      once: true,
+
+      // coloque true só enquanto estiver testando
+      markers: true,
+    },
+  },
+);
 
 window.addEventListener("load", animarPagina);
 
@@ -51,3 +65,42 @@ document.querySelectorAll(".nav-menu a").forEach((link) => {
     menuToggle.setAttribute("aria-expanded", "false");
   });
 });
+
+// segunda seção
+
+const destaqueTitulo = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".topo_da_secao",
+    start: "top 85%",
+    once: true,
+  },
+});
+
+destaqueTitulo
+  .from(".topo_da_secao .text h2", {
+    opacity: 0,
+    y: 25,
+    duration: 0.7,
+    ease: "power2.out",
+  })
+  .from(
+    ".topo_da_secao .text p",
+    {
+      opacity: 0,
+      y: 15,
+      duration: 0.6,
+      ease: "power2.out",
+    },
+    "-=0.4",
+  );
+
+destaqueTitulo.from(
+  ".topo_da_secao button",
+  {
+    opacity: 0,
+    x: 15,
+    duration: 0.5,
+    ease: "power2.out",
+  },
+  "-=0.35",
+);
