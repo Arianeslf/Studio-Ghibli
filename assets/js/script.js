@@ -431,7 +431,6 @@ gsap.from(".opcoes_humor", {
     once: true,
   },
 });
-
 /* ==========================================
    FILMES POR CATEGORIA
 ========================================== */
@@ -574,9 +573,17 @@ const filmesCategorias = {
   ],
 };
 
-const listaCategorias = document.querySelector(".lista_categorias");
+const listaCategorias = document.querySelector(
+  ".secao_categorias .lista_categorias",
+);
 
-const filtrosCategorias = document.querySelectorAll(".filtro_categoria");
+const filtrosCategorias = document.querySelectorAll(
+  ".secao_categorias .filtro_categoria",
+);
+
+/* ==========================================
+   CRIA O CARD
+========================================== */
 
 function criarCardCategoria(filme) {
   return `
@@ -599,7 +606,7 @@ function criarCardCategoria(filme) {
 
           <button class="watch-button">
             <span>✦</span>
-              Sobre o filme
+            Sobre o filme
           </button>
 
         </div>
@@ -609,9 +616,7 @@ function criarCardCategoria(filme) {
 
       <div class="info_card">
 
-        <h3>
-          ${filme.titulo}
-        </h3>
+        <h3>${filme.titulo}</h3>
 
 
         <div class="movie-details">
@@ -625,12 +630,10 @@ function criarCardCategoria(filme) {
             class="heart-button"
             aria-label="Favoritar ${filme.titulo}"
           >
-
             <img
               src="assets/img/boxicons_heart.svg"
               alt=""
             >
-
           </button>
 
         </div>
@@ -645,9 +648,11 @@ function criarCardCategoria(filme) {
             HD
           </span>
 
-        <button class="watch-link">
-           Assistir agora
+
+          <button class="watch-link">
+            Assistir agora
           </button>
+
         </div>
 
       </div>
@@ -656,29 +661,34 @@ function criarCardCategoria(filme) {
   `;
 }
 
+/* ==========================================
+   MOSTRAR CATEGORIA
+========================================== */
+
 function mostrarCategoria(categoria) {
   const filmes = filmesCategorias[categoria];
 
   listaCategorias.innerHTML = filmes.map(criarCardCategoria).join("");
 
-  listaCategorias.querySelectorAll(".watch-link").forEach((botao) => {
-    botao.textContent = "Assistir agora";
-  });
-
   const cards = listaCategorias.querySelectorAll(".card");
 
   gsap.fromTo(
     cards,
+
     {
       opacity: 0,
       y: 25,
     },
+
     {
       opacity: 1,
       y: 0,
+
       duration: 0.55,
       stagger: 0.08,
+
       ease: "power2.out",
+
       clearProps: "transform",
     },
   );
@@ -686,13 +696,23 @@ function mostrarCategoria(categoria) {
   ativarFavoritos();
 }
 
+/* ==========================================
+   TROCA DE CATEGORIA
+========================================== */
+
+let trocandoCategoria = false;
+
 filtrosCategorias.forEach((botao) => {
   botao.addEventListener("click", () => {
-    if (botao.classList.contains("ativo")) {
+    if (botao.classList.contains("ativo") || trocandoCategoria) {
       return;
     }
 
+    trocandoCategoria = true;
+
     const categoria = botao.dataset.categoria;
+
+    /* troca botão ativo */
 
     filtrosCategorias.forEach((item) => {
       item.classList.remove("ativo");
@@ -700,19 +720,23 @@ filtrosCategorias.forEach((botao) => {
 
     botao.classList.add("ativo");
 
+    /* cards que estão aparecendo */
+
     const cardsAtuais = listaCategorias.querySelectorAll(".card");
 
     gsap.to(cardsAtuais, {
       opacity: 0,
       y: 15,
 
-      duration: 0.3,
-      stagger: 0.04,
+      duration: 0.25,
+      stagger: 0.035,
 
       ease: "power2.in",
 
       onComplete: () => {
         mostrarCategoria(categoria);
+
+        trocandoCategoria = false;
       },
     });
   });
