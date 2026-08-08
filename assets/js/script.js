@@ -431,6 +431,7 @@ gsap.from(".opcoes_humor", {
     once: true,
   },
 });
+
 /* ==========================================
    FILMES POR CATEGORIA
 ========================================== */
@@ -664,34 +665,39 @@ function criarCardCategoria(filme) {
 /* ==========================================
    MOSTRAR CATEGORIA
 ========================================== */
-
 function mostrarCategoria(categoria) {
   const filmes = filmesCategorias[categoria];
 
   listaCategorias.innerHTML = filmes.map(criarCardCategoria).join("");
 
-  const cards = listaCategorias.querySelectorAll(".card");
+  const novosCards = listaCategorias.querySelectorAll(".card");
 
-  gsap.fromTo(
-    cards,
+  /* garante o estado inicial */
+  gsap.set(novosCards, {
+    opacity: 0,
+    y: 18,
+  });
 
-    {
-      opacity: 0,
-      y: 25,
+  /* anima os novos cards */
+  gsap.to(novosCards, {
+    opacity: 1,
+    y: 0,
+
+    duration: 0.45,
+    stagger: 0.06,
+
+    ease: "power2.out",
+
+    onComplete: () => {
+      /*
+        libera o transform para o
+        :hover do CSS funcionar
+      */
+      gsap.set(novosCards, {
+        clearProps: "transform,opacity",
+      });
     },
-
-    {
-      opacity: 1,
-      y: 0,
-
-      duration: 0.55,
-      stagger: 0.08,
-
-      ease: "power2.out",
-
-      clearProps: "transform",
-    },
-  );
+  });
 
   ativarFavoritos();
 }
@@ -704,15 +710,11 @@ let trocandoCategoria = false;
 
 filtrosCategorias.forEach((botao) => {
   botao.addEventListener("click", () => {
-    if (botao.classList.contains("ativo") || trocandoCategoria) {
+    if (botao.classList.contains("ativo")) {
       return;
     }
 
-    trocandoCategoria = true;
-
     const categoria = botao.dataset.categoria;
-
-    /* troca botão ativo */
 
     filtrosCategorias.forEach((item) => {
       item.classList.remove("ativo");
@@ -720,23 +722,21 @@ filtrosCategorias.forEach((botao) => {
 
     botao.classList.add("ativo");
 
-    /* cards que estão aparecendo */
-
     const cardsAtuais = listaCategorias.querySelectorAll(".card");
 
+    /* para qualquer animação anterior */
+    gsap.killTweensOf(cardsAtuais);
+
+    /* some com os cards atuais */
     gsap.to(cardsAtuais, {
       opacity: 0,
-      y: 15,
 
-      duration: 0.25,
-      stagger: 0.035,
+      duration: 0.22,
 
-      ease: "power2.in",
+      ease: "power1.out",
 
       onComplete: () => {
         mostrarCategoria(categoria);
-
-        trocandoCategoria = false;
       },
     });
   });
