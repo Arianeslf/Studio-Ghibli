@@ -321,7 +321,7 @@ main {
           mask-image: linear-gradient(
             to bottom,
             #000 0%,
-            #000 76%,
+            #000 84%,
             rgba(0, 0, 0, 0.35) 88%,
             transparent 100%
           );
@@ -1149,7 +1149,7 @@ main {
   position: relative;
   width: 100%;
 
-  padding: 90px 0 80px;
+  padding: 60px 0 80px;
 
   overflow: hidden;
 
@@ -1238,8 +1238,6 @@ main {
 
         span {
           color: #72c7ff;
-
-          font-style: italic;
         }
       }
 
