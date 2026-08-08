@@ -127,55 +127,47 @@ const generoResultado = document.querySelector(".genero_resultado");
 
 const filmesHumor = {
   magico: {
-    titulo: "A Viagem de Chihiro",
+    titulo: "O Reino dos Gatos",
 
-    imagem: "assets/img/chihiro (1).png",
-
-    nota: "4.9",
+    imagem: "assets/img/reino-dos-gatos.jpg",
 
     descricao:
-      "Uma jornada única por um mundo de espíritos, magia e descobertas inesperadas.",
+      "Uma aventura encantadora por um reino misterioso cheio de gatos, magia e situações inesperadas.",
 
     genero: "Fantasia · Aventura",
   },
 
   relaxar: {
-    titulo: "Meu Amigo Totoro",
+    titulo: "Sussurros do Coração",
 
-    imagem: "assets/img/totoro.png",
-
-    nota: "4.8",
+    imagem: "assets/img/sussurros-do-coracao.jpg",
 
     descricao:
-      "Uma história tranquila e acolhedora sobre infância, natureza e pequenos momentos especiais.",
+      "Uma história leve e acolhedora sobre sonhos, descobertas e encontrar aquilo que realmente nos inspira.",
 
-    genero: "Fantasia · Família",
+    genero: "Romance · Cotidiano",
   },
 
   aventura: {
-    titulo: "Princesa Mononoke",
+    titulo: "Porco Rosso",
 
-    imagem: "assets/img/mononoke.png",
-
-    nota: "4.8",
+    imagem: "assets/img/porco-rosso.jpg",
 
     descricao:
-      "Uma aventura intensa entre humanos, espíritos e os mistérios de uma floresta ancestral.",
+      "Uma aventura pelos céus do Adriático com pilotos, perseguições e um aviador muito diferente de qualquer outro.",
 
-    genero: "Aventura · Fantasia",
+    genero: "Aventura · Comédia",
   },
 
   emocionar: {
-    titulo: "O Castelo Animado",
+    titulo: "O Conto da Princesa Kaguya",
 
-    imagem: "assets/img/castelo animado.png",
-
-    nota: "4.7",
+    imagem: "assets/img/princesa-kaguya.jpg",
 
     descricao:
-      "Uma história sobre amor, coragem e transformação em meio a um mundo cheio de magia.",
+      "Uma história delicada e emocionante sobre liberdade, escolhas e a beleza passageira dos momentos da vida.",
 
-    genero: "Fantasia · Romance",
+    genero: "Drama · Fantasia",
   },
 };
 
