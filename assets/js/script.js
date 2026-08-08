@@ -104,3 +104,339 @@ destaqueTitulo.from(
   },
   "-=0.35",
 );
+
+//  TERCEIRA SEÇÃO - QUIZ DE HUMOR
+
+const secaoHumor = document.querySelector(".secao_humor");
+
+const fundoParticulas = document.querySelector(".particulas_humor");
+
+const botoesHumor = document.querySelectorAll(".botao_humor");
+
+const resultadoFilme = document.querySelector(".resultado_filme");
+
+const capaResultado = document.querySelector(".capa_resultado");
+
+const tituloResultado = document.querySelector(".titulo_resultado");
+
+const descricaoResultado = document.querySelector(".descricao_resultado");
+
+const generoResultado = document.querySelector(".genero_resultado");
+
+/* FILMES */
+
+const filmesHumor = {
+  magico: {
+    titulo: "A Viagem de Chihiro",
+
+    imagem: "assets/img/chihiro (1).png",
+
+    nota: "4.9",
+
+    descricao:
+      "Uma jornada única por um mundo de espíritos, magia e descobertas inesperadas.",
+
+    genero: "Fantasia · Aventura",
+  },
+
+  relaxar: {
+    titulo: "Meu Amigo Totoro",
+
+    imagem: "assets/img/totoro.png",
+
+    nota: "4.8",
+
+    descricao:
+      "Uma história tranquila e acolhedora sobre infância, natureza e pequenos momentos especiais.",
+
+    genero: "Fantasia · Família",
+  },
+
+  aventura: {
+    titulo: "Princesa Mononoke",
+
+    imagem: "assets/img/mononoke.png",
+
+    nota: "4.8",
+
+    descricao:
+      "Uma aventura intensa entre humanos, espíritos e os mistérios de uma floresta ancestral.",
+
+    genero: "Aventura · Fantasia",
+  },
+
+  emocionar: {
+    titulo: "O Castelo Animado",
+
+    imagem: "assets/img/castelo animado.png",
+
+    nota: "4.7",
+
+    descricao:
+      "Uma história sobre amor, coragem e transformação em meio a um mundo cheio de magia.",
+
+    genero: "Fantasia · Romance",
+  },
+};
+
+/* ========================================
+   TROCAR FILME
+======================================== */
+
+function preencherFilme(humor) {
+  const filme = filmesHumor[humor];
+
+  capaResultado.src = filme.imagem;
+
+  capaResultado.alt = filme.titulo;
+
+  tituloResultado.textContent = filme.titulo;
+
+  descricaoResultado.textContent = filme.descricao;
+
+  generoResultado.textContent = filme.genero;
+}
+
+/* ========================================
+   ABRIR CARD
+======================================== */
+
+function abrirResultado() {
+  gsap.fromTo(
+    resultadoFilme,
+    {
+      height: 0,
+      opacity: 0,
+      marginTop: 0,
+      y: 20,
+    },
+    {
+      height: "auto",
+      opacity: 1,
+      marginTop: 70,
+      y: 0,
+
+      duration: 0.7,
+      ease: "power3.out",
+    },
+  );
+}
+
+/* ========================================
+   CLIQUE NOS HUMORES
+======================================== */
+
+botoesHumor.forEach((botao) => {
+  botao.addEventListener("click", () => {
+    const humor = botao.dataset.humor;
+
+    /* botão ativo */
+
+    botoesHumor.forEach((item) => {
+      item.classList.remove("ativo");
+    });
+
+    botao.classList.add("ativo");
+
+    if (resultadoFilme.offsetHeight === 0) {
+      preencherFilme(humor);
+
+      abrirResultado();
+
+      return;
+    }
+
+    gsap.to(
+      resultadoFilme,
+
+      {
+        height: 0,
+        opacity: 0,
+        marginTop: 0,
+        y: 10,
+
+        duration: 0.3,
+
+        ease: "power2.in",
+
+        onComplete: () => {
+          preencherFilme(humor);
+
+          abrirResultado();
+        },
+      },
+    );
+  });
+});
+
+/* ========================================
+   PARTÍCULAS
+======================================== */
+
+function numeroAleatorio(minimo, maximo) {
+  return Math.random() * (maximo - minimo) + minimo;
+}
+
+/* CORES */
+
+const coresBolhas = ["#101a3f", "#15112f", "#14264a", "#22163f"];
+
+const coresEstrelas = ["#ffffff", "#9bdcff", "#ffd7e4", "#56bfff"];
+
+/* ========================================
+   CRIAR BOLHAS
+======================================== */
+
+for (let i = 0; i < 17; i++) {
+  const bolha = document.createElement("span");
+
+  bolha.classList.add("bolha");
+
+  const tamanho = numeroAleatorio(11, 33);
+
+  bolha.style.width = `${tamanho}px`;
+
+  bolha.style.height = `${tamanho}px`;
+
+  bolha.style.left = `${numeroAleatorio(0, 100)}%`;
+
+  bolha.style.top = `${numeroAleatorio(0, 100)}%`;
+
+  bolha.style.background =
+    coresBolhas[Math.floor(Math.random() * coresBolhas.length)];
+
+  bolha.style.setProperty("--opacidade", numeroAleatorio(0.12, 0.7));
+
+  fundoParticulas.appendChild(bolha);
+
+  animarParticula(bolha, false);
+}
+
+/* ========================================
+   CRIAR ESTRELAS
+======================================== */
+
+for (let i = 0; i < 40; i++) {
+  const estrela = document.createElement("span");
+
+  estrela.classList.add("estrela");
+
+  const tamanho = numeroAleatorio(2, 5);
+
+  estrela.style.width = `${tamanho}px`;
+
+  estrela.style.height = `${tamanho}px`;
+
+  estrela.style.left = `${numeroAleatorio(0, 100)}%`;
+
+  estrela.style.top = `${numeroAleatorio(0, 100)}%`;
+
+  const cor = coresEstrelas[Math.floor(Math.random() * coresEstrelas.length)];
+
+  estrela.style.background = cor;
+
+  estrela.style.color = cor;
+
+  fundoParticulas.appendChild(estrela);
+
+  animarParticula(estrela, true);
+}
+
+/* ========================================
+   MOVIMENTO ALEATÓRIO
+======================================== */
+
+function animarParticula(elemento, piscar) {
+  const duracao = numeroAleatorio(4, 8);
+
+  gsap.to(
+    elemento,
+
+    {
+      keyframes: [
+        {
+          x: numeroAleatorio(-35, 35),
+
+          y: numeroAleatorio(-30, 30),
+        },
+
+        {
+          x: numeroAleatorio(-55, 55),
+
+          y: numeroAleatorio(-40, 40),
+        },
+
+        {
+          x: numeroAleatorio(-25, 25),
+
+          y: numeroAleatorio(-45, 45),
+        },
+
+        {
+          x: 0,
+          y: 0,
+        },
+      ],
+
+      duration: duracao,
+
+      ease: "sine.inOut",
+
+      repeat: -1,
+
+      repeatRefresh: true,
+    },
+  );
+
+  if (piscar) {
+    gsap.to(
+      elemento,
+
+      {
+        opacity: numeroAleatorio(0.15, 1),
+
+        scale: numeroAleatorio(0.7, 1.5),
+
+        duration: numeroAleatorio(0.6, 1.6),
+
+        ease: "sine.inOut",
+
+        repeat: -1,
+
+        yoyo: true,
+      },
+    );
+  }
+}
+
+/* entrada dos textos */
+
+gsap.from(".cabecalho_humor", {
+  opacity: 0,
+  y: 30,
+
+  duration: 0.8,
+
+  ease: "power2.out",
+
+  scrollTrigger: {
+    trigger: ".secao_humor",
+    start: "top 72%",
+    once: true,
+  },
+});
+
+/* entrada dos botões */
+
+gsap.from(".opcoes_humor", {
+  opacity: 0,
+  y: 20,
+  duration: 0.7,
+  ease: "power2.out",
+
+  scrollTrigger: {
+    trigger: ".secao_humor",
+    start: "top 68%",
+    once: true,
+  },
+});
