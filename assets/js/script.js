@@ -66,25 +66,28 @@ document.querySelectorAll(".nav-menu a").forEach((link) => {
   });
 });
 
-// segunda seção
+/* ==============================
+   SEGUNDA SEÇÃO
+============================== */
 
 const destaqueTitulo = gsap.timeline({
   scrollTrigger: {
-    trigger: ".topo_da_secao",
-    start: "top 85%",
+    trigger: ".filme_bg .topo_da_secao",
+    start: "top 80%",
     once: true,
   },
 });
 
 destaqueTitulo
-  .from(".topo_da_secao .text h2", {
+  .from(".filme_bg .topo_da_secao .text h2", {
     opacity: 0,
     y: 25,
     duration: 0.7,
     ease: "power2.out",
   })
+
   .from(
-    ".topo_da_secao .text p",
+    ".filme_bg .topo_da_secao .text p",
     {
       opacity: 0,
       y: 15,
@@ -92,18 +95,18 @@ destaqueTitulo
       ease: "power2.out",
     },
     "-=0.4",
-  );
+  )
 
-destaqueTitulo.from(
-  ".topo_da_secao button",
-  {
-    opacity: 0,
-    x: 15,
-    duration: 0.5,
-    ease: "power2.out",
-  },
-  "-=0.35",
-);
+  .from(
+    ".filme_bg .topo_da_secao > button",
+    {
+      opacity: 0,
+      x: 15,
+      duration: 0.5,
+      ease: "power2.out",
+    },
+    "-=0.35",
+  );
 
 //  TERCEIRA SEÇÃO - QUIZ DE HUMOR
 
@@ -140,7 +143,7 @@ const filmesHumor = {
   relaxar: {
     titulo: "Sussurros do Coração",
 
-    imagem: "assets/img/sussurros-do-coracao.jpg",
+    imagem: "assets/img/sussurros-do-coracao.png",
 
     descricao:
       "Uma história leve e acolhedora sobre sonhos, descobertas e encontrar aquilo que realmente nos inspira.",
@@ -171,6 +174,14 @@ const filmesHumor = {
   },
 };
 
+Object.values(filmesHumor).forEach((filme) => {
+  const imagem = new Image();
+
+  imagem.src = filme.imagem;
+
+  imagem.decode?.().catch(() => {});
+});
+
 /* ========================================
    TROCAR FILME
 ======================================== */
@@ -194,25 +205,28 @@ function preencherFilme(humor) {
 ======================================== */
 
 function abrirResultado() {
+  resultadoFilme.style.height = "auto";
+  resultadoFilme.style.overflow = "visible";
+
   gsap.fromTo(
     resultadoFilme,
     {
-      height: 0,
       opacity: 0,
-      marginTop: 0,
-      y: 15,
+      y: 25,
+      scale: 0.97,
     },
     {
-      height: "auto",
       opacity: 1,
-      marginTop: window.innerWidth <= 600 ? 24 : 48,
       y: 0,
-      duration: 0.65,
-      ease: "power3.out",
+      scale: 1,
+
+      duration: 0.5,
+      ease: "power2.out",
+
+      clearProps: "transform",
     },
   );
 }
-
 /* ========================================
    CLIQUE NOS HUMORES
 ======================================== */
@@ -221,42 +235,54 @@ botoesHumor.forEach((botao) => {
   botao.addEventListener("click", () => {
     const humor = botao.dataset.humor;
 
-    /* botão ativo */
-
     botoesHumor.forEach((item) => {
       item.classList.remove("ativo");
     });
 
     botao.classList.add("ativo");
 
-    if (resultadoFilme.offsetHeight === 0) {
+    /* primeira vez */
+
+    if (!resultadoFilme.classList.contains("aberto")) {
       preencherFilme(humor);
+
+      resultadoFilme.classList.add("aberto");
 
       abrirResultado();
 
       return;
     }
 
-    gsap.to(
-      resultadoFilme,
+    /* troca de filme */
 
-      {
-        height: 0,
-        opacity: 0,
-        marginTop: 0,
-        y: 10,
+    gsap.to(".card_resultado", {
+      opacity: 0,
+      y: 10,
 
-        duration: 0.3,
+      duration: 0.18,
+      ease: "power1.out",
 
-        ease: "power2.in",
+      onComplete: () => {
+        preencherFilme(humor);
 
-        onComplete: () => {
-          preencherFilme(humor);
+        gsap.fromTo(
+          ".card_resultado",
+          {
+            opacity: 0,
+            y: 12,
+          },
+          {
+            opacity: 1,
+            y: 0,
 
-          abrirResultado();
-        },
+            duration: 0.35,
+            ease: "power2.out",
+
+            clearProps: "transform",
+          },
+        );
       },
-    );
+    });
   });
 });
 
@@ -432,6 +458,65 @@ gsap.from(".opcoes_humor", {
   },
 });
 
+/* ==============================
+   QUARTA SEÇÃO
+============================== */
+
+const animacaoCategorias = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".secao_categorias",
+    start: "top 65%",
+    once: true,
+  },
+});
+
+animacaoCategorias
+  .from(".secao_categorias .topo_da_secao .text h2", {
+    opacity: 0,
+    y: 30,
+
+    duration: 0.8,
+    ease: "power2.out",
+  })
+
+  .from(
+    ".secao_categorias .topo_da_secao .text p",
+    {
+      opacity: 0,
+      y: 15,
+
+      duration: 0.65,
+      ease: "power2.out",
+    },
+    "-=0.45",
+  )
+
+  .from(
+    ".secao_categorias .topo_da_secao > button",
+    {
+      opacity: 0,
+      x: 18,
+
+      duration: 0.55,
+      ease: "power2.out",
+    },
+    "-=0.4",
+  )
+
+  .from(
+    ".secao_categorias .filtro_categoria",
+    {
+      opacity: 0,
+      y: 12,
+
+      duration: 0.45,
+      stagger: 0.07,
+
+      ease: "power2.out",
+    },
+    "-=0.25",
+  );
+
 /* ==========================================
    FILMES POR CATEGORIA
 ========================================== */
@@ -450,7 +535,7 @@ const filmesCategorias = {
       titulo: "Ponyo",
       ano: "2008",
       genero: "Fantasia, Família",
-      imagem: "assets/img/ponyo.png",
+      imagem: "assets/img/ponyo.jpg",
       nota: "4.7",
     },
 
@@ -458,7 +543,7 @@ const filmesCategorias = {
       titulo: "Nausicaä do Vale do Vento",
       ano: "1984",
       genero: "Fantasia, Aventura",
-      imagem: "assets/img/nausicaa.png",
+      imagem: "assets/img/nausicaa.jpg",
       nota: "4.7",
     },
 
@@ -476,7 +561,7 @@ const filmesCategorias = {
       titulo: "O Reino dos Gatos",
       ano: "2002",
       genero: "Fantasia, Aventura",
-      imagem: "assets/img/reino-dos-gatos.png",
+      imagem: "assets/img/reino-dos-gatos.jpg",
       nota: "4.6",
     },
 
@@ -484,7 +569,7 @@ const filmesCategorias = {
       titulo: "Ponyo",
       ano: "2008",
       genero: "Fantasia, Família",
-      imagem: "assets/img/ponyo.png",
+      imagem: "assets/img/ponyo.jpg",
       nota: "4.7",
     },
 
@@ -492,7 +577,7 @@ const filmesCategorias = {
       titulo: "O Conto da Princesa Kaguya",
       ano: "2013",
       genero: "Fantasia, Drama",
-      imagem: "assets/img/princesa-kaguya.png",
+      imagem: "assets/img/princesa-kaguya.jpg",
       nota: "4.8",
     },
 
@@ -518,7 +603,7 @@ const filmesCategorias = {
       titulo: "Da Colina Kokuriko",
       ano: "2011",
       genero: "Romance, Drama",
-      imagem: "assets/img/colina-kokuriko.png",
+      imagem: "assets/img/colina-kokuriko.jpg",
       nota: "4.6",
     },
 
@@ -526,7 +611,7 @@ const filmesCategorias = {
       titulo: "O Vento se Levanta",
       ano: "2013",
       genero: "Romance, Drama",
-      imagem: "assets/img/vento-se-levanta.png",
+      imagem: "assets/img/vento-se-levanta.jpg",
       nota: "4.7",
     },
 
@@ -534,7 +619,7 @@ const filmesCategorias = {
       titulo: "Memórias de Ontem",
       ano: "1991",
       genero: "Romance, Drama",
-      imagem: "assets/img/memorias-de-ontem.png",
+      imagem: "assets/img/memorias-de-ontem.jpg",
       nota: "4.7",
     },
   ],
@@ -544,7 +629,7 @@ const filmesCategorias = {
       titulo: "Ponyo",
       ano: "2008",
       genero: "Fantasia, Família",
-      imagem: "assets/img/ponyo.png",
+      imagem: "assets/img/ponyo.jpg",
       nota: "4.7",
     },
 
@@ -552,7 +637,7 @@ const filmesCategorias = {
       titulo: "Meus Vizinhos os Yamadas",
       ano: "1999",
       genero: "Comédia, Família",
-      imagem: "assets/img/yamadas.png",
+      imagem: "assets/img/yamadas.jpg",
       nota: "4.5",
     },
 
@@ -560,7 +645,7 @@ const filmesCategorias = {
       titulo: "O Reino dos Gatos",
       ano: "2002",
       genero: "Fantasia, Família",
-      imagem: "assets/img/reino-dos-gatos.png",
+      imagem: "assets/img/reino-dos-gatos.jpg",
       nota: "4.6",
     },
 
@@ -568,7 +653,7 @@ const filmesCategorias = {
       titulo: "Arrietty",
       ano: "2010",
       genero: "Fantasia, Família",
-      imagem: "assets/img/arrietty.png",
+      imagem: "assets/img/arrietty.jpg",
       nota: "4.7",
     },
   ],
