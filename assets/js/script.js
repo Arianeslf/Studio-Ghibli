@@ -826,3 +826,276 @@ filtrosCategorias.forEach((botao) => {
     });
   });
 });
+
+/* ==========================================
+   QUINTA SEÇÃO - PERSONAGENS
+========================================== */
+
+/* ===============================
+   PERSONAGENS
+=============================== */
+
+const personagens = [
+  {
+    nome: "San",
+    imagem: "assets/img/san.png",
+  },
+
+  {
+    nome: "Totoro",
+    imagem: "assets/img/totorop.png",
+  },
+
+  {
+    nome: "Chihiro",
+    imagem: "assets/img/chihiro.png",
+  },
+
+  {
+    nome: "Sophie",
+    imagem: "assets/img/sophie.png",
+  },
+
+  {
+    nome: "Kiki",
+    imagem: "assets/img/kiki.png",
+  },
+];
+
+/* ===============================
+   ELEMENTOS DO HTML
+=============================== */
+
+const listaPersonagens = document.querySelector(".lista_personagens");
+
+const nomePersonagem = document.querySelector(".nome_personagem");
+
+const conhecerPersonagem = document.querySelector(".conhecer_personagem");
+
+const setaAnterior = document.querySelector(".seta_personagem.esquerda");
+
+const setaProximo = document.querySelector(".seta_personagem.direita");
+
+/* ===============================
+   PERSONAGEM INICIAL
+=============================== */
+
+/*
+  0 = San
+  1 = Totoro
+  2 = Chihiro
+  3 = Sophie
+  4 = Kiki
+
+  Queremos Chihiro inicialmente.
+*/
+
+let personagemAtual = 2;
+
+/* ===============================
+   ÍNDICE CIRCULAR
+=============================== */
+
+function indiceCircular(indice) {
+  return (indice + personagens.length) % personagens.length;
+}
+
+/* ===============================
+   CRIAR OS 5 PERSONAGENS
+=============================== */
+
+function montarPersonagens() {
+  listaPersonagens.innerHTML = "";
+
+  /*
+    sempre mostramos:
+
+    -2
+    -1
+     0  <- personagem central
+    +1
+    +2
+  */
+
+  for (let posicao = -2; posicao <= 2; posicao++) {
+    /* pega o índice correto */
+
+    const indiceReal = indiceCircular(personagemAtual + posicao);
+
+    const personagem = personagens[indiceReal];
+
+    /*
+      posição 0 significa:
+      personagem central
+    */
+
+    const selecionado = posicao === 0;
+
+    /* cria botão */
+
+    const botao = document.createElement("button");
+
+    botao.className = selecionado ? "personagem selecionado" : "personagem";
+
+    botao.dataset.indice = indiceReal;
+
+    /* imagem */
+
+    botao.innerHTML = `
+      <img
+        src="${personagem.imagem}"
+        alt="${personagem.nome}"
+        draggable="false"
+      >
+    `;
+
+    /* clique nos personagens */
+
+    botao.addEventListener("click", () => {
+      /*
+          se já estiver no centro,
+          não faz nada
+        */
+
+      if (selecionado) {
+        return;
+      }
+
+      trocarPersonagem(indiceReal);
+    });
+
+    /* coloca na tela */
+
+    listaPersonagens.appendChild(botao);
+  }
+
+  atualizarInformacoes();
+}
+
+/* ===============================
+   ATUALIZAR NOME E TEXTO
+=============================== */
+
+function atualizarInformacoes() {
+  const personagem = personagens[personagemAtual];
+
+  /* nome da pílula */
+
+  nomePersonagem.textContent = personagem.nome;
+
+  /* texto embaixo */
+
+  conhecerPersonagem.innerHTML = `
+    Clique para conhecer a história de
+    ${personagem.nome}
+    <span>→</span>
+  `;
+}
+
+/* ===============================
+   TROCAR PERSONAGEM
+=============================== */
+
+function trocarPersonagem(novoIndice) {
+  const personagensAtuais = listaPersonagens.querySelectorAll(".personagem");
+
+  /*
+    primeiro some com os atuais
+  */
+
+  gsap.to(personagensAtuais, {
+    opacity: 0,
+
+    y: 10,
+
+    duration: 0.18,
+
+    ease: "power1.in",
+
+    onComplete: () => {
+      /*
+          muda quem é o atual
+        */
+
+      personagemAtual = indiceCircular(novoIndice);
+
+      /*
+          recria a fileira
+        */
+
+      montarPersonagens();
+
+      const novosPersonagens = listaPersonagens.querySelectorAll(".personagem");
+
+      /*
+          entrada dos novos
+        */
+
+      gsap.fromTo(
+        novosPersonagens,
+
+        {
+          opacity: 0,
+          y: 14,
+        },
+
+        {
+          opacity: 1,
+          y: 0,
+
+          duration: 0.45,
+
+          stagger: 0.05,
+
+          ease: "power2.out",
+
+          clearProps: "transform,opacity",
+        },
+      );
+
+      /*
+          anima nome e texto
+        */
+
+      gsap.fromTo(
+        [nomePersonagem, conhecerPersonagem],
+
+        {
+          opacity: 0,
+          y: 6,
+        },
+
+        {
+          opacity: 1,
+          y: 0,
+
+          duration: 0.35,
+
+          ease: "power2.out",
+        },
+      );
+    },
+  });
+}
+
+/* ===============================
+   SETA DIREITA
+=============================== */
+
+setaProximo.addEventListener("click", () => {
+  trocarPersonagem(personagemAtual + 1);
+});
+
+/* ===============================
+   SETA ESQUERDA
+=============================== */
+
+setaAnterior.addEventListener("click", () => {
+  trocarPersonagem(personagemAtual - 1);
+});
+
+/* ===============================
+   INICIAR
+=============================== */
+
+montarPersonagens();

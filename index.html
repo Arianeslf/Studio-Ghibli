@@ -11,6 +11,13 @@
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- css -->
     <link rel="stylesheet" href="/assets/css/style.css" />
@@ -584,6 +591,59 @@
 
               <!-- os cards entram aqui pelo JS -->
               <div class="lista_filmes lista_categorias"></div>
+            </div>
+          </section>
+
+          <!-- quinta seção -->
+          <section class="secao_personagens" id="personagens">
+            <!-- título -->
+            <div class="cabecalho_personagens">
+              <div class="container">
+                <h2>Personagens e histórias marcantes</h2>
+
+                <p>Conheça os personagens inesquecíveis do Studio Ghibli</p>
+              </div>
+            </div>
+
+            <!-- área da paisagem -->
+            <div class="area_personagens">
+              <div class="fundo_personagens"></div>
+
+              <div class="conteudo_personagens">
+                <!-- nome do personagem atual -->
+                <div class="nome_personagem">Chihiro</div>
+
+                <!-- texto que muda -->
+                <button class="conhecer_personagem">
+                  Clique para conhecer a história de Chihiro
+                  <span>→</span>
+                </button>
+
+                <!-- carrossel -->
+                <div class="carrossel_personagens">
+                  <!-- seta esquerda -->
+                  <button
+                    class="seta_personagem esquerda"
+                    aria-label="Personagem anterior"
+                  >
+                    ←
+                  </button>
+
+                  <!-- JS coloca os 5 personagens aqui -->
+                  <div class="lista_personagens"></div>
+
+                  <!-- seta direita -->
+                  <button
+                    class="seta_personagem direita"
+                    aria-label="Próximo personagem"
+                  >
+                    →
+                  </button>
+                </div>
+              </div>
+
+              <!-- parte clara que conecta com a próxima seção -->
+              <div class="borda_nuvens"></div>
             </div>
           </section>
         </main>
