@@ -1,7 +1,3 @@
-/* =========================================================
-   RESET / BASE
-========================================================= */
-
 * {
   margin: 0;
   padding: 0;
@@ -205,17 +201,13 @@ header {
   }
 }
 
-/* =========================================================
-   MAIN TEMPORÁRIO
-========================================================= */
+/* MAIN TEMPORÁRIO */
 
 main {
   height: 5000px;
 }
 
-/* =========================================================
-   HERO
-========================================================= */
+/* hero */
 
 .hero_bg {
   position: relative;
@@ -382,9 +374,7 @@ main {
   }
 }
 
-/* =========================================================
-   HERO — TABLET
-========================================================= */
+/* hero - responsivo */
 
 @media (max-width: 1024px) {
   .container {
@@ -447,10 +437,6 @@ main {
   }
 }
 
-/* =========================================================
-   HERO — TABLET PEQUENO
-========================================================= */
-
 @media (max-width: 900px) {
   .hero_flex {
     flex-direction: column;
@@ -488,10 +474,6 @@ main {
     }
   }
 }
-
-/* =========================================================
-   MENU MOBILE
-========================================================= */
 
 @media (max-width: 768px) {
   header {
@@ -607,10 +589,6 @@ main {
   }
 }
 
-/* =========================================================
-   HERO — CELULAR
-========================================================= */
-
 @media (max-width: 768px) {
   .hero_bg {
     min-height: auto;
@@ -681,10 +659,6 @@ main {
     }
   }
 }
-
-/* =========================================================
-   HERO — CELULAR PEQUENO
-========================================================= */
 
 @media (max-width: 480px) {
   .container {
@@ -760,9 +734,7 @@ main {
   }
 }
 
-/* =========================================================
-   SEÇÃO — FILMES
-========================================================= */
+/* seção - filmes */
 
 .filme_bg {
   position: relative;
@@ -1114,9 +1086,7 @@ main {
   }
 }
 
-/* =========================================================
-   FILMES — RESPONSIVO
-========================================================= */
+/* FILMES — RESPONSIVO */
 
 @media (max-width: 1024px) {
   .filme_bg {
@@ -1238,9 +1208,7 @@ main {
   }
 }
 
-/* =========================================================
-   SEÇÃO — HUMOR
-========================================================= */
+/* seção - humor  */
 
 .secao_humor {
   position: relative;
@@ -1613,9 +1581,7 @@ main {
   }
 }
 
-/* =========================================================
-   HUMOR — TABLET
-========================================================= */
+/* humor - responsivo */
 
 @media (max-width: 1024px) {
   .secao_humor {
@@ -1728,9 +1694,7 @@ main {
   }
 }
 
-/* =========================================================
-   HUMOR — CELULAR
-========================================================= */
+
 
 @media (max-width: 600px) {
   .secao_humor {
@@ -1891,9 +1855,7 @@ main {
   }
 }
 
-/* =========================================================
-   SEÇÃO — CATEGORIAS
-========================================================= */
+/* seção - categorias */
 
 .secao_categorias {
   width: 100%;
@@ -2312,9 +2274,7 @@ main {
   }
 }
 
-/* =========================================================
-   CATEGORIAS — TABLET
-========================================================= */
+/* categorias - resposivo */
 
 @media (max-width: 900px) {
   .secao_categorias {
@@ -2331,9 +2291,6 @@ main {
   }
 }
 
-/* =========================================================
-   CATEGORIAS — CELULAR
-========================================================= */
 
 @media (max-width: 600px) {
   .secao_categorias {
@@ -2383,9 +2340,7 @@ main {
   }
 }
 
-/* =========================================================
-   SEÇÃO — PERSONAGENS
-========================================================= */
+/* seção - personagens  */
 
 .secao_personagens {
   position: relative;
@@ -2395,10 +2350,6 @@ main {
   overflow: hidden;
 
   background: #000;
-
-  /* -------------------------------------------------------
-     CABEÇALHO
-  ------------------------------------------------------- */
 
   .cabecalho_personagens {
     position: relative;
@@ -2434,9 +2385,6 @@ main {
     }
   }
 
-  /* -------------------------------------------------------
-     ÁREA DOS PERSONAGENS
-  ------------------------------------------------------- */
 
   .area_personagens {
     position: relative;
@@ -2445,7 +2393,6 @@ main {
 
     overflow: hidden;
 
-    /* FUNDO */
 
     .fundo_personagens {
       position: absolute;
@@ -2479,7 +2426,6 @@ main {
       }
     }
 
-    /* CONTEÚDO */
 
     .conteudo_personagens {
       position: relative;
@@ -2494,7 +2440,7 @@ main {
       flex-direction: column;
       align-items: center;
 
-      /* NOME */
+
 
       .nome_personagem {
         display: inline-flex;
@@ -2523,7 +2469,7 @@ main {
         }
       }
 
-      /* BOTÃO CONHECER */
+
 
       .conhecer_personagem {
         display: inline-flex;
@@ -2579,9 +2525,6 @@ main {
         }
       }
 
-      /* ---------------------------------------------------
-         CARROSSEL
-      --------------------------------------------------- */
 
       .carrossel_personagens {
         position: relative;
@@ -2594,7 +2537,6 @@ main {
         align-items: center;
         justify-content: center;
 
-        /* SETAS */
 
         .seta_personagem {
           position: absolute;
@@ -2651,7 +2593,6 @@ main {
           right: -20px;
         }
 
-        /* LISTA */
 
         .lista_personagens {
           width: min(1080px, 91%);
@@ -2663,8 +2604,6 @@ main {
           justify-content: center;
 
           gap: clamp(2px, 0.7vw, 12px);
-
-          /* PERSONAGEM */
 
           .personagem {
             position: relative;
@@ -2688,7 +2627,6 @@ main {
 
             transform-origin: center bottom;
 
-            /* SOMBRA */
 
             &::after {
               content: "";
@@ -2728,7 +2666,6 @@ main {
                 transform 0.45s ease;
             }
 
-            /* PERSONAGENS NÃO SELECIONADOS */
 
             &:not(.selecionado) {
               img {
@@ -2747,7 +2684,6 @@ main {
               }
             }
 
-            /* PERSONAGEM CENTRAL */
 
             &.selecionado {
               z-index: 10;
@@ -2769,9 +2705,7 @@ main {
   }
 }
 
-/* =========================================================
-   PERSONAGENS — TABLET
-========================================================= */
+/* personagens - responsivo  */
 
 @media (max-width: 1024px) {
   .secao_personagens {
@@ -2826,9 +2760,6 @@ main {
   }
 }
 
-/* =========================================================
-   PERSONAGENS — TABLET PEQUENO
-========================================================= */
 
 @media (max-width: 768px) {
   .secao_personagens {
@@ -2919,9 +2850,7 @@ main {
   }
 }
 
-/* =========================================================
-   PERSONAGENS — CELULAR
-========================================================= */
+
 
 @media (max-width: 600px) {
   .secao_personagens {
@@ -3005,10 +2934,6 @@ main {
     }
   }
 }
-
-/* =========================================================
-   PERSONAGENS — CELULAR PEQUENO
-========================================================= */
 
 @media (max-width: 400px) {
   .secao_personagens {
