@@ -5,6 +5,8 @@ ScrollSmoother.create({
   effects: true,
 });
 
+/* ==================== INÍCIO ==================== */
+
 function animarPagina() {
   gsap.from(".recorte", {
     y: 60,
@@ -16,6 +18,8 @@ function animarPagina() {
     duration: 1,
   });
 }
+
+window.addEventListener("load", animarPagina);
 
 gsap.fromTo(
   ".card",
@@ -31,44 +35,37 @@ gsap.fromTo(
     duration: 0.8,
     stagger: 0.13,
     ease: "power1.out",
-
     scrollTrigger: {
       trigger: ".lista_filmes",
       start: "top 80%",
       once: true,
-
-      // coloque true só enquanto estiver testando
-      markers: true,
     },
   },
 );
 
-window.addEventListener("load", animarPagina);
-
-// menu hamburguer
+/* ==================== MENU ==================== */
 
 const menuToggle = document.querySelector(".menu-toggle");
 const navMenu = document.querySelector(".nav-menu");
 
-menuToggle.addEventListener("click", () => {
-  const abriu = navMenu.classList.toggle("active");
+if (menuToggle && navMenu) {
+  menuToggle.addEventListener("click", () => {
+    const abriu = navMenu.classList.toggle("active");
 
-  menuToggle.classList.toggle("active");
-
-  menuToggle.setAttribute("aria-expanded", abriu);
-});
-
-document.querySelectorAll(".nav-menu a").forEach((link) => {
-  link.addEventListener("click", () => {
-    navMenu.classList.remove("active");
-    menuToggle.classList.remove("active");
-    menuToggle.setAttribute("aria-expanded", "false");
+    menuToggle.classList.toggle("active");
+    menuToggle.setAttribute("aria-expanded", abriu);
   });
-});
 
-/* ==============================
-   SEGUNDA SEÇÃO
-============================== */
+  document.querySelectorAll(".nav-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("active");
+      menuToggle.classList.remove("active");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+/* ==================== SEGUNDA SEÇÃO ==================== */
 
 const destaqueTitulo = gsap.timeline({
   scrollTrigger: {
@@ -85,7 +82,6 @@ destaqueTitulo
     duration: 0.7,
     ease: "power2.out",
   })
-
   .from(
     ".filme_bg .topo_da_secao .text p",
     {
@@ -96,7 +92,6 @@ destaqueTitulo
     },
     "-=0.4",
   )
-
   .from(
     ".filme_bg .topo_da_secao > button",
     {
@@ -108,101 +103,67 @@ destaqueTitulo
     "-=0.35",
   );
 
-//  TERCEIRA SEÇÃO - QUIZ DE HUMOR
+/* ==================== QUIZ ==================== */
 
 const secaoHumor = document.querySelector(".secao_humor");
-
 const fundoParticulas = document.querySelector(".particulas_humor");
-
 const botoesHumor = document.querySelectorAll(".botao_humor");
-
 const resultadoFilme = document.querySelector(".resultado_filme");
-
 const capaResultado = document.querySelector(".capa_resultado");
-
 const tituloResultado = document.querySelector(".titulo_resultado");
-
 const descricaoResultado = document.querySelector(".descricao_resultado");
-
 const generoResultado = document.querySelector(".genero_resultado");
-
-/* FILMES */
 
 const filmesHumor = {
   magico: {
     titulo: "O Reino dos Gatos",
-
     imagem: "assets/img/reino-dos-gatos.jpg",
-
     descricao:
       "Uma aventura encantadora por um reino misterioso cheio de gatos, magia e situações inesperadas.",
-
     genero: "Fantasia · Aventura",
   },
 
   relaxar: {
     titulo: "Sussurros do Coração",
-
     imagem: "assets/img/sussurros-do-coracao.png",
-
     descricao:
       "Uma história leve e acolhedora sobre sonhos, descobertas e encontrar aquilo que realmente nos inspira.",
-
     genero: "Romance · Cotidiano",
   },
 
   aventura: {
     titulo: "Porco Rosso",
-
     imagem: "assets/img/porco-rosso.jpg",
-
     descricao:
       "Uma aventura pelos céus do Adriático com pilotos, perseguições e um aviador muito diferente de qualquer outro.",
-
     genero: "Aventura · Comédia",
   },
 
   emocionar: {
     titulo: "O Conto da Princesa Kaguya",
-
     imagem: "assets/img/princesa-kaguya.jpg",
-
     descricao:
       "Uma história delicada e emocionante sobre liberdade, escolhas e a beleza passageira dos momentos da vida.",
-
     genero: "Drama · Fantasia",
   },
 };
 
 Object.values(filmesHumor).forEach((filme) => {
   const imagem = new Image();
-
   imagem.src = filme.imagem;
-
-  imagem.decode?.().catch(() => {});
 });
-
-/* ========================================
-   TROCAR FILME
-======================================== */
 
 function preencherFilme(humor) {
   const filme = filmesHumor[humor];
 
+  if (!filme) return;
+
   capaResultado.src = filme.imagem;
-
   capaResultado.alt = filme.titulo;
-
   tituloResultado.textContent = filme.titulo;
-
   descricaoResultado.textContent = filme.descricao;
-
   generoResultado.textContent = filme.genero;
 }
-
-/* ========================================
-   ABRIR CARD
-======================================== */
 
 function abrirResultado() {
   resultadoFilme.style.height = "auto";
@@ -219,17 +180,12 @@ function abrirResultado() {
       opacity: 1,
       y: 0,
       scale: 1,
-
       duration: 0.5,
       ease: "power2.out",
-
       clearProps: "transform",
     },
   );
 }
-/* ========================================
-   CLIQUE NOS HUMORES
-======================================== */
 
 botoesHumor.forEach((botao) => {
   botao.addEventListener("click", () => {
@@ -241,24 +197,16 @@ botoesHumor.forEach((botao) => {
 
     botao.classList.add("ativo");
 
-    /* primeira vez */
-
     if (!resultadoFilme.classList.contains("aberto")) {
       preencherFilme(humor);
-
       resultadoFilme.classList.add("aberto");
-
       abrirResultado();
-
       return;
     }
-
-    /* troca de filme */
 
     gsap.to(".card_resultado", {
       opacity: 0,
       y: 10,
-
       duration: 0.18,
       ease: "power1.out",
 
@@ -274,10 +222,8 @@ botoesHumor.forEach((botao) => {
           {
             opacity: 1,
             y: 0,
-
             duration: 0.35,
             ease: "power2.out",
-
             clearProps: "transform",
           },
         );
@@ -286,154 +232,101 @@ botoesHumor.forEach((botao) => {
   });
 });
 
-/* ========================================
-   PARTÍCULAS
-======================================== */
+/* ==================== PARTÍCULAS ==================== */
 
 function numeroAleatorio(minimo, maximo) {
   return Math.random() * (maximo - minimo) + minimo;
 }
 
-/* CORES */
-
 const coresBolhas = ["#101a3f", "#15112f", "#14264a", "#22163f"];
 
 const coresEstrelas = ["#ffffff", "#9bdcff", "#ffd7e4", "#56bfff"];
 
-/* ========================================
-   CRIAR BOLHAS
-======================================== */
-
-for (let i = 0; i < 17; i++) {
-  const bolha = document.createElement("span");
-
-  bolha.classList.add("bolha");
-
-  const tamanho = numeroAleatorio(11, 33);
-
-  bolha.style.width = `${tamanho}px`;
-
-  bolha.style.height = `${tamanho}px`;
-
-  bolha.style.left = `${numeroAleatorio(0, 100)}%`;
-
-  bolha.style.top = `${numeroAleatorio(0, 100)}%`;
-
-  bolha.style.background =
-    coresBolhas[Math.floor(Math.random() * coresBolhas.length)];
-
-  bolha.style.setProperty("--opacidade", numeroAleatorio(0.12, 0.7));
-
-  fundoParticulas.appendChild(bolha);
-
-  animarParticula(bolha, false);
-}
-
-/* ========================================
-   CRIAR ESTRELAS
-======================================== */
-
-for (let i = 0; i < 40; i++) {
-  const estrela = document.createElement("span");
-
-  estrela.classList.add("estrela");
-
-  const tamanho = numeroAleatorio(2, 5);
-
-  estrela.style.width = `${tamanho}px`;
-
-  estrela.style.height = `${tamanho}px`;
-
-  estrela.style.left = `${numeroAleatorio(0, 100)}%`;
-
-  estrela.style.top = `${numeroAleatorio(0, 100)}%`;
-
-  const cor = coresEstrelas[Math.floor(Math.random() * coresEstrelas.length)];
-
-  estrela.style.background = cor;
-
-  estrela.style.color = cor;
-
-  fundoParticulas.appendChild(estrela);
-
-  animarParticula(estrela, true);
-}
-
-/* ========================================
-   MOVIMENTO ALEATÓRIO
-======================================== */
-
 function animarParticula(elemento, piscar) {
   const duracao = numeroAleatorio(4, 8);
 
-  gsap.to(
-    elemento,
+  gsap.to(elemento, {
+    keyframes: [
+      {
+        x: numeroAleatorio(-35, 35),
+        y: numeroAleatorio(-30, 30),
+      },
+      {
+        x: numeroAleatorio(-55, 55),
+        y: numeroAleatorio(-40, 40),
+      },
+      {
+        x: numeroAleatorio(-25, 25),
+        y: numeroAleatorio(-45, 45),
+      },
+      {
+        x: 0,
+        y: 0,
+      },
+    ],
 
-    {
-      keyframes: [
-        {
-          x: numeroAleatorio(-35, 35),
-
-          y: numeroAleatorio(-30, 30),
-        },
-
-        {
-          x: numeroAleatorio(-55, 55),
-
-          y: numeroAleatorio(-40, 40),
-        },
-
-        {
-          x: numeroAleatorio(-25, 25),
-
-          y: numeroAleatorio(-45, 45),
-        },
-
-        {
-          x: 0,
-          y: 0,
-        },
-      ],
-
-      duration: duracao,
-
-      ease: "sine.inOut",
-
-      repeat: -1,
-
-      repeatRefresh: true,
-    },
-  );
+    duration: duracao,
+    ease: "sine.inOut",
+    repeat: -1,
+    repeatRefresh: true,
+  });
 
   if (piscar) {
-    gsap.to(
-      elemento,
-
-      {
-        opacity: numeroAleatorio(0.15, 1),
-
-        scale: numeroAleatorio(0.7, 1.5),
-
-        duration: numeroAleatorio(0.6, 1.6),
-
-        ease: "sine.inOut",
-
-        repeat: -1,
-
-        yoyo: true,
-      },
-    );
+    gsap.to(elemento, {
+      opacity: numeroAleatorio(0.15, 1),
+      scale: numeroAleatorio(0.7, 1.5),
+      duration: numeroAleatorio(0.6, 1.6),
+      ease: "sine.inOut",
+      repeat: -1,
+      yoyo: true,
+    });
   }
 }
 
-/* entrada dos textos */
+if (fundoParticulas) {
+  for (let i = 0; i < 17; i++) {
+    const bolha = document.createElement("span");
+    const tamanho = numeroAleatorio(11, 33);
+
+    bolha.classList.add("bolha");
+    bolha.style.width = `${tamanho}px`;
+    bolha.style.height = `${tamanho}px`;
+    bolha.style.left = `${numeroAleatorio(0, 100)}%`;
+    bolha.style.top = `${numeroAleatorio(0, 100)}%`;
+
+    bolha.style.background =
+      coresBolhas[Math.floor(Math.random() * coresBolhas.length)];
+
+    bolha.style.setProperty("--opacidade", numeroAleatorio(0.12, 0.7));
+
+    fundoParticulas.appendChild(bolha);
+    animarParticula(bolha, false);
+  }
+
+  for (let i = 0; i < 40; i++) {
+    const estrela = document.createElement("span");
+    const tamanho = numeroAleatorio(2, 5);
+
+    estrela.classList.add("estrela");
+    estrela.style.width = `${tamanho}px`;
+    estrela.style.height = `${tamanho}px`;
+    estrela.style.left = `${numeroAleatorio(0, 100)}%`;
+    estrela.style.top = `${numeroAleatorio(0, 100)}%`;
+
+    const cor = coresEstrelas[Math.floor(Math.random() * coresEstrelas.length)];
+
+    estrela.style.background = cor;
+    estrela.style.color = cor;
+
+    fundoParticulas.appendChild(estrela);
+    animarParticula(estrela, true);
+  }
+}
 
 gsap.from(".cabecalho_humor", {
   opacity: 0,
   y: 30,
-
   duration: 0.8,
-
   ease: "power2.out",
 
   scrollTrigger: {
@@ -442,8 +335,6 @@ gsap.from(".cabecalho_humor", {
     once: true,
   },
 });
-
-/* entrada dos botões */
 
 gsap.from(".opcoes_humor", {
   opacity: 0,
@@ -458,9 +349,7 @@ gsap.from(".opcoes_humor", {
   },
 });
 
-/* ==============================
-   QUARTA SEÇÃO
-============================== */
+/* ==================== CATEGORIAS ==================== */
 
 const animacaoCategorias = gsap.timeline({
   scrollTrigger: {
@@ -474,52 +363,40 @@ animacaoCategorias
   .from(".secao_categorias .topo_da_secao .text h2", {
     opacity: 0,
     y: 30,
-
     duration: 0.8,
     ease: "power2.out",
   })
-
   .from(
     ".secao_categorias .topo_da_secao .text p",
     {
       opacity: 0,
       y: 15,
-
       duration: 0.65,
       ease: "power2.out",
     },
     "-=0.45",
   )
-
   .from(
     ".secao_categorias .topo_da_secao > button",
     {
       opacity: 0,
       x: 18,
-
       duration: 0.55,
       ease: "power2.out",
     },
     "-=0.4",
   )
-
   .from(
     ".secao_categorias .filtro_categoria",
     {
       opacity: 0,
       y: 12,
-
       duration: 0.45,
       stagger: 0.07,
-
       ease: "power2.out",
     },
     "-=0.25",
   );
-
-/* ==========================================
-   FILMES POR CATEGORIA
-========================================== */
 
 const filmesCategorias = {
   aventura: [
@@ -530,7 +407,6 @@ const filmesCategorias = {
       imagem: "assets/img/menino-garca.png",
       nota: "4.6",
     },
-
     {
       titulo: "Ponyo",
       ano: "2008",
@@ -538,7 +414,6 @@ const filmesCategorias = {
       imagem: "assets/img/ponyo.jpg",
       nota: "4.7",
     },
-
     {
       titulo: "Nausicaä do Vale do Vento",
       ano: "1984",
@@ -546,7 +421,6 @@ const filmesCategorias = {
       imagem: "assets/img/nausicaa.jpg",
       nota: "4.7",
     },
-
     {
       titulo: "O Castelo no Céu",
       ano: "1986",
@@ -564,7 +438,6 @@ const filmesCategorias = {
       imagem: "assets/img/reino-dos-gatos.jpg",
       nota: "4.6",
     },
-
     {
       titulo: "Ponyo",
       ano: "2008",
@@ -572,7 +445,6 @@ const filmesCategorias = {
       imagem: "assets/img/ponyo.jpg",
       nota: "4.7",
     },
-
     {
       titulo: "O Conto da Princesa Kaguya",
       ano: "2013",
@@ -580,7 +452,6 @@ const filmesCategorias = {
       imagem: "assets/img/princesa-kaguya.jpg",
       nota: "4.8",
     },
-
     {
       titulo: "O Castelo no Céu",
       ano: "1986",
@@ -598,7 +469,6 @@ const filmesCategorias = {
       imagem: "assets/img/sussurros-do-coracao.png",
       nota: "4.8",
     },
-
     {
       titulo: "Da Colina Kokuriko",
       ano: "2011",
@@ -606,7 +476,6 @@ const filmesCategorias = {
       imagem: "assets/img/colina-kokuriko.jpg",
       nota: "4.6",
     },
-
     {
       titulo: "O Vento se Levanta",
       ano: "2013",
@@ -614,7 +483,6 @@ const filmesCategorias = {
       imagem: "assets/img/vento-se-levanta.jpg",
       nota: "4.7",
     },
-
     {
       titulo: "Memórias de Ontem",
       ano: "1991",
@@ -632,7 +500,6 @@ const filmesCategorias = {
       imagem: "assets/img/ponyo.jpg",
       nota: "4.7",
     },
-
     {
       titulo: "Meus Vizinhos os Yamadas",
       ano: "1999",
@@ -640,7 +507,6 @@ const filmesCategorias = {
       imagem: "assets/img/yamadas.jpg",
       nota: "4.5",
     },
-
     {
       titulo: "O Reino dos Gatos",
       ano: "2002",
@@ -648,7 +514,6 @@ const filmesCategorias = {
       imagem: "assets/img/reino-dos-gatos.jpg",
       nota: "4.6",
     },
-
     {
       titulo: "Arrietty",
       ano: "2010",
@@ -667,19 +532,15 @@ const filtrosCategorias = document.querySelectorAll(
   ".secao_categorias .filtro_categoria",
 );
 
-/* ==========================================
-   CRIA O CARD
-========================================== */
-
 function criarCardCategoria(filme) {
   return `
     <article class="card">
-
       <div class="card-image">
-
         <img
           src="${filme.imagem}"
           alt="${filme.titulo}"
+          loading="lazy"
+          decoding="async"
         >
 
         <div class="card-rating">
@@ -687,30 +548,19 @@ function criarCardCategoria(filme) {
           ${filme.nota}
         </div>
 
-
         <div class="card-overlay">
-
           <button class="watch-button">
             <span>✦</span>
             Sobre o filme
           </button>
-
         </div>
-
       </div>
 
-
       <div class="info_card">
-
         <h3>${filme.titulo}</h3>
 
-
         <div class="movie-details">
-
-          <p>
-            ${filme.ano} • ${filme.genero}
-          </p>
-
+          <p>${filme.ano} • ${filme.genero}</p>
 
           <button
             class="heart-button"
@@ -719,85 +569,61 @@ function criarCardCategoria(filme) {
             <img
               src="assets/img/boxicons_heart.svg"
               alt=""
+              loading="lazy"
             >
           </button>
-
         </div>
-
 
         <div class="card-line"></div>
 
-
         <div class="card-footer">
-
-          <span class="quality">
-            HD
-          </span>
-
+          <span class="quality">HD</span>
 
           <button class="watch-link">
             Assistir agora
           </button>
-
         </div>
-
       </div>
-
     </article>
   `;
 }
 
-/* ==========================================
-   MOSTRAR CATEGORIA
-========================================== */
 function mostrarCategoria(categoria) {
   const filmes = filmesCategorias[categoria];
+
+  if (!filmes || !listaCategorias) return;
 
   listaCategorias.innerHTML = filmes.map(criarCardCategoria).join("");
 
   const novosCards = listaCategorias.querySelectorAll(".card");
 
-  /* garante o estado inicial */
   gsap.set(novosCards, {
     opacity: 0,
     y: 18,
   });
 
-  /* anima os novos cards */
   gsap.to(novosCards, {
     opacity: 1,
     y: 0,
-
     duration: 0.45,
     stagger: 0.06,
-
     ease: "power2.out",
 
     onComplete: () => {
-      /*
-        libera o transform para o
-        :hover do CSS funcionar
-      */
       gsap.set(novosCards, {
         clearProps: "transform,opacity",
       });
     },
   });
 
-  ativarFavoritos();
+  if (typeof ativarFavoritos === "function") {
+    ativarFavoritos();
+  }
 }
-
-/* ==========================================
-   TROCA DE CATEGORIA
-========================================== */
-
-let trocandoCategoria = false;
 
 filtrosCategorias.forEach((botao) => {
   botao.addEventListener("click", () => {
-    if (botao.classList.contains("ativo")) {
-      return;
-    }
+    if (botao.classList.contains("ativo")) return;
 
     const categoria = botao.dataset.categoria;
 
@@ -809,15 +635,11 @@ filtrosCategorias.forEach((botao) => {
 
     const cardsAtuais = listaCategorias.querySelectorAll(".card");
 
-    /* para qualquer animação anterior */
     gsap.killTweensOf(cardsAtuais);
 
-    /* some com os cards atuais */
     gsap.to(cardsAtuais, {
       opacity: 0,
-
       duration: 0.22,
-
       ease: "power1.out",
 
       onComplete: () => {
@@ -827,44 +649,30 @@ filtrosCategorias.forEach((botao) => {
   });
 });
 
-/* ==========================================
-   QUINTA SEÇÃO - PERSONAGENS
-========================================== */
-
-/* ===============================
-   PERSONAGENS
-=============================== */
+/* ==================== PERSONAGENS ==================== */
 
 const personagens = [
   {
     nome: "San",
     imagem: "assets/img/san.png",
   },
-
   {
     nome: "Totoro",
     imagem: "assets/img/totorop.png",
   },
-
   {
     nome: "Chihiro",
     imagem: "assets/img/chihiro.png",
   },
-
   {
     nome: "Sophie",
     imagem: "assets/img/sophie.png",
   },
-
   {
     nome: "Kiki",
     imagem: "assets/img/kiki.png",
   },
 ];
-
-/* ===============================
-   ELEMENTOS DO HTML
-=============================== */
 
 const listaPersonagens = document.querySelector(".lista_personagens");
 
@@ -876,70 +684,38 @@ const setaAnterior = document.querySelector(".seta_personagem.esquerda");
 
 const setaProximo = document.querySelector(".seta_personagem.direita");
 
-/* ===============================
-   PERSONAGEM INICIAL
-=============================== */
-
-/*
-  0 = San
-  1 = Totoro
-  2 = Chihiro
-  3 = Sophie
-  4 = Kiki
-
-  Queremos Chihiro inicialmente.
-*/
-
 let personagemAtual = 2;
-
-/* ===============================
-   ÍNDICE CIRCULAR
-=============================== */
 
 function indiceCircular(indice) {
   return (indice + personagens.length) % personagens.length;
 }
 
-/* ===============================
-   CRIAR OS 5 PERSONAGENS
-=============================== */
+function atualizarInformacoes() {
+  const personagem = personagens[personagemAtual];
+
+  nomePersonagem.textContent = personagem.nome;
+
+  conhecerPersonagem.innerHTML = `
+    Clique para conhecer a história de
+    ${personagem.nome}
+    <span>→</span>
+  `;
+}
 
 function montarPersonagens() {
   listaPersonagens.innerHTML = "";
 
-  /*
-    sempre mostramos:
-
-    -2
-    -1
-     0  <- personagem central
-    +1
-    +2
-  */
-
   for (let posicao = -2; posicao <= 2; posicao++) {
-    /* pega o índice correto */
-
     const indiceReal = indiceCircular(personagemAtual + posicao);
 
     const personagem = personagens[indiceReal];
-
-    /*
-      posição 0 significa:
-      personagem central
-    */
-
     const selecionado = posicao === 0;
-
-    /* cria botão */
 
     const botao = document.createElement("button");
 
     botao.className = selecionado ? "personagem selecionado" : "personagem";
 
     botao.dataset.indice = indiceReal;
-
-    /* imagem */
 
     botao.innerHTML = `
       <img
@@ -949,22 +725,11 @@ function montarPersonagens() {
       >
     `;
 
-    /* clique nos personagens */
-
     botao.addEventListener("click", () => {
-      /*
-          se já estiver no centro,
-          não faz nada
-        */
-
-      if (selecionado) {
-        return;
-      }
+      if (selecionado) return;
 
       trocarPersonagem(indiceReal);
     });
-
-    /* coloca na tela */
 
     listaPersonagens.appendChild(botao);
   }
@@ -972,105 +737,48 @@ function montarPersonagens() {
   atualizarInformacoes();
 }
 
-/* ===============================
-   ATUALIZAR NOME E TEXTO
-=============================== */
-
-function atualizarInformacoes() {
-  const personagem = personagens[personagemAtual];
-
-  /* nome da pílula */
-
-  nomePersonagem.textContent = personagem.nome;
-
-  /* texto embaixo */
-
-  conhecerPersonagem.innerHTML = `
-    Clique para conhecer a história de
-    ${personagem.nome}
-    <span>→</span>
-  `;
-}
-
-/* ===============================
-   TROCAR PERSONAGEM
-=============================== */
-
 function trocarPersonagem(novoIndice) {
   const personagensAtuais = listaPersonagens.querySelectorAll(".personagem");
 
-  /*
-    primeiro some com os atuais
-  */
-
   gsap.to(personagensAtuais, {
     opacity: 0,
-
     y: 10,
-
     duration: 0.18,
-
     ease: "power1.in",
 
     onComplete: () => {
-      /*
-          muda quem é o atual
-        */
-
       personagemAtual = indiceCircular(novoIndice);
-
-      /*
-          recria a fileira
-        */
 
       montarPersonagens();
 
       const novosPersonagens = listaPersonagens.querySelectorAll(".personagem");
 
-      /*
-          entrada dos novos
-        */
-
       gsap.fromTo(
         novosPersonagens,
-
         {
           opacity: 0,
           y: 14,
         },
-
         {
           opacity: 1,
           y: 0,
-
           duration: 0.45,
-
           stagger: 0.05,
-
           ease: "power2.out",
-
           clearProps: "transform,opacity",
         },
       );
 
-      /*
-          anima nome e texto
-        */
-
       gsap.fromTo(
         [nomePersonagem, conhecerPersonagem],
-
         {
           opacity: 0,
           y: 6,
         },
-
         {
           opacity: 1,
           y: 0,
-
           duration: 0.35,
-
           ease: "power2.out",
         },
       );
@@ -1078,24 +786,75 @@ function trocarPersonagem(novoIndice) {
   });
 }
 
-/* ===============================
-   SETA DIREITA
-=============================== */
-
 setaProximo.addEventListener("click", () => {
   trocarPersonagem(personagemAtual + 1);
 });
-
-/* ===============================
-   SETA ESQUERDA
-=============================== */
 
 setaAnterior.addEventListener("click", () => {
   trocarPersonagem(personagemAtual - 1);
 });
 
-/* ===============================
-   INICIAR
-=============================== */
-
 montarPersonagens();
+
+// personagem
+
+const animacaoPersonagens = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".secao_personagens",
+    start: "top 70%",
+    once: true,
+  },
+});
+
+animacaoPersonagens
+  .from(".cabecalho_personagens h2", {
+    opacity: 0,
+    y: 30,
+    duration: 0.8,
+    ease: "power2.out",
+  })
+
+  .from(
+    ".cabecalho_personagens p",
+    {
+      opacity: 0,
+      y: 15,
+      duration: 0.65,
+      ease: "power2.out",
+    },
+    "-=0.4",
+  )
+
+  .from(
+    ".lista_personagens .personagem",
+    {
+      opacity: 0,
+      y: 25,
+      duration: 0.55,
+      stagger: 0.08,
+      ease: "power2.out",
+    },
+    "-=0.25",
+  )
+
+  .from(
+    ".nome_personagem",
+    {
+      opacity: 0,
+      y: 10,
+      duration: 0.4,
+      ease: "power2.out",
+    },
+    "-=0.2",
+  )
+
+  .from(
+    ".conhecer_personagem",
+    {
+      opacity: 0,
+      y: 10,
+      duration: 0.4,
+      ease: "power2.out",
+    },
+    "-=0.25",
+  );
