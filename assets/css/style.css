@@ -1,3 +1,7 @@
+/* =========================================================
+   RESET / BASE
+========================================================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -29,6 +33,10 @@ img {
   padding: 0 15px;
 }
 
+/* =========================================================
+   HEADER
+========================================================= */
+
 header {
   position: absolute;
   top: 0;
@@ -40,9 +48,11 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    padding: 20px 0;
+
     font-weight: bold;
     color: #fff8e8;
-    padding: 20px 0;
 
     .logo {
       color: #fff8e8;
@@ -57,15 +67,18 @@ header {
     }
 
     ul li a {
-      font-size: 1.125rem;
-      padding: 10px 10px;
-      color: #fff8e8;
-      transition: 0.5s ease;
-    }
+      padding: 10px;
 
-    ul li a:hover {
-      color: #f4c542;
-      border-bottom: 3px solid #f4c542;
+      color: #fff8e8;
+
+      font-size: 1.125rem;
+
+      transition: 0.5s ease;
+
+      &:hover {
+        color: #f4c542;
+        border-bottom: 3px solid #f4c542;
+      }
     }
   }
 
@@ -89,18 +102,24 @@ header {
       input {
         width: 0;
         padding: 0;
+
         opacity: 0;
+
         border: 1.5px solid transparent;
         outline: none;
+
         pointer-events: none;
 
         background: rgba(8, 48, 64, 0.82);
         backdrop-filter: blur(10px);
+
         color: #fff8e8;
+
         border-radius: 999px;
 
         font-family: "Nunito", sans-serif;
         font-size: 0.95rem;
+
         transition:
           width 0.4s ease,
           padding 0.4s ease,
@@ -129,6 +148,7 @@ header {
       &:focus-within input {
         width: 220px;
         padding: 8px 18px;
+
         opacity: 1;
         pointer-events: auto;
       }
@@ -144,8 +164,11 @@ header {
       width: 34px;
       height: 34px;
 
+      padding: 0;
+
       background: transparent;
       border: 0;
+
       cursor: pointer;
 
       flex-direction: column;
@@ -159,6 +182,7 @@ header {
         height: 2px;
 
         border-radius: 999px;
+
         background: #fff8e8;
 
         transition: 0.3s ease;
@@ -181,58 +205,75 @@ header {
   }
 }
 
-/* temporario */
+/* =========================================================
+   MAIN TEMPORÁRIO
+========================================================= */
 
 main {
   height: 5000px;
 }
 
-/* primeira seção */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero_bg {
   position: relative;
+
   min-height: 100vh;
+
   overflow: hidden;
 
   .fundo {
     position: absolute;
     inset: 0;
+
     z-index: 0;
 
     width: 100%;
     height: 100%;
+
     object-fit: cover;
   }
 
   .bg_transparent {
     position: relative;
+
     z-index: 1;
+
     min-height: 100vh;
+
     background: rgba(0, 0, 0, 0.51);
 
     .hero_flex {
       display: flex;
       align-items: center;
+
       gap: clamp(2rem, 5vw, 6rem);
 
       padding: 6rem 0 2rem;
 
       .hero_info {
-        flex: 1 1 55%;
-        max-width: 680px;
         position: relative;
         z-index: 2;
 
+        flex: 1 1 55%;
+
+        max-width: 680px;
+
         h1 {
-          font-size: clamp(4.5rem, 5vw, 5rem);
-          color: #fff8e8;
           margin-bottom: 50px;
+
+          color: #fff8e8;
+
+          font-size: clamp(4.5rem, 5vw, 5rem);
           line-height: 1.04;
         }
 
         p {
-          font-size: clamp(1.15rem, 1.8vw, 1.8rem);
           color: #d6c8b8;
+
+          font-size: clamp(1.15rem, 1.8vw, 1.8rem);
           font-weight: 600;
           line-height: 1.1;
         }
@@ -240,18 +281,23 @@ main {
         .buttons {
           display: flex;
           gap: 15px;
+
           margin-top: 50px;
 
           .btn-primary {
+            padding: 0.8rem 1.5rem;
+
             background: #f4c542;
             color: #1a1510;
-            padding: 0.8rem 1.5rem;
+
+            border: 1px solid transparent;
             border-radius: 999px;
+
+            font-family: "Nunito", sans-serif;
             font-size: 1rem;
             font-weight: bold;
-            border: 1px solid transparent;
+
             cursor: pointer;
-            font-family: "Nunito", sans-serif;
 
             transition:
               transform 0.3s ease,
@@ -268,15 +314,19 @@ main {
           }
 
           .btn-secondary {
+            padding: 0.8rem 1.5rem;
+
             background: transparent;
             color: #fff8e8;
-            padding: 0.8rem 1.5rem;
+
+            border: 2px solid rgba(255, 248, 232, 0.65);
             border-radius: 999px;
+
+            font-family: "Nunito", sans-serif;
             font-size: 1rem;
             font-weight: bold;
-            border: 2px solid rgba(255, 248, 232, 0.65);
+
             cursor: pointer;
-            font-family: "Nunito", sans-serif;
 
             transition:
               transform 0.3s ease,
@@ -306,6 +356,7 @@ main {
 
         .recorte {
           position: relative;
+
           width: min(36vw, 35rem);
           max-width: none;
           height: auto;
@@ -331,7 +382,9 @@ main {
   }
 }
 
-/* Responsivo */
+/* =========================================================
+   HERO — TABLET
+========================================================= */
 
 @media (max-width: 1024px) {
   .container {
@@ -364,6 +417,7 @@ main {
       object-fit: cover;
       object-position: center;
     }
+
     .bg_transparent {
       .hero_flex {
         gap: 2rem;
@@ -393,13 +447,21 @@ main {
   }
 }
 
+/* =========================================================
+   HERO — TABLET PEQUENO
+========================================================= */
+
 @media (max-width: 900px) {
   .hero_flex {
     flex-direction: column;
+
     padding: 7rem 0 2rem;
+
     justify-self: center;
+
     .hero_info {
       flex: 0 0 auto;
+
       align-items: center;
 
       h1,
@@ -414,7 +476,9 @@ main {
 
     .hero_img {
       flex: 0 0 auto;
+
       width: 100%;
+
       display: flex;
       justify-content: center;
 
@@ -425,7 +489,9 @@ main {
   }
 }
 
-/* menu hamburguer */
+/* =========================================================
+   MENU MOBILE
+========================================================= */
 
 @media (max-width: 768px) {
   header {
@@ -441,13 +507,16 @@ main {
 
       .nav-menu {
         position: absolute;
+
         top: 75px;
         right: 0;
 
         width: 230px;
+
         padding: 12px;
 
         background: rgba(8, 48, 64, 0.9);
+
         backdrop-filter: blur(18px);
 
         border: 1px solid rgba(255, 248, 232, 0.12);
@@ -464,6 +533,7 @@ main {
         .menu {
           display: flex;
           flex-direction: column;
+
           gap: 4px;
 
           li {
@@ -472,11 +542,13 @@ main {
 
           a {
             display: block;
+
             width: 100%;
 
             padding: 10px 12px;
 
             color: #fff8e8;
+
             font-size: 0.95rem;
 
             border-radius: 8px;
@@ -484,10 +556,13 @@ main {
             transition: 0.25s ease;
 
             &:hover {
-              color: #f4c542;
-              background: rgba(255, 248, 232, 0.06);
-              border-bottom: none;
               padding-left: 17px;
+
+              color: #f4c542;
+
+              background: rgba(255, 248, 232, 0.06);
+
+              border-bottom: none;
             }
           }
         }
@@ -496,17 +571,20 @@ main {
       .nav-menu.active {
         opacity: 1;
         visibility: visible;
+
         transform: translateY(0) scale(1);
       }
 
       .menu-toggle {
         display: flex;
+
         width: 30px;
         height: 30px;
 
         span {
           width: 22px;
           height: 2.5px;
+
           background: #fff8e8;
         }
       }
@@ -529,11 +607,14 @@ main {
   }
 }
 
-/* Hero no celular */
+/* =========================================================
+   HERO — CELULAR
+========================================================= */
 
 @media (max-width: 768px) {
   .hero_bg {
     min-height: auto;
+
     overflow: hidden;
 
     img {
@@ -550,31 +631,36 @@ main {
         align-items: flex-start;
 
         padding: 7rem 0 4rem;
+
         gap: 0;
 
         .hero_info {
           width: 100%;
 
           h1 {
+            margin-bottom: 2rem;
+
             font-size: clamp(2.8rem, 9vw, 4rem);
             line-height: 0.95;
-            margin-bottom: 2rem;
           }
 
           p {
+            max-width: 34rem;
+
             font-size: 1.15rem;
             line-height: 1.3;
-            max-width: 34rem;
           }
 
           .buttons {
             margin-top: 2rem;
+
             gap: 10px;
           }
         }
 
         .hero_img {
           width: 100%;
+
           display: flex;
           justify-content: center;
 
@@ -583,8 +669,11 @@ main {
 
           .recorte {
             width: min(82vw, 30rem);
+
             max-width: none;
+
             height: auto;
+
             margin: 0 auto;
           }
         }
@@ -593,7 +682,9 @@ main {
   }
 }
 
-/* no celular */
+/* =========================================================
+   HERO — CELULAR PEQUENO
+========================================================= */
 
 @media (max-width: 480px) {
   .container {
@@ -632,6 +723,7 @@ main {
       object-fit: cover;
       object-position: end;
     }
+
     .bg_transparent {
       .hero_flex {
         padding-top: 7rem;
@@ -651,14 +743,16 @@ main {
 
             .btn-primary,
             .btn-secondary {
-              font-size: 0.85rem;
               padding: 0.65rem 1rem;
+
+              font-size: 0.85rem;
             }
           }
         }
 
         .hero_img {
           right: -2rem;
+
           margin-top: 5rem;
         }
       }
@@ -666,27 +760,35 @@ main {
   }
 }
 
-/* segunda seção */
+/* =========================================================
+   SEÇÃO — FILMES
+========================================================= */
 
 .filme_bg {
   position: relative;
+
+  padding-bottom: 12vw;
+
   background: #000;
+
   box-shadow:
     0 -55px 140px 110px rgba(0, 0, 0, 0.9),
     0 -25px 60px 50px rgba(0, 0, 0, 1);
-  padding-bottom: 12vw;
 
   .info_filmes {
     .topo_da_secao {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       padding: 6vw 0 4vw;
 
       h2 {
-        font-size: 3.5rem;
         margin-bottom: 15px;
+
         color: #fff8e8;
+
+        font-size: 3.5rem;
 
         span {
           color: #f4c542;
@@ -694,18 +796,24 @@ main {
       }
 
       p {
-        font-size: 1.6rem;
         color: #d6c8b8;
+
+        font-size: 1.6rem;
       }
 
       button {
         display: inline-flex;
         align-items: center;
+
         gap: 10px;
+
         background: transparent;
         color: #d6c8b8;
+
         border: none;
+
         cursor: pointer;
+
         font-family: "Nunito", sans-serif;
         font-size: 1rem;
         font-weight: 500;
@@ -713,8 +821,10 @@ main {
         img {
           width: 18px;
           height: 18px;
-          transition: transform 0.3s ease;
+
           display: inline-block;
+
+          transition: transform 0.3s ease;
         }
 
         &:hover img {
@@ -725,16 +835,19 @@ main {
 
     .lista_filmes {
       display: grid;
+
       grid-template-columns: repeat(4, minmax(0, 1fr));
+
       gap: 20px;
 
       .card {
         position: relative;
 
+        overflow: hidden;
+
         border: 1.2px solid #57534e;
         border-radius: 12px;
 
-        overflow: hidden;
         cursor: pointer;
 
         transition:
@@ -746,6 +859,7 @@ main {
           position: relative;
 
           width: 100%;
+
           aspect-ratio: 4 / 3;
 
           overflow: hidden;
@@ -756,8 +870,9 @@ main {
             width: 100%;
             height: 100%;
 
-            object-fit: cover;
             display: block;
+
+            object-fit: cover;
 
             transition:
               transform 0.5s ease,
@@ -774,6 +889,7 @@ main {
 
             display: flex;
             align-items: center;
+
             gap: 4px;
 
             padding: 5px 9px;
@@ -782,11 +898,11 @@ main {
 
             border-radius: 20px;
 
+            color: #fff8e8;
+
             font-family: "Nunito", sans-serif;
             font-size: 0.72rem;
             font-weight: 700;
-
-            color: #fff8e8;
 
             span {
               color: #f4c542;
@@ -810,6 +926,7 @@ main {
             .watch-button {
               display: flex;
               align-items: center;
+
               gap: 8px;
 
               padding: 10px 16px;
@@ -827,6 +944,7 @@ main {
               cursor: pointer;
 
               opacity: 0;
+
               transform: translateY(12px);
 
               transition:
@@ -847,13 +965,13 @@ main {
           h3 {
             margin: 0 0 4px;
 
+            color: #fff8e8;
+
             font-family: "Cormorant Garamond", serif;
             font-size: 1.35rem;
             font-weight: 600;
 
             line-height: 1.05;
-
-            color: #fff8e8;
           }
 
           .movie-details {
@@ -887,6 +1005,7 @@ main {
               justify-content: center;
 
               border: none;
+
               background: transparent;
 
               cursor: pointer;
@@ -900,10 +1019,8 @@ main {
                   opacity 0.25s ease;
               }
 
-              &:hover {
-                img {
-                  transform: scale(1.12);
-                }
+              &:hover img {
+                transform: scale(1.12);
               }
             }
           }
@@ -944,8 +1061,8 @@ main {
               padding: 0;
 
               border: none;
-              background: transparent;
 
+              background: transparent;
               color: #f4c542;
 
               font-family: "Nunito", sans-serif;
@@ -959,11 +1076,12 @@ main {
 
                 transition: transform 0.25s ease;
               }
-            }
 
-            .watch-link:hover {
-              color: #fff;
-              transition: all 0.3s ease;
+              &:hover {
+                color: #fff;
+
+                transition: all 0.3s ease;
+              }
             }
           }
         }
@@ -978,7 +1096,6 @@ main {
           .card-image {
             > img {
               transform: scale(1.045);
-
               filter: brightness(0.55);
             }
 
@@ -987,7 +1104,6 @@ main {
 
               .watch-button {
                 opacity: 1;
-
                 transform: translateY(0);
               }
             }
@@ -998,7 +1114,9 @@ main {
   }
 }
 
-/* Responsivo da segunda seção */
+/* =========================================================
+   FILMES — RESPONSIVO
+========================================================= */
 
 @media (max-width: 1024px) {
   .filme_bg {
@@ -1007,8 +1125,8 @@ main {
         padding: 4rem 0 3rem;
 
         h2 {
-          font-size: 2.8rem;
           margin-bottom: 10px;
+          font-size: 2.8rem;
         }
 
         p {
@@ -1016,8 +1134,8 @@ main {
         }
 
         button {
-          font-size: 0.9rem;
           gap: 8px;
+          font-size: 0.9rem;
 
           img {
             width: 16px;
@@ -1028,36 +1146,31 @@ main {
 
       .lista_filmes {
         grid-template-columns: repeat(2, minmax(240px, 280px));
-        justify-content: center;
-        gap: 24px;
 
-        .card {
-          > img {
-            width: 100%;
-            aspect-ratio: 4 / 3;
-            object-fit: cover;
-          }
-        }
+        justify-content: center;
+
+        gap: 24px;
       }
     }
   }
 }
 
-/* Tablet pequeno */
 @media (max-width: 768px) {
   .filme_bg {
     .info_filmes {
       .topo_da_secao {
         flex-direction: column;
         align-items: flex-start;
+
         gap: 1.2rem;
 
         padding: 3.5rem 0 2.5rem;
 
         h2 {
+          margin-bottom: 8px;
+
           font-size: 2.5rem;
           line-height: 1;
-          margin-bottom: 8px;
         }
 
         p {
@@ -1077,42 +1190,35 @@ main {
 
       .lista_filmes {
         grid-template-columns: repeat(2, minmax(210px, 250px));
-        justify-content: center;
-        gap: 20px;
 
-        .card {
-          > img {
-            width: 100%;
-            aspect-ratio: 4 / 3;
-            object-fit: cover;
-          }
-        }
+        justify-content: center;
+
+        gap: 20px;
       }
     }
   }
 }
 
-/* Celular */
 @media (max-width: 468px) {
   .filme_bg {
     .info_filmes {
       .topo_da_secao {
         gap: 1rem;
+
         padding: 3rem 0 2rem;
 
         h2 {
           font-size: 2.1rem;
-          line-height: 1;
         }
 
         p {
           font-size: 1rem;
-          line-height: 1.3;
         }
 
         button {
-          font-size: 0.8rem;
           gap: 6px;
+
+          font-size: 0.8rem;
 
           img {
             width: 14px;
@@ -1123,23 +1229,22 @@ main {
 
       .lista_filmes {
         grid-template-columns: minmax(240px, 280px);
-        justify-content: center;
-        gap: 18px;
 
-        .card {
-          > img {
-            width: 100%;
-            aspect-ratio: 4 / 3;
-            object-fit: cover;
-          }
-        }
+        justify-content: center;
+
+        gap: 18px;
       }
     }
   }
 }
 
+/* =========================================================
+   SEÇÃO — HUMOR
+========================================================= */
+
 .secao_humor {
   position: relative;
+
   width: 100%;
 
   padding: 60px 0 80px;
@@ -1155,6 +1260,7 @@ main {
     z-index: 0;
 
     overflow: hidden;
+
     pointer-events: none;
 
     .bolha {
@@ -1206,28 +1312,25 @@ main {
 
         margin-bottom: 18px;
 
-        font-family: "Nunito", sans-serif;
+        color: #72c7ff;
 
+        font-family: "Nunito", sans-serif;
         font-size: 0.78rem;
         font-weight: 800;
 
         letter-spacing: 0.2em;
-
-        color: #72c7ff;
       }
 
       h2 {
         margin: 0;
 
+        color: #fff8e8;
+
         font-family: "Cormorant Garamond", serif;
-
         font-size: clamp(3.5rem, 4vw, 3.7rem);
-
         font-weight: 700;
 
         line-height: 1;
-
-        color: #fff8e8;
 
         span {
           color: #72c7ff;
@@ -1236,20 +1339,25 @@ main {
 
       p {
         max-width: 670px;
+
         margin: 22px auto 0;
+
+        color: #aaa5b5;
+
         font-family: "Nunito", sans-serif;
         font-size: 1.6rem;
-        color: #aaa5b5;
       }
     }
 
     .opcoes_humor {
       width: 100%;
+
       margin-top: 48px;
 
       display: flex;
       align-items: center;
       justify-content: center;
+
       gap: 16px;
 
       .botao_humor {
@@ -1257,24 +1365,22 @@ main {
         height: 54px;
 
         margin: 0;
+        padding: 0 16px;
 
         display: flex;
         align-items: center;
         justify-content: center;
 
-        padding: 0 16px;
-
-        box-sizing: border-box;
-
         border-radius: 11px;
+
+        color: #f3ebdd;
 
         font-family: "Nunito", sans-serif;
         font-size: 0.82rem;
         font-weight: 700;
-        line-height: 1.15;
 
+        line-height: 1.15;
         text-align: center;
-        color: #f3ebdd;
 
         cursor: pointer;
 
@@ -1285,6 +1391,7 @@ main {
 
         &:hover {
           transform: translateY(-3px);
+
           filter: brightness(1.08);
 
           box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
@@ -1341,8 +1448,6 @@ main {
 
         overflow: hidden;
 
-        text-align: left;
-
         background: transparent;
 
         border: 1px solid rgba(113, 199, 255, 0.18);
@@ -1350,13 +1455,14 @@ main {
 
         box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 
-        /* IMAGEM */
+        text-align: left;
 
         .imagem_resultado {
           position: relative;
 
           width: 100%;
           height: 100%;
+
           min-height: 210px;
 
           overflow: hidden;
@@ -1398,25 +1504,24 @@ main {
           .titulo_resultado {
             margin: 0 0 7px;
 
-            font-family: "Cormorant Garamond", serif;
+            color: #fff8e8;
 
+            font-family: "Cormorant Garamond", serif;
             font-size: 1.55rem;
             font-weight: 700;
 
             line-height: 1.05;
-
-            color: #fff8e8;
           }
 
           .descricao_resultado {
             margin: 0;
 
-            font-family: "Nunito", sans-serif;
-
-            font-size: 0.76rem;
-            line-height: 1.55;
-
             color: #aaa9b6;
+
+            font-family: "Nunito", sans-serif;
+            font-size: 0.76rem;
+
+            line-height: 1.55;
           }
 
           .genero_resultado {
@@ -1424,18 +1529,15 @@ main {
 
             margin-top: 11px;
 
-            font-family: "Nunito", sans-serif;
+            color: #72c7ff;
 
+            font-family: "Nunito", sans-serif;
             font-size: 0.62rem;
             font-weight: 800;
 
             letter-spacing: 0.06em;
             text-transform: uppercase;
-
-            color: #72c7ff;
           }
-
-          /* PARTE DE BAIXO */
 
           .rodape_resultado {
             margin-top: 17px;
@@ -1451,19 +1553,18 @@ main {
               padding: 3px 7px;
 
               border: 1px solid rgba(255, 255, 255, 0.25);
-
               border-radius: 5px;
 
-              font-family: "Nunito", sans-serif;
-
-              font-size: 0.62rem;
-
               color: #ddd8e5;
+
+              font-family: "Nunito", sans-serif;
+              font-size: 0.62rem;
             }
 
             .assistir_resultado {
               display: flex;
               align-items: center;
+
               gap: 7px;
 
               padding: 8px 15px;
@@ -1472,11 +1573,9 @@ main {
               border-radius: 30px;
 
               background: #4ba9eb;
-
               color: #07101c;
 
               font-family: "Nunito", sans-serif;
-
               font-size: 0.68rem;
               font-weight: 800;
 
@@ -1512,269 +1611,243 @@ main {
       }
     }
   }
+}
 
-  /* resposivo */
+/* =========================================================
+   HUMOR — TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
   .secao_humor {
-    @media (max-width: 1024px) {
-      padding: 70px 24px;
+    padding: 70px 24px;
 
-      .conteudo_humor {
-        .cabecalho_humor {
-          max-width: 620px;
+    .conteudo_humor {
+      .cabecalho_humor {
+        max-width: 620px;
 
-          .subtitulo_humor {
-            font-size: 0.68rem;
-            letter-spacing: 0.16em;
-          }
-
-          h2 {
-            font-size: 2.6rem;
-            line-height: 1.05;
-          }
-
-          p {
-            max-width: 540px;
-
-            margin-top: 18px;
-
-            font-size: 0.88rem;
-            line-height: 1.45;
-          }
+        .subtitulo_humor {
+          font-size: 0.68rem;
+          letter-spacing: 0.16em;
         }
 
-        .opcoes_humor {
-          width: 100%;
-          max-width: 430px;
-
-          margin-top: 38px;
-
-          display: grid;
-          grid-template-columns: repeat(2, 190px);
-
-          justify-content: center;
-
-          gap: 14px;
-
-          .botao_humor {
-            width: 190px;
-            height: 58px;
-
-            padding: 0 18px;
-
-            border-radius: 11px;
-
-            font-size: 0.8rem;
-          }
+        h2 {
+          font-size: 2.6rem;
+          line-height: 1.05;
         }
 
-        .resultado_filme {
-          .card_resultado {
-            width: 330px;
+        p {
+          max-width: 540px;
 
-            display: flex;
-            flex-direction: column;
+          margin-top: 18px;
 
-            border-radius: 15px;
-
-            .imagem_resultado {
-              width: 100%;
-              height: 190px;
-              min-height: 0;
-
-              .capa_resultado {
-                width: 100%;
-                height: 100%;
-
-                object-fit: cover;
-              }
-
-              .sombra_imagem {
-                background: linear-gradient(
-                  to bottom,
-                  transparent 55%,
-                  rgba(12, 19, 42, 0.75)
-                );
-              }
-            }
-
-            .informacoes_resultado {
-              padding: 18px;
-
-              .titulo_resultado {
-                font-size: 1.45rem;
-              }
-
-              .descricao_resultado {
-                font-size: 0.73rem;
-                line-height: 1.5;
-              }
-
-              .genero_resultado {
-                margin-top: 9px;
-
-                font-size: 0.6rem;
-              }
-
-              .rodape_resultado {
-                margin-top: 14px;
-                padding-top: 12px;
-              }
-            }
-          }
+          font-size: 0.88rem;
+          line-height: 1.45;
         }
       }
-    }
 
-    @media (max-width: 600px) {
-      .secao_humor {
-        padding: 60px 18px;
+      .opcoes_humor {
+        width: 100%;
+        max-width: 430px;
 
-        .conteudo_humor {
-          .cabecalho_humor {
-            .subtitulo_humor {
-              margin-bottom: 13px;
+        margin-top: 38px;
 
-              font-size: 0.6rem;
-              letter-spacing: 0.14em;
+        display: grid;
+        grid-template-columns: repeat(2, 190px);
+
+        justify-content: center;
+
+        gap: 14px;
+
+        .botao_humor {
+          width: 190px;
+          height: 58px;
+
+          padding: 0 18px;
+
+          font-size: 0.8rem;
+        }
+      }
+
+      .resultado_filme {
+        .card_resultado {
+          width: 330px;
+
+          display: flex;
+          flex-direction: column;
+
+          border-radius: 15px;
+
+          .imagem_resultado {
+            width: 100%;
+            height: 190px;
+
+            min-height: 0;
+
+            .capa_resultado {
+              width: 100%;
+              height: 100%;
+
+              object-fit: cover;
             }
 
-            h2 {
-              max-width: 320px;
+            .sombra_imagem {
+              background: linear-gradient(
+                to bottom,
+                transparent 55%,
+                rgba(12, 19, 42, 0.75)
+              );
+            }
+          }
 
-              margin: 0 auto;
+          .informacoes_resultado {
+            padding: 18px;
 
-              font-size: 2rem;
-              line-height: 1.05;
+            .titulo_resultado {
+              font-size: 1.45rem;
             }
 
-            p {
-              max-width: 320px;
-
-              margin-top: 16px;
-
-              font-size: 0.8rem;
+            .descricao_resultado {
+              font-size: 0.73rem;
               line-height: 1.5;
             }
-          }
 
-          .opcoes_humor {
-            width: 100%;
-            max-width: 240px;
+            .genero_resultado {
+              margin-top: 9px;
 
-            margin: 30px auto 0;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            gap: 10px;
-
-            .botao_humor {
-              width: 100%;
-              height: 48px;
-
-              padding: 0 16px;
-
-              border-radius: 10px;
-
-              font-size: 0.76rem;
-              line-height: 1.2;
-
-              &:hover {
-                transform: translateY(-2px);
-              }
+              font-size: 0.6rem;
             }
-          }
 
-          .resultado_filme {
-            .card_resultado {
-              width: min(310px, 100%);
-
-              display: flex;
-              flex-direction: column;
-
-              .imagem_resultado {
-                width: 100%;
-                height: 170px;
-                min-height: 0;
-
-                .capa_resultado {
-                  width: 100%;
-                  height: 100%;
-
-                  object-fit: cover;
-                }
-
-                .sombra_imagem {
-                  background: linear-gradient(
-                    to bottom,
-                    transparent 55%,
-                    rgba(12, 19, 42, 0.75)
-                  );
-                }
-              }
-
-              .informacoes_resultado {
-                padding: 16px;
-
-                .titulo_resultado {
-                  font-size: 1.3rem;
-                }
-
-                .descricao_resultado {
-                  font-size: 0.7rem;
-                  line-height: 1.5;
-                }
-
-                .genero_resultado {
-                  margin-top: 8px;
-
-                  font-size: 0.58rem;
-                }
-
-                .rodape_resultado {
-                  margin-top: 13px;
-                  padding-top: 12px;
-
-                  .assistir_resultado {
-                    padding: 7px 12px;
-
-                    font-size: 0.62rem;
-                  }
-                }
-              }
+            .rodape_resultado {
+              margin-top: 14px;
+              padding-top: 12px;
             }
           }
         }
       }
     }
+  }
+}
 
-    @media (max-width: 380px) {
-      .secao_humor {
-        padding-inline: 14px;
+/* =========================================================
+   HUMOR — CELULAR
+========================================================= */
 
-        .conteudo_humor {
-          .cabecalho_humor {
-            h2 {
-              font-size: 1.8rem;
-            }
+@media (max-width: 600px) {
+  .secao_humor {
+    padding: 60px 18px;
+
+    .conteudo_humor {
+      .cabecalho_humor {
+        .subtitulo_humor {
+          margin-bottom: 13px;
+
+          font-size: 0.6rem;
+          letter-spacing: 0.14em;
+        }
+
+        h2 {
+          max-width: 320px;
+
+          margin: 0 auto;
+
+          font-size: 2rem;
+          line-height: 1.05;
+        }
+
+        p {
+          max-width: 320px;
+
+          margin-top: 16px;
+
+          font-size: 0.8rem;
+          line-height: 1.5;
+        }
+      }
+
+      .opcoes_humor {
+        width: 100%;
+        max-width: 240px;
+
+        margin: 30px auto 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 10px;
+
+        .botao_humor {
+          width: 100%;
+          height: 48px;
+
+          padding: 0 16px;
+
+          border-radius: 10px;
+
+          font-size: 0.76rem;
+          line-height: 1.2;
+
+          &:hover {
+            transform: translateY(-2px);
           }
+        }
+      }
 
-          .opcoes_humor {
-            max-width: 220px;
+      .resultado_filme {
+        .card_resultado {
+          width: min(310px, 100%);
 
-            .botao_humor {
-              height: 46px;
-              font-size: 0.72rem;
-            }
-          }
+          display: flex;
+          flex-direction: column;
 
-          .resultado_filme {
-            .card_resultado {
+          .imagem_resultado {
+            width: 100%;
+            height: 170px;
+
+            min-height: 0;
+
+            .capa_resultado {
               width: 100%;
+              height: 100%;
 
-              .imagem_resultado {
-                height: 155px;
+              object-fit: cover;
+            }
+
+            .sombra_imagem {
+              background: linear-gradient(
+                to bottom,
+                transparent 55%,
+                rgba(12, 19, 42, 0.75)
+              );
+            }
+          }
+
+          .informacoes_resultado {
+            padding: 16px;
+
+            .titulo_resultado {
+              font-size: 1.3rem;
+            }
+
+            .descricao_resultado {
+              font-size: 0.7rem;
+              line-height: 1.5;
+            }
+
+            .genero_resultado {
+              margin-top: 8px;
+
+              font-size: 0.58rem;
+            }
+
+            .rodape_resultado {
+              margin-top: 13px;
+              padding-top: 12px;
+
+              .assistir_resultado {
+                padding: 7px 12px;
+
+                font-size: 0.62rem;
               }
             }
           }
@@ -1784,21 +1857,64 @@ main {
   }
 }
 
+@media (max-width: 380px) {
+  .secao_humor {
+    padding-inline: 14px;
+
+    .conteudo_humor {
+      .cabecalho_humor {
+        h2 {
+          font-size: 1.8rem;
+        }
+      }
+
+      .opcoes_humor {
+        max-width: 220px;
+
+        .botao_humor {
+          height: 46px;
+
+          font-size: 0.72rem;
+        }
+      }
+
+      .resultado_filme {
+        .card_resultado {
+          width: 100%;
+
+          .imagem_resultado {
+            height: 155px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* =========================================================
+   SEÇÃO — CATEGORIAS
+========================================================= */
+
 .secao_categorias {
   width: 100%;
+
   padding: 6px 0 110px;
+
   background: #000;
 
   .topo_da_secao {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     padding: 6vw 0 4vw;
 
     h2 {
-      font-size: 3.5rem;
       margin-bottom: 15px;
+
       color: #fff8e8;
+
+      font-size: 3.5rem;
 
       span {
         color: #f4c542;
@@ -1806,18 +1922,24 @@ main {
     }
 
     p {
-      font-size: 1.6rem;
       color: #d6c8b8;
+
+      font-size: 1.6rem;
     }
 
     button {
       display: inline-flex;
       align-items: center;
+
       gap: 10px;
+
       background: transparent;
       color: #d6c8b8;
+
       border: none;
+
       cursor: pointer;
+
       font-family: "Nunito", sans-serif;
       font-size: 1rem;
       font-weight: 500;
@@ -1825,8 +1947,10 @@ main {
       img {
         width: 18px;
         height: 18px;
-        transition: transform 0.3s ease;
+
         display: inline-block;
+
+        transition: transform 0.3s ease;
       }
 
       &:hover img {
@@ -1839,6 +1963,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
+
     gap: 10px;
 
     .filtro_categoria {
@@ -1846,12 +1971,11 @@ main {
 
       padding: 9px 19px;
 
+      background: #030303;
+      color: #c8bba8;
+
       border: 1px solid #292929;
       border-radius: 30px;
-
-      background: #030303;
-
-      color: #c8bba8;
 
       font-family: "Nunito", sans-serif;
       font-size: 0.86rem;
@@ -1867,6 +1991,7 @@ main {
 
       &:hover {
         color: #fff8e8;
+
         border-color: #57534e;
 
         transform: translateY(-2px);
@@ -1874,9 +1999,9 @@ main {
 
       &.ativo {
         background: #f4c542;
-        border-color: #f4c542;
-
         color: #17130a;
+
+        border-color: #f4c542;
 
         transform: none;
       }
@@ -1887,6 +2012,7 @@ main {
     margin-top: 34px;
 
     display: grid;
+
     grid-template-columns: repeat(4, minmax(0, 1fr));
 
     gap: 20px;
@@ -1914,11 +2040,12 @@ main {
         position: relative;
 
         width: 100%;
+
         aspect-ratio: 4 / 3;
 
         overflow: hidden;
 
-        background: #000000;
+        background: #000;
 
         > img {
           width: 100%;
@@ -1943,13 +2070,14 @@ main {
 
           display: flex;
           align-items: center;
+
           gap: 4px;
 
           padding: 6px 10px;
 
-          border-radius: 30px;
-
           background: rgba(0, 0, 0, 0.8);
+
+          border-radius: 30px;
 
           color: #fff8e8;
 
@@ -1987,11 +2115,11 @@ main {
 
             padding: 9px 15px;
 
-            border: 0;
-            border-radius: 30px;
-
             background: #f4c542;
             color: #17130a;
+
+            border: 0;
+            border-radius: 30px;
 
             font-family: "Nunito", sans-serif;
             font-size: 0.72rem;
@@ -2023,13 +2151,13 @@ main {
         h3 {
           margin: 0 0 5px;
 
+          color: #fff8e8;
+
           font-family: "Cormorant Garamond", serif;
           font-size: 1.3rem;
           font-weight: 700;
 
           line-height: 1.05;
-
-          color: #fff8e8;
         }
 
         .movie-details {
@@ -2042,10 +2170,10 @@ main {
           p {
             margin: 0;
 
+            color: #c8bba8;
+
             font-family: "Nunito", sans-serif;
             font-size: 0.7rem;
-
-            color: #c8bba8;
           }
 
           .heart-button {
@@ -2060,9 +2188,9 @@ main {
 
             padding: 0;
 
-            border: 0;
-
             background: transparent;
+
+            border: 0;
 
             cursor: pointer;
 
@@ -2077,10 +2205,8 @@ main {
                 filter 0.25s ease;
             }
 
-            &:hover {
-              img {
-                transform: scale(1.12);
-              }
+            &:hover img {
+              transform: scale(1.12);
             }
 
             &.favoritado {
@@ -2126,19 +2252,20 @@ main {
 
             padding: 0;
 
-            border: 0;
-
             background: transparent;
-
             color: #f4c542;
+
+            border: 0;
 
             font-family: "Nunito", sans-serif;
             font-size: 0.7rem;
             font-weight: 700;
 
             cursor: pointer;
+
             &:hover {
               color: #fff;
+
               transition: all 0.3s ease;
             }
 
@@ -2183,24 +2310,33 @@ main {
       }
     }
   }
+}
 
-  /* TABLET */
+/* =========================================================
+   CATEGORIAS — TABLET
+========================================================= */
 
-  @media (max-width: 900px) {
+@media (max-width: 900px) {
+  .secao_categorias {
     padding: 75px 24px;
 
     .lista_categorias {
       grid-template-columns: repeat(2, minmax(0, 1fr));
 
       max-width: 600px;
+
       margin-inline: auto;
       margin-top: 30px;
     }
   }
+}
 
-  /* CELULAR */
+/* =========================================================
+   CATEGORIAS — CELULAR
+========================================================= */
 
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
+  .secao_categorias {
     padding: 65px 18px;
 
     .topo_da_secao {
@@ -2223,9 +2359,9 @@ main {
       gap: 8px;
 
       .filtro_categoria {
-        min-width: 0;
-
         width: 100%;
+
+        min-width: 0;
       }
     }
 
@@ -2247,20 +2383,22 @@ main {
   }
 }
 
-/* QUINTA SEÇÃO */
+/* =========================================================
+   SEÇÃO — PERSONAGENS
+========================================================= */
 
 .secao_personagens {
   position: relative;
 
   width: 100%;
 
-  background: #000;
-
   overflow: hidden;
 
-  /* =========================
+  background: #000;
+
+  /* -------------------------------------------------------
      CABEÇALHO
-  ========================= */
+  ------------------------------------------------------- */
 
   .cabecalho_personagens {
     position: relative;
@@ -2269,42 +2407,42 @@ main {
 
     padding: 5vw 0 1vw;
 
-    text-align: center;
-
     background: #000;
+
+    text-align: center;
 
     h2 {
       margin: 0 0 12px;
 
-      font-family: "Cormorant Garamond", serif;
+      color: #fff8e8;
 
+      font-family: "Cormorant Garamond", serif;
       font-size: 3.5rem;
       font-weight: 700;
 
       line-height: 1;
-
-      color: #fff8e8;
     }
 
     p {
       margin: 20px 0 40px;
 
-      font-family: "Cormorant Garamond", serif;
+      color: #e7d8aa;
 
+      font-family: "Cormorant Garamond", serif;
       font-size: 1.6rem;
       font-weight: 500;
-
-      color: #e7d8aa;
     }
   }
 
-  /* =========================
-     ÁREA COM A PAISAGEM
-  ========================= */
+  /* -------------------------------------------------------
+     ÁREA DOS PERSONAGENS
+  ------------------------------------------------------- */
 
   .area_personagens {
     position: relative;
+
     min-height: 840px;
+
     overflow: hidden;
 
     /* FUNDO */
@@ -2315,13 +2453,15 @@ main {
 
       background: url("../img/fundo-personagens.png") center / cover no-repeat;
 
-      /* sombra preta no topo */
       &::before {
         content: "";
 
         position: absolute;
+
         top: 0;
         left: 0;
+
+        z-index: 2;
 
         width: 100%;
         height: 290px;
@@ -2336,13 +2476,10 @@ main {
         );
 
         pointer-events: none;
-        z-index: 2;
       }
     }
 
-    /* =========================
-       CONTEÚDO
-    ========================= */
+    /* CONTEÚDO */
 
     .conteudo_personagens {
       position: relative;
@@ -2355,7 +2492,6 @@ main {
 
       display: flex;
       flex-direction: column;
-
       align-items: center;
 
       /* NOME */
@@ -2363,6 +2499,7 @@ main {
       .nome_personagem {
         display: inline-flex;
         align-items: center;
+
         gap: 18px;
 
         color: #fff;
@@ -2386,21 +2523,22 @@ main {
         }
       }
 
-      /* TEXTO */
+      /* BOTÃO CONHECER */
 
       .conhecer_personagem {
-        margin-top: 35px;
-
         display: inline-flex;
         align-items: center;
+
         gap: 12px;
+
+        margin-top: 35px;
 
         padding: 11px 20px;
 
+        background: rgba(255, 255, 255, 0.15);
+
         border: 1px solid rgba(80, 65, 45, 0.35);
         border-radius: 50px;
-
-        background: rgba(255, 255, 255, 0.15);
 
         color: #2f2a24;
 
@@ -2422,7 +2560,9 @@ main {
 
         &:hover {
           color: #6d583c;
+
           border-color: #8a6f47;
+
           background: rgba(200, 184, 154, 0.18);
 
           transform: translateY(-2px);
@@ -2434,13 +2574,14 @@ main {
 
         &:focus-visible {
           outline: 3px solid rgba(138, 111, 71, 0.5);
+
           outline-offset: 4px;
         }
       }
 
-      /* =========================
+      /* ---------------------------------------------------
          CARROSSEL
-      ========================= */
+      --------------------------------------------------- */
 
       .carrossel_personagens {
         position: relative;
@@ -2450,7 +2591,6 @@ main {
         margin-top: 120px;
 
         display: flex;
-
         align-items: center;
         justify-content: center;
 
@@ -2460,12 +2600,12 @@ main {
           position: absolute;
 
           top: 10%;
-          transform: translateY(-50%);
 
           z-index: 20;
 
           width: 42px;
           height: 42px;
+
           display: flex;
           align-items: center;
           justify-content: center;
@@ -2483,14 +2623,18 @@ main {
 
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
+          transform: translateY(-50%);
+
           transition:
             transform 0.3s ease,
             background 0.3s ease,
             box-shadow 0.3s ease;
 
           &:hover {
-            transform: translateY(-50%) scale(1.08);
             background: #f4c542;
+
+            transform: translateY(-50%) scale(1.08);
+
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
           }
 
@@ -2507,9 +2651,7 @@ main {
           right: -20px;
         }
 
-        /* =========================
-           LISTA DOS PERSONAGENS
-        ========================= */
+        /* LISTA */
 
         .lista_personagens {
           width: min(1080px, 91%);
@@ -2517,7 +2659,6 @@ main {
           min-height: 410px;
 
           display: flex;
-
           align-items: flex-end;
           justify-content: center;
 
@@ -2538,13 +2679,16 @@ main {
             justify-content: center;
 
             padding: 0;
-            border: none;
+
             background: transparent;
 
+            border: none;
+
             cursor: pointer;
+
             transform-origin: center bottom;
 
-            /* SOMBRA NO CHÃO */
+            /* SOMBRA */
 
             &::after {
               content: "";
@@ -2584,14 +2728,11 @@ main {
                 transform 0.45s ease;
             }
 
-            /* =========================
-               PERSONAGENS LATERAIS
-            ========================= */
+            /* PERSONAGENS NÃO SELECIONADOS */
 
             &:not(.selecionado) {
               img {
                 filter: grayscale(100%);
-
                 opacity: 0.88;
               }
 
@@ -2606,21 +2747,308 @@ main {
               }
             }
 
-            /* =========================
-               PERSONAGEM CENTRAL
-            ========================= */
+            /* PERSONAGEM CENTRAL */
 
             &.selecionado {
+              z-index: 10;
+
               cursor: default;
 
               transform: scale(1.4);
-              z-index: 10;
 
               img {
                 filter: grayscale(0%);
+
                 opacity: 1;
               }
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* =========================================================
+   PERSONAGENS — TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+  .secao_personagens {
+    .cabecalho_personagens {
+      padding-top: 60px;
+
+      h2 {
+        font-size: 3rem;
+      }
+
+      p {
+        font-size: 1.4rem;
+      }
+    }
+
+    .area_personagens {
+      min-height: 700px;
+
+      .conteudo_personagens {
+        padding-top: 70px;
+
+        .nome_personagem {
+          font-size: 2.4rem;
+        }
+
+        .carrossel_personagens {
+          margin-top: 90px;
+
+          .lista_personagens {
+            width: 92%;
+
+            .personagem {
+              width: clamp(150px, 20vw, 210px);
+              height: 320px;
+
+              &.selecionado {
+                transform: scale(1.3);
+              }
+            }
+          }
+
+          .seta_personagem:first-child {
+            left: -5px;
+          }
+
+          .seta_personagem:last-child {
+            right: -5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* =========================================================
+   PERSONAGENS — TABLET PEQUENO
+========================================================= */
+
+@media (max-width: 768px) {
+  .secao_personagens {
+    .cabecalho_personagens {
+      padding: 50px 20px 10px;
+
+      h2 {
+        font-size: 2.6rem;
+      }
+
+      p {
+        margin: 15px 0 25px;
+
+        font-size: 1.25rem;
+      }
+    }
+
+    .area_personagens {
+      min-height: 620px;
+
+      .fundo_personagens {
+        background-position: center;
+      }
+
+      .conteudo_personagens {
+        padding-top: 55px;
+
+        .nome_personagem {
+          font-size: 2.2rem;
+
+          gap: 12px;
+
+          &::before,
+          &::after {
+            width: 25px;
+          }
+        }
+
+        .conhecer_personagem {
+          margin-top: 25px;
+
+          padding: 9px 17px;
+
+          font-size: 0.95rem;
+        }
+
+        .carrossel_personagens {
+          width: 100%;
+
+          margin-top: 70px;
+
+          .lista_personagens {
+            width: 90%;
+
+            min-height: 330px;
+
+            gap: 0;
+
+            overflow: hidden;
+
+            .personagem {
+              width: 170px;
+              height: 300px;
+
+              &.selecionado {
+                transform: scale(1.25);
+              }
+            }
+          }
+
+          .seta_personagem {
+            width: 38px;
+            height: 38px;
+
+            font-size: 1rem;
+          }
+
+          .seta_personagem:first-child {
+            left: 5px;
+          }
+
+          .seta_personagem:last-child {
+            right: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* =========================================================
+   PERSONAGENS — CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+  .secao_personagens {
+    .cabecalho_personagens {
+      padding: 45px 18px 5px;
+
+      h2 {
+        font-size: 2.25rem;
+      }
+
+      p {
+        margin: 12px 0 20px;
+
+        font-size: 1.05rem;
+      }
+    }
+
+    .area_personagens {
+      min-height: 560px;
+
+      .fundo_personagens {
+        background-position: center;
+      }
+
+      .conteudo_personagens {
+        padding-top: 45px;
+
+        .nome_personagem {
+          font-size: 1.9rem;
+
+          gap: 10px;
+
+          &::before,
+          &::after {
+            width: 20px;
+          }
+        }
+
+        .conhecer_personagem {
+          margin-top: 20px;
+
+          padding: 8px 15px;
+
+          font-size: 0.85rem;
+        }
+
+        .carrossel_personagens {
+          margin-top: 55px;
+
+          .lista_personagens {
+            width: 85%;
+
+            min-height: 290px;
+
+            .personagem {
+              width: 145px;
+              height: 260px;
+
+              &.selecionado {
+                transform: scale(1.2);
+              }
+            }
+          }
+
+          .seta_personagem {
+            width: 35px;
+            height: 35px;
+
+            font-size: 0.9rem;
+          }
+
+          .seta_personagem:first-child {
+            left: 2px;
+          }
+
+          .seta_personagem:last-child {
+            right: 2px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* =========================================================
+   PERSONAGENS — CELULAR PEQUENO
+========================================================= */
+
+@media (max-width: 400px) {
+  .secao_personagens {
+    .cabecalho_personagens {
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+    }
+
+    .area_personagens {
+      min-height: 510px;
+
+      .conteudo_personagens {
+        .nome_personagem {
+          font-size: 1.7rem;
+        }
+
+        .carrossel_personagens {
+          margin-top: 45px;
+
+          .lista_personagens {
+            min-height: 260px;
+
+            .personagem {
+              width: 125px;
+              height: 230px;
+
+              &.selecionado {
+                transform: scale(1.15);
+              }
+            }
+          }
+
+          .seta_personagem {
+            width: 32px;
+            height: 32px;
           }
         }
       }
