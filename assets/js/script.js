@@ -964,3 +964,139 @@ document.querySelectorAll(".card_musica").forEach((card) => {
     barra.style.width = "0%";
   });
 });
+
+// ==================== SEÇÃO FINAL ====================
+
+const secaoFinal = document.querySelector(".secao_final");
+
+if (secaoFinal) {
+  const animacaoFinal = gsap.timeline({
+    scrollTrigger: {
+      trigger: secaoFinal,
+      start: "top 75%",
+      once: true,
+    },
+  });
+
+  animacaoFinal
+    .from(".secao_final .fundo_final", {
+      opacity: 0,
+      scale: 1.08,
+      duration: 1.4,
+      ease: "power2.out",
+    })
+
+    .from(
+      ".secao_final .conteudo_final h2",
+      {
+        opacity: 0,
+        y: 40,
+        duration: 0.9,
+        ease: "power2.out",
+      },
+      "-=0.8",
+    )
+
+    .from(
+      ".secao_final .botao_final",
+      {
+        opacity: 0,
+        y: 20,
+        duration: 0.7,
+        ease: "power2.out",
+      },
+      "-=0.45",
+    );
+}
+
+// footer
+const footer = document.querySelector(".footer");
+
+if (footer) {
+  const animacaoFooter = gsap.timeline({
+    scrollTrigger: {
+      trigger: footer,
+      start: "top 85%",
+      once: true,
+    },
+  });
+
+  animacaoFooter
+
+    .from(footer, {
+      y: 70,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    })
+
+    .from(
+      ".footer .folha-esquerda",
+      {
+        x: -70,
+        y: 40,
+        opacity: 0,
+        rotation: -8,
+        duration: 1,
+        ease: "power3.out",
+      },
+      "-=0.7",
+    )
+
+    .from(
+      ".footer .folha-direita",
+      {
+        x: 70,
+        y: 40,
+        opacity: 0,
+        rotation: 8,
+        duration: 1,
+        ease: "power3.out",
+      },
+      "-=0.85",
+    )
+
+    .from(
+      ".footer-marca",
+      {
+        opacity: 0,
+        y: 25,
+        duration: 0.65,
+        ease: "power2.out",
+      },
+      "-=0.55",
+    )
+
+    .from(
+      ".footer-navegacao",
+      {
+        opacity: 0,
+        y: 25,
+        duration: 0.65,
+        ease: "power2.out",
+      },
+      "-=0.45",
+    )
+
+    .from(
+      ".footer-social",
+      {
+        opacity: 0,
+        y: 25,
+        duration: 0.65,
+        ease: "power2.out",
+      },
+      "-=0.45",
+    )
+
+    .from(
+      ".footer-bottom",
+      {
+        opacity: 0,
+        y: 15,
+        duration: 0.5,
+        ease: "power2.out",
+      },
+      "-=0.25",
+    );
+}
