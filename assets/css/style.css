@@ -2962,400 +2962,637 @@ main {
   }
 }
 
-/* ==========================================
-   TRANSIÇÃO ORGÂNICA DA SEÇÃO DE MÚSICAS
-   ========================================== */
-
-/* =========================================================
-   SEÇÃO DE MÚSICAS
-   ========================================================= */
-
-/* =====================================================
-   SEÇÃO DE MÚSICAS
-   ===================================================== */
-
+/* seção Musica */
 .secao_musicas {
   position: relative;
-
   width: 100%;
-
   min-height: 1000px;
-
-  background-color: #fffced;
-
-  /* deixa a transição subir para a seção anterior */
   margin-top: 0;
-
+  background-color: #fffced;
   overflow: visible;
-
   z-index: 10;
-}
 
-/* =====================================================
-   SUA IMAGEM COMO BACKGROUND
-   ===================================================== */
-
-.fundo_transicao_musicas {
-  position: absolute;
-
-  top: -380px;
-  left: 0;
-
-  width: 100%;
-  height: 700px;
-
-  background-image: url("../img/fundo-branco-musicas.png");
-
-  background-repeat: no-repeat;
-
-  background-position: center top;
-
-  background-size: 100% auto;
-
-  z-index: 999;
-
-  pointer-events: none;
-}
-
-/* =====================================================
-   CONTEÚDO
-   ===================================================== */
-
-.conteudo_musicas {
-  position: relative;
-
-  z-index: 999;
-
-  width: min(1200px, 90%);
-
-  margin: 0 auto;
-
-  padding-top: 10vw;
-
-  padding-bottom: 100px;
-}
-
-/* =========================================================
-   CABEÇALHO
-   ========================================================= */
-
-.cabecalho_musicas {
-  position: relative;
-
-  z-index: 50;
-
-  text-align: center;
-}
-
-.cabecalho_musicas h2 {
-  margin: 0;
-
-  color: #1f2e28;
-
-  font-family: "Cormorant Garamond", serif;
-
-  font-size: clamp(2.8rem, 5vw, 4.4rem);
-
-  font-weight: bold;
-
-  line-height: 1.05;
-}
-
-.cabecalho_musicas h2 span {
-  color: #a68a4e;
-}
-
-.cabecalho_musicas p {
-  margin-top: 22px;
-
-  color: #5e6f64;
-
-  font-family: "Cormorant Garamond", serif;
-
-  font-size: 1.6rem;
-  font-weight: bold;
-
-  line-height: 1.1;
-}
-
-/* =========================================================
-   CARDS
-   ========================================================= */
-
-.lista_musicas {
-  width: 100%;
-
-  margin-top: 55px;
-
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 26px;
-}
-
-.card_musica {
-  position: relative;
-
-  padding: 1.4rem;
-
-  background: rgba(255, 255, 255, 0.8);
-
-  border: 1px solid rgba(164, 137, 75, 0.25);
-
-  border-radius: 15px;
-
-  box-shadow: 0 10px 30px rgba(77, 63, 33, 0.08);
-
-  opacity: 1;
-
-  transform: translateY(0);
-
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
-}
-
-.card_musica:hover {
-  transform: translateY(-8px);
-
-  box-shadow: 0 18px 40px rgba(77, 63, 33, 0.14);
-}
-
-/* =========================================================
-   IMAGEM
-   ========================================================= */
-
-.imagem_musica {
-  position: relative;
-
-  width: 100%;
-
-  height: 200px;
-
-  overflow: hidden;
-
-  border-radius: 10px;
-}
-
-.imagem_musica img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  display: block;
-
-  transition: transform 0.5s ease;
-}
-
-.card_musica:hover .imagem_musica img {
-  transform: scale(1.05);
-}
-
-/* =========================================================
-   ÍCONE
-   ========================================================= */
-
-.icone_musica {
-  position: absolute;
-
-  top: 10px;
-  right: 10px;
-
-  width: 34px;
-  height: 34px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255);
-
-  color: #a68a4e;
-
-  font-size: 1.3rem;
-}
-
-/* =========================================================
-   INFORMAÇÕES
-   ========================================================= */
-
-.info_musica {
-  padding: 14px 2px 4px;
-}
-
-.info_musica h3 {
-  margin: 0;
-
-  color: #222820;
-
-  font-family: "Cormorant Garamond", serif;
-
-  font-size: 1.5rem;
-
-  font-weight: bold;
-}
-
-.filme_musica {
-  display: block;
-
-  margin-top: 3px;
-
-  color: #66715B;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 0.72rem;
-
-  font-weight: 600;
-}
-
-/* =========================================================
-   PLAYER
-   ========================================================= */
-
-.player_musica {
-  display: flex;
-
-  align-items: center;
-
-  gap: 10px;
-
-  margin-top: 15px;
-}
-
-.botao_play {
-  flex-shrink: 0;
-
-  width: 31px;
-  height: 31px;
-
-  border: none;
-
-  border-radius: 50%;
-
-  background: #7A874B;
-
-  color: #fffdf3;
-
-  font-size: 0.7rem;
-
-  cursor: pointer;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-}
-
-.progresso_musica {
-  position: relative;
-
-  flex: 1;
-
-  height: 4px;
-
-  border-radius: 10px;
-
-  background: #ddd6c4;
-
-  overflow: hidden;
-}
-
-.progresso_musica span {
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  width: 0;
-  height: 100%;
-
-  background: #a68a4e;
-
-  border-radius: inherit;
-}
-
-.duracao_musica {
-  color: #3E4A12;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 0.65rem;
-
-  font-weight: 700;
-
-  white-space: nowrap;
-}
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 900px) {
-  .secao_musicas {
-    margin-top: -220px;
-
-    padding-top: 300px;
+  .fundo_transicao_musicas {
+    position: absolute;
+    top: -380px;
+    left: 0;
+    width: 100%;
+    height: 700px;
+    background-image: url("../img/fundo-branco-musicas.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% auto;
+    z-index: 998;
+    pointer-events: none;
   }
 
-  .lista_musicas {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* =========================================================
-   CELULAR
-   ========================================================= */
-
-@media (max-width: 600px) {
-  .secao_musicas {
-    margin-top: -170px;
-
-    padding-top: 250px;
-
-    min-height: 1100px;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 650px;
+    background-image: url("../img/detalhes-musicas.png");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100% auto;
+    pointer-events: none;
+    z-index: 999;
   }
 
-  .transicao_musicas {
-    height: 300px;
-  }
-
-  .transicao_musicas img {
-    width: auto;
-
-    height: 300px;
-
-    min-width: 0;
-
-    max-width: none;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 393px;
+    background-image: url("../img/detalhes-musicais-bottom.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% 393px;
+    pointer-events: none;
+    z-index: 2;
   }
 
   .conteudo_musicas {
-    width: 90%;
+    position: relative;
+    z-index: 999;
+    width: min(1200px, 90%);
+    margin: 0 auto;
+    padding-top: 10vw;
+    padding-bottom: 10vw;
+
+    .cabecalho_musicas {
+      position: relative;
+      z-index: 50;
+      text-align: center;
+
+      h2 {
+        margin: 0;
+        color: #1f2e28;
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(2.8rem, 5vw, 4.4rem);
+        font-weight: bold;
+        line-height: 1.05;
+
+        span {
+          color: #a68a4e;
+        }
+      }
+
+      p {
+        margin-top: 22px;
+        color: #5e6f64;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        font-weight: bold;
+        line-height: 1.1;
+      }
+    }
+
+    .lista_musicas {
+      width: 100%;
+      margin-top: 55px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+
+      .card_musica {
+        position: relative;
+        padding: 1.4rem;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(164, 137, 75, 0.25);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(77, 63, 33, 0.08);
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+          transform 0.35s ease,
+          box-shadow 0.35s ease;
+
+        &:hover {
+          transform: translateY(-8px);
+          box-shadow: 0 18px 40px rgba(77, 63, 33, 0.14);
+
+          .imagem_musica {
+            img {
+              transform: scale(1.05);
+            }
+          }
+        }
+
+        .imagem_musica {
+          position: relative;
+          width: 100%;
+          height: 200px;
+          overflow: hidden;
+          border-radius: 10px;
+
+          img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+          }
+
+          .icone_musica {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255);
+            color: #a68a4e;
+            font-size: 1.3rem;
+          }
+        }
+
+        .info_musica {
+          padding: 14px 2px 4px;
+
+          h3 {
+            margin: 0;
+            color: #222820;
+            font-family: "Cormorant Garamond", serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+          }
+
+          .filme_musica {
+            display: block;
+            margin-top: 3px;
+            color: #66715b;
+            font-family: "Manrope", sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+          }
+
+          .player_musica {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+
+            .botao_play {
+              flex-shrink: 0;
+              width: 31px;
+              height: 31px;
+              border: none;
+              border-radius: 50%;
+              background: #7a874b;
+              color: #fffdf3;
+              font-size: 0.7rem;
+              cursor: pointer;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+
+            .progresso_musica {
+              position: relative;
+              flex: 1;
+              height: 4px;
+              border-radius: 10px;
+              background: #ddd6c4;
+              overflow: hidden;
+
+              span {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 100%;
+                background: #a68a4e;
+                border-radius: inherit;
+              }
+            }
+
+            .duracao_musica {
+              color: #3e4a12;
+              font-family: "Manrope", sans-serif;
+              font-size: 0.65rem;
+              font-weight: 700;
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+    }
+
+    .acoes_musicas {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 100px;
+      position: relative;
+      z-index: 10;
+
+      .botao_trilhas {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.3rem 2rem;
+        border: none;
+        border-radius: 40px;
+        background: #737644;
+        color: #fff;
+        font-family: "Nunito", sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(60, 60, 30, 0.15);
+        transition:
+          transform 0.3s ease,
+          background-color 0.3s ease,
+          box-shadow 0.3s ease;
+
+        &:hover {
+          background: #656936;
+          transform: translateY(-2px);
+          box-shadow: 0 7px 15px rgba(60, 60, 30, 0.2);
+        }
+
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
   }
 
-  .cabecalho_musicas h2 {
-    font-size: 2.6rem;
+  @media (max-width: 1100px) and (min-width: 901px) {
+    min-height: auto;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+
+    .fundo_transicao_musicas {
+      top: -280px;
+      left: 0;
+      width: 100%;
+      height: 620px;
+      background-size: auto 620px;
+      background-position: center top;
+      background-repeat: no-repeat;
+      z-index: 998;
+    }
+
+    &::before {
+      top: 170px;
+      left: 0;
+      width: 100%;
+      height: 580px;
+      background-size: auto 580px;
+      background-position: center top;
+      background-repeat: no-repeat;
+      z-index: 2;
+    }
+
+    &::after {
+      bottom: 0;
+      width: 100%;
+      height: 300px;
+      background-size: auto 300px;
+      background-position: center bottom;
+      background-repeat: no-repeat;
+      z-index: 2;
+    }
+
+    .conteudo_musicas {
+      width: calc(100% - 80px);
+      max-width: 1050px;
+      margin: 0 auto;
+      padding-top: 70px;
+      padding-bottom: 130px;
+      position: relative;
+      z-index: 999;
+
+      .cabecalho_musicas {
+        h2 {
+          font-size: clamp(3rem, 5vw, 4rem);
+          line-height: 1.02;
+        }
+
+        p {
+          margin-top: 18px;
+          font-size: 1.35rem;
+          line-height: 1.2;
+        }
+      }
+
+      .lista_musicas {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 45px;
+
+        .card_musica {
+          min-width: 0;
+          padding: 1rem;
+          border-radius: 14px;
+
+          .imagem_musica {
+            height: 170px;
+            border-radius: 9px;
+          }
+
+          .info_musica {
+            h3 {
+              font-size: 1.35rem;
+            }
+          }
+
+          .player_musica {
+            gap: 8px;
+            margin-top: 13px;
+
+            .botao_play {
+              width: 32px;
+              height: 32px;
+            }
+          }
+        }
+      }
+
+      .acoes_musicas {
+        width: 100%;
+        margin-top: 55px;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        z-index: 10;
+
+        .botao_trilhas {
+          width: 345px;
+          max-width: 100%;
+          min-height: 60px;
+          padding: 1rem 1.5rem;
+          font-size: 1rem;
+          box-sizing: border-box;
+        }
+      }
+    }
   }
 
-  .cabecalho_musicas p {
-    font-size: 1.05rem;
+  @media (max-width: 900px) {
+    width: 100%;
+    min-height: auto;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+
+    .fundo_transicao_musicas {
+      top: -300px;
+      left: 0;
+      width: 100%;
+      height: 600px;
+      background-size: auto 600px;
+      background-position: center top;
+    }
+
+    &::before {
+      top: 180px;
+      width: 100%;
+      height: 600px;
+      background-size: auto 600px;
+      background-position: center top;
+      z-index: 2;
+    }
+
+    &::after {
+      bottom: 0;
+      width: 100%;
+      height: 300px;
+      background-size: auto 300px;
+      background-position: center bottom;
+      z-index: 2;
+    }
+
+    .conteudo_musicas {
+      width: calc(100% - 80px);
+      max-width: 760px;
+      margin: 0 auto;
+      padding-top: 10vw;
+      padding-bottom: 10vw;
+      z-index: 999;
+
+      .cabecalho_musicas {
+        h2 {
+          font-size: clamp(2.7rem, 7vw, 3.8rem);
+          line-height: 1;
+        }
+
+        p {
+          margin-top: 18px;
+          font-size: 1.25rem;
+          line-height: 1.25;
+        }
+      }
+
+      .lista_musicas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+        margin-top: 42px;
+
+        .card_musica {
+          min-width: 0;
+          padding: 1rem;
+
+          .imagem_musica {
+            height: 180px;
+          }
+        }
+      }
+
+      .acoes_musicas {
+        width: 100%;
+        margin-top: 55px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+
+        .botao_trilhas {
+          width: min(345px, 100%);
+          min-height: 60px;
+          padding: 1rem 1.5rem;
+          font-size: 1rem;
+          box-sizing: border-box;
+        }
+      }
+    }
   }
 
-  .cabecalho_musicas p br {
-    display: none;
+  @media (max-width: 600px) {
+    min-height: auto;
+    margin: 0;
+    padding: 0;
+
+    .fundo_transicao_musicas {
+      top: -205px;
+      left: 50%;
+      width: 100%;
+      height: 430px;
+      transform: translateX(-50%);
+      background-size: auto 430px;
+      background-position: center top;
+    }
+
+    &::before {
+      top: 150px;
+      left: 50%;
+      width: 100%;
+      height: 480px;
+      transform: translateX(-50%);
+      background-size: auto 480px;
+      background-position: center top;
+    }
+
+    .conteudo_musicas {
+      width: calc(100% - 40px);
+      max-width: none;
+      margin: 0 auto;
+
+      .cabecalho_musicas {
+        width: 100%;
+
+        h2 {
+          font-size: clamp(2.25rem, 10vw, 3rem);
+          line-height: 1;
+          margin: 0;
+        }
+
+        p {
+          margin-top: 18px;
+          font-size: 1.05rem;
+          line-height: 1.3;
+
+          br {
+            display: none;
+          }
+        }
+      }
+
+      .lista_musicas {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 34px;
+
+        .card_musica {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 0.9rem;
+          border-radius: 15px;
+
+          .imagem_musica {
+            width: 100%;
+            height: 185px;
+            border-radius: 10px;
+          }
+
+          .player_musica {
+            gap: 9px;
+            margin-top: 13px;
+
+            .botao_play {
+              width: 33px;
+              height: 33px;
+            }
+          }
+        }
+      }
+
+      .acoes_musicas {
+        width: 100%;
+        margin-top: 42px;
+        padding: 0 0 15px;
+        box-sizing: border-box;
+
+        .botao_trilhas {
+          width: 100%;
+          max-width: 345px;
+          min-height: 58px;
+          padding: 0.95rem 1.2rem;
+          font-size: 1rem;
+          border-radius: 40px;
+        }
+      }
+    }
+
+    &::after {
+      bottom: 0;
+      left: 50%;
+      width: 100%;
+      height: 210px;
+      transform: translateX(-50%);
+      background-size: auto 210px;
+      background-position: center bottom;
+    }
   }
 
-  .lista_musicas {
-    grid-template-columns: 1fr;
+  @media (max-width: 400px) {
+    .conteudo_musicas {
+      width: calc(100% - 30px);
 
-    gap: 20px;
+      .cabecalho_musicas {
+        h2 {
+          font-size: 2.15rem;
+        }
 
-    margin-top: 40px;
+        p {
+          font-size: 0.98rem;
+        }
+      }
+
+      .lista_musicas {
+        gap: 16px;
+        margin-top: 30px;
+
+        .card_musica {
+          padding: 0.8rem;
+
+          .imagem_musica {
+            height: 165px;
+          }
+        }
+      }
+
+      .acoes_musicas {
+        margin-top: 38px;
+        padding: 0 0 10px;
+
+        .botao_trilhas {
+          width: 100%;
+          max-width: 330px;
+          min-height: 56px;
+          padding: 0.9rem 1rem;
+          font-size: 0.95rem;
+        }
+      }
+    }
+
+    .fundo_transicao_musicas {
+      top: -180px;
+      height: 370px;
+      background-size: auto 370px;
+    }
+
+    &::before {
+      top: 140px;
+      height: 420px;
+      background-size: auto 420px;
+    }
+
+    &::after {
+      height: 180px;
+      background-size: auto 180px;
+    }
   }
 }

@@ -859,17 +859,11 @@ animacaoPersonagens
     "-=0.25",
   );
 
-/* =========================================================
-   MÚSICAS
-   ========================================================= */
+//  MÚSICAS
 
 const secaoMusicas = document.querySelector(".secao_musicas");
 const cardsMusicas = document.querySelectorAll(".card_musica");
 const botoesPlay = document.querySelectorAll(".botao_play");
-
-/* =========================================================
-   ANIMAÇÃO DA SEÇÃO
-   ========================================================= */
 
 if (secaoMusicas) {
   gsap.from(".cabecalho_musicas", {
@@ -879,37 +873,27 @@ if (secaoMusicas) {
     ease: "power2.out",
 
     scrollTrigger: {
-      trigger: ".secao_musicas",
+      trigger: secaoMusicas,
       start: "top 75%",
       once: true,
     },
   });
 
-  gsap.from(".card_musica", {
+  gsap.from(cardsMusicas, {
     opacity: 0,
-    y: 45,
+    y: 35,
     duration: 0.7,
     stagger: 0.15,
     ease: "power2.out",
+    clearProps: "transform",
 
     scrollTrigger: {
       trigger: ".lista_musicas",
       start: "top 80%",
       once: true,
-
-      onEnter: () => {
-        cardsMusicas.forEach((card, index) => {
-          setTimeout(() => {
-            card.classList.add("musica_visivel");
-          }, index * 150);
-        });
-      },
     },
   });
 }
-/* =========================================================
-   PLAYER DE MÚSICA
-   ========================================================= */
 
 document.querySelectorAll(".card_musica").forEach((card) => {
   const botao = card.querySelector(".botao_play");
@@ -919,21 +903,16 @@ document.querySelectorAll(".card_musica").forEach((card) => {
 
   if (!botao || !audio) return;
 
-  /* PLAY / PAUSE */
-
   botao.addEventListener("click", async () => {
-    // Se já está tocando
     if (!audio.paused) {
       audio.pause();
 
       botao.textContent = "▶";
-
       botao.classList.remove("tocando");
 
       return;
     }
 
-    // Para qualquer outra música
     document.querySelectorAll(".audio_musica").forEach((outroAudio) => {
       if (outroAudio !== audio) {
         outroAudio.pause();
@@ -941,7 +920,6 @@ document.querySelectorAll(".card_musica").forEach((card) => {
       }
     });
 
-    // Reseta os outros botões
     document.querySelectorAll(".botao_play").forEach((outroBotao) => {
       if (outroBotao !== botao) {
         outroBotao.textContent = "▶";
@@ -952,8 +930,7 @@ document.querySelectorAll(".card_musica").forEach((card) => {
     try {
       await audio.play();
 
-      botao.textContent = "Ⅱ";
-
+      botao.textContent = "❚❚";
       botao.classList.add("tocando");
     } catch (erro) {
       console.error("Não foi possível reproduzir o áudio:", erro);
@@ -964,8 +941,6 @@ document.querySelectorAll(".card_musica").forEach((card) => {
     }
   });
 
-  /* BARRA DE PROGRESSO */
-
   audio.addEventListener("timeupdate", () => {
     if (!audio.duration) return;
 
@@ -974,25 +949,18 @@ document.querySelectorAll(".card_musica").forEach((card) => {
     barra.style.width = `${porcentagem}%`;
   });
 
-  /* DURAÇÃO */
-
   audio.addEventListener("loadedmetadata", () => {
     if (!audio.duration) return;
 
     const minutos = Math.floor(audio.duration / 60);
-
     const segundos = Math.floor(audio.duration % 60);
 
     duracao.textContent = `${minutos}:${String(segundos).padStart(2, "0")}`;
   });
 
-  /* TERMINOU */
-
   audio.addEventListener("ended", () => {
     botao.textContent = "▶";
-
     botao.classList.remove("tocando");
-
     barra.style.width = "0%";
   });
 });
