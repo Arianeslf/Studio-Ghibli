@@ -4675,12 +4675,6 @@ footer {
   max-width: 100%;
 }
 
-/* MÚSICAS */
-.secao_musicas {
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-}
 
 /* Pseudo-elementos das músicas não podem gerar largura */
 .secao_musicas::before,
