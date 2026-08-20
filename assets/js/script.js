@@ -219,28 +219,28 @@ function iniciarAnimacoes() {
   const filmesHumor = {
     magico: {
       titulo: "O Reino dos Gatos",
-      imagem: "assets/img/reino-dos-gatos.jpg",
+      imagem: "assets/img/reino-dos-gatos.webp",
       descricao:
         "Uma aventura encantadora por um reino misterioso cheio de gatos, magia e situações inesperadas.",
       genero: "Fantasia · Aventura",
     },
     relaxar: {
       titulo: "Sussurros do Coração",
-      imagem: "assets/img/sussurros-do-coracao.png",
+      imagem: "assets/img/sussurros-do-coracao.webp",
       descricao:
         "Uma história leve e acolhedora sobre sonhos, descobertas e encontrar aquilo que realmente nos inspira.",
       genero: "Romance · Cotidiano",
     },
     aventura: {
       titulo: "Porco Rosso",
-      imagem: "assets/img/porco-rosso.jpg",
+      imagem: "assets/img/porco-rosso.webp",
       descricao:
         "Uma aventura pelos céus do Adriático com pilotos, perseguições e um aviador muito diferente de qualquer outro.",
       genero: "Aventura · Comédia",
     },
     emocionar: {
       titulo: "O Conto da Princesa Kaguya",
-      imagem: "assets/img/princesa-kaguya.jpg",
+      imagem: "assets/img/princesa-kaguya.webp",
       descricao:
         "Uma história delicada e emocionante sobre liberdade, escolhas e a beleza passageira dos momentos da vida.",
       genero: "Drama · Fantasia",
@@ -502,16 +502,214 @@ function iniciarAnimacoes() {
       "-=0.25",
     );
 
-  const cardsCategorias = document.querySelectorAll(
-    ".secao_categorias .lista_categorias .card",
+  const filmesCategorias = {
+    aventura: [
+      {
+        titulo: "O Menino e a Garça",
+        ano: "2023",
+        genero: "Fantasia, Aventura",
+        imagem: "assets/img/menino-garca.webp",
+        nota: "4.6",
+      },
+      {
+        titulo: "Ponyo",
+        ano: "2008",
+        genero: "Fantasia, Família",
+        imagem: "assets/img/ponyo.webp",
+        nota: "4.7",
+      },
+      {
+        titulo: "Nausicaä do Vale do Vento",
+        ano: "1984",
+        genero: "Fantasia, Aventura",
+        imagem: "assets/img/nausicaa.webp",
+        nota: "4.7",
+      },
+      {
+        titulo: "O Castelo no Céu",
+        ano: "1986",
+        genero: "Aventura, Fantasia",
+        imagem: "assets/img/castelo-ceu.webp",
+        nota: "4.8",
+      },
+    ],
+
+    fantasia: [
+      {
+        titulo: "O Reino dos Gatos",
+        ano: "2002",
+        genero: "Fantasia, Aventura",
+        imagem: "assets/img/reino-dos-gatos.webp",
+        nota: "4.6",
+      },
+      {
+        titulo: "Ponyo",
+        ano: "2008",
+        genero: "Fantasia, Família",
+        imagem: "assets/img/ponyo.webp",
+        nota: "4.7",
+      },
+      {
+        titulo: "O Conto da Princesa Kaguya",
+        ano: "2013",
+        genero: "Fantasia, Drama",
+        imagem: "assets/img/princesa-kaguya.webp",
+        nota: "4.8",
+      },
+      {
+        titulo: "O Castelo no Céu",
+        ano: "1986",
+        genero: "Fantasia, Aventura",
+        imagem: "assets/img/castelo-ceu.webp",
+        nota: "4.8",
+      },
+    ],
+
+    romance: [
+      {
+        titulo: "Sussurros do Coração",
+        ano: "1995",
+        genero: "Romance, Drama",
+        imagem: "assets/img/sussurros-do-coracao.webp",
+        nota: "4.8",
+      },
+      {
+        titulo: "Da Colina Kokuriko",
+        ano: "2011",
+        genero: "Romance, Drama",
+        imagem: "assets/img/colina-kokuriko.webp",
+        nota: "4.6",
+      },
+      {
+        titulo: "O Vento se Levanta",
+        ano: "2013",
+        genero: "Romance, Drama",
+        imagem: "assets/img/vento-se-levanta.webp",
+        nota: "4.7",
+      },
+      {
+        titulo: "Memórias de Ontem",
+        ano: "1991",
+        genero: "Romance, Drama",
+        imagem: "assets/img/memorias-de-ontem.webp",
+        nota: "4.7",
+      },
+    ],
+
+    infantil: [
+      {
+        titulo: "Ponyo",
+        ano: "2008",
+        genero: "Fantasia, Família",
+        imagem: "assets/img/ponyo.webp",
+        nota: "4.7",
+      },
+      {
+        titulo: "Meus Vizinhos os Yamadas",
+        ano: "1999",
+        genero: "Comédia, Família",
+        imagem: "assets/img/yamadas.webp",
+        nota: "4.5",
+      },
+      {
+        titulo: "O Reino dos Gatos",
+        ano: "2002",
+        genero: "Fantasia, Família",
+        imagem: "assets/img/reino-dos-gatos.webp",
+        nota: "4.6",
+      },
+      {
+        titulo: "Arrietty",
+        ano: "2010",
+        genero: "Fantasia, Família",
+        imagem: "assets/img/arrietty.webp",
+        nota: "4.7",
+      },
+    ],
+  };
+
+  const listaCategorias = document.querySelector(
+    ".secao_categorias .lista_categorias",
   );
 
-  if (cardsCategorias.length) {
+  const filtrosCategorias = document.querySelectorAll(
+    ".secao_categorias .filtro_categoria",
+  );
+
+  function criarCardCategoria(filme) {
+    return `
+    <article class="card">
+      <div class="card-image">
+        <img
+          src="${filme.imagem}"
+          alt="${filme.titulo}"
+          loading="lazy"
+          decoding="async"
+        >
+
+        <div class="card-rating">
+          <span>★</span>
+          ${filme.nota}
+        </div>
+
+        <div class="card-overlay">
+          <button class="watch-button">
+            <span>✦</span>
+            Sobre o filme
+          </button>
+        </div>
+      </div>
+
+      <div class="info_card">
+        <h3>${filme.titulo}</h3>
+
+        <div class="movie-details">
+          <p>${filme.ano} • ${filme.genero}</p>
+
+          <button
+            class="heart-button"
+            aria-label="Favoritar ${filme.titulo}"
+          >
+            <img
+              src="assets/img/boxicons_heart.svg"
+              alt=""
+              loading="lazy"
+            >
+          </button>
+        </div>
+
+        <div class="card-line"></div>
+
+        <div class="card-footer">
+          <span class="quality">HD</span>
+
+          <button class="watch-link">
+            Assistir agora
+          </button>
+        </div>
+      </div>
+    </article>
+  `;
+  }
+
+  function mostrarCategoria(categoria) {
+    if (!listaCategorias) return;
+
+    const filmes = filmesCategorias[categoria];
+
+    if (!filmes) return;
+
+    gsap.killTweensOf(listaCategorias.querySelectorAll(".card"));
+
+    listaCategorias.innerHTML = filmes.map(criarCardCategoria).join("");
+
+    const novosCards = listaCategorias.querySelectorAll(".card");
+
     gsap.fromTo(
-      cardsCategorias,
+      novosCards,
       {
         opacity: 0,
-        y: 50,
+        y: 30,
         filter: "blur(10px)",
       },
       {
@@ -519,8 +717,9 @@ function iniciarAnimacoes() {
         y: 0,
         filter: "blur(0px)",
         duration: 0.8,
-        stagger: 0.13,
-        ease: "power1.out",
+        stagger: 0.08,
+        ease: "power2.out",
+        clearProps: "transform,opacity,filter",
         scrollTrigger: {
           trigger: ".secao_categorias .lista_categorias",
           start: "top 80%",
@@ -528,61 +727,65 @@ function iniciarAnimacoes() {
         },
       },
     );
+
+    if (typeof ativarFavoritos === "function") {
+      ativarFavoritos();
+    }
   }
 
-  if (listaCategorias && filtrosCategorias.length) {
-    filtrosCategorias.forEach((botao) => {
-      botao.addEventListener("click", () => {
-        if (botao.classList.contains("ativo")) {
-          return;
-        }
+  if (listaCategorias) {
+    mostrarCategoria("aventura");
+  }
 
-        const categoria = botao.dataset.categoria;
+  filtrosCategorias.forEach((botao) => {
+    botao.addEventListener("click", () => {
+      if (botao.classList.contains("ativo")) return;
 
-        filtrosCategorias.forEach((item) => {
-          item.classList.remove("ativo");
-        });
+      const categoria = botao.dataset.categoria;
 
-        botao.classList.add("ativo");
+      filtrosCategorias.forEach((item) => {
+        item.classList.remove("ativo");
+      });
 
-        const cardsAtuais = listaCategorias.querySelectorAll(".card");
+      botao.classList.add("ativo");
 
-        gsap.killTweensOf(cardsAtuais);
+      const cardsAtuais = listaCategorias
+        ? listaCategorias.querySelectorAll(".card")
+        : [];
 
-        gsap.to(cardsAtuais, {
-          opacity: 0,
-          y: -15,
-          duration: 0.25,
-          ease: "power1.out",
-          onComplete: () => {
-            mostrarCategoria(categoria);
-          },
-        });
+      gsap.to(cardsAtuais, {
+        opacity: 0,
+        y: -15,
+        duration: 0.2,
+        ease: "power1.out",
+        onComplete: () => {
+          mostrarCategoria(categoria);
+        },
       });
     });
-  }
+  });
 }
 
 const personagens = [
   {
     nome: "San",
-    imagem: "assets/img/san.png",
+    imagem: "assets/img/san.webp",
   },
   {
     nome: "Totoro",
-    imagem: "assets/img/totorop.png",
+    imagem: "assets/img/totorop.webp",
   },
   {
     nome: "Chihiro",
-    imagem: "assets/img/chihiro.png",
+    imagem: "assets/img/chihiro.webp",
   },
   {
     nome: "Sophie",
-    imagem: "assets/img/sophie.png",
+    imagem: "assets/img/sophie.webp",
   },
   {
     nome: "Kiki",
-    imagem: "assets/img/kiki.png",
+    imagem: "assets/img/kiki.webp",
   },
 ];
 
