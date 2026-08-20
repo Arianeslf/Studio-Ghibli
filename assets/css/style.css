@@ -4615,3 +4615,139 @@ header {
     }
   }
 }
+
+/* =====================================================
+   CORREÇÃO — SCROLL HORIZONTAL
+===================================================== */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+}
+
+/* Impede elementos internos de criarem largura extra */
+#smooth-wrapper,
+#smooth-content,
+main,
+section,
+header,
+footer {
+  max-width: 100%;
+}
+
+/* HERO */
+.hero_bg {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.hero_bg .hero_img {
+  max-width: 100%;
+}
+
+@media (max-width: 480px) {
+  .hero_bg .bg_transparent .hero_flex .hero_img {
+    right: 0;
+  }
+}
+
+/* CARDS */
+.lista_filmes,
+.lista_categorias,
+.lista_musicas {
+  max-width: 100%;
+}
+
+/* PERSONAGENS */
+.area_personagens {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.carrossel_personagens {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.lista_personagens {
+  max-width: 100%;
+}
+
+/* MÚSICAS */
+.secao_musicas {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Pseudo-elementos das músicas não podem gerar largura */
+.secao_musicas::before,
+.secao_musicas::after,
+.secao_musicas .fundo_transicao_musicas {
+  max-width: 100vw;
+}
+
+/* SEÇÃO FINAL */
+.secao_final {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.secao_final .conteudo_final {
+  max-width: 100%;
+}
+
+/* O nowrap pode estourar a tela em celulares */
+@media (max-width: 768px) {
+  .secao_final .conteudo_final h2 {
+    white-space: normal;
+    max-width: 100%;
+  }
+}
+
+/* FOOTER */
+.footer {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* As folhas estão propositalmente para fora,
+   mas não podem criar scroll da página */
+.footer .folha-esquerda,
+.footer .folha-direita {
+  max-width: none;
+}
+
+/* HEADER */
+header {
+  max-width: 100%;
+  overflow: visible;
+}
+
+header .navigation {
+  max-width: 100%;
+}
+
+/* Evita que o campo de pesquisa aumente além da tela */
+@media (max-width: 480px) {
+  header .icon {
+    min-width: 0;
+  }
+
+  header .icon .search-box {
+    min-width: 0;
+  }
+
+  header .icon .search-box input {
+    max-width: 45vw;
+  }
+}
