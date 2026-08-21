@@ -67,67 +67,71 @@ function iniciarAnimacoes() {
     effects: true,
   });
 
-  const tituloHero = document.querySelector(".hero_info h1");
+  const telasGrandes = window.matchMedia("(min-width: 769px)").matches;
 
-  if (tituloHero) {
-    const splitTitulo = SplitText.create(tituloHero, {
-      type: "chars",
-    });
+  if (telasGrandes) {
+    const tituloHero = document.querySelector(".hero_info h1");
 
-    gsap.set(splitTitulo.chars, {
-      opacity: 0,
-      y: 25,
-      filter: "blur(5px)",
-    });
+    if (tituloHero) {
+      const splitTitulo = SplitText.create(tituloHero, {
+        type: "chars",
+      });
 
-    const heroTimeline = gsap.timeline({
-      delay: 0.15,
-    });
+      gsap.set(splitTitulo.chars, {
+        opacity: 0,
+        y: 25,
+        filter: "blur(5px)",
+      });
 
-    heroTimeline.to(splitTitulo.chars, {
-      opacity: 1,
-      y: 0,
-      filter: "blur(0px)",
-      duration: 0.55,
-      stagger: 0.045,
-      ease: "power3.out",
-    });
+      const heroTimeline = gsap.timeline({
+        delay: 0.15,
+      });
 
-    heroTimeline.to(
-      splitTitulo.chars,
-      {
-        textShadow:
-          "0 0 8px rgba(255,255,255,.55), 0 0 18px rgba(255,235,190,.25)",
-        duration: 0.25,
+      heroTimeline.to(splitTitulo.chars, {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 0.55,
         stagger: 0.045,
-        ease: "power2.out",
-      },
-      "-=0.35",
-    );
+        ease: "power3.out",
+      });
 
-    heroTimeline.to(splitTitulo.chars, {
-      textShadow: "none",
-      duration: 0.5,
-      stagger: 0.035,
+      heroTimeline.to(
+        splitTitulo.chars,
+        {
+          textShadow:
+            "0 0 8px rgba(255,255,255,.55), 0 0 18px rgba(255,235,190,.25)",
+          duration: 0.25,
+          stagger: 0.045,
+          ease: "power2.out",
+        },
+        "-=0.35",
+      );
+
+      heroTimeline.to(splitTitulo.chars, {
+        textShadow: "none",
+        duration: 0.5,
+        stagger: 0.035,
+        ease: "power2.out",
+      });
+    }
+
+    gsap.from(".recorte", {
+      y: 60,
+      opacity: 0,
+      duration: 0.8,
       ease: "power2.out",
+      clearProps: "transform,opacity",
+    });
+
+    gsap.from(".fundo", {
+      y: -65,
+      opacity: 0.9,
+      duration: 0.8,
+      ease: "power2.out",
+      clearProps: "transform,opacity",
     });
   }
-
-  gsap.from(".recorte", {
-    y: 60,
-    opacity: 0,
-    duration: 0.8,
-    ease: "power2.out",
-    clearProps: "transform,opacity",
-  });
-
-  gsap.from(".fundo", {
-    y: -65,
-    opacity: 0.9,
-    duration: 0.8,
-    ease: "power2.out",
-    clearProps: "transform,opacity",
-  });
 
   gsap.fromTo(
     ".filme_bg .lista_filmes .card",
