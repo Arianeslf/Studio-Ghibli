@@ -2192,26 +2192,20 @@ header {
 }
 
 /* seção - categorias */
-
 .secao_categorias {
   width: 100%;
-
   padding: 6px 0 110px;
-
   background: #000;
 
   .topo_da_secao {
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 6vw 0 4vw;
 
     h2 {
       margin-bottom: 15px;
-
       color: #fff8e8;
-
       font-size: 3.5rem;
 
       span {
@@ -2221,21 +2215,18 @@ header {
 
     p {
       color: #d6c8b8;
-
       font-size: 1.6rem;
     }
 
     button {
       display: inline-flex;
       align-items: center;
-
       gap: 10px;
 
       background: transparent;
       color: #d6c8b8;
 
       border: none;
-
       cursor: pointer;
 
       font-family: "Nunito", sans-serif;
@@ -2289,7 +2280,6 @@ header {
 
       &:hover {
         color: #fff8e8;
-
         border-color: #57534e;
 
         transform: translateY(-2px);
@@ -2367,6 +2357,7 @@ header {
           z-index: 5;
 
           display: flex;
+
           align-items: center;
 
           gap: 4px;
@@ -2392,9 +2383,11 @@ header {
 
         .card-overlay {
           position: absolute;
+
           inset: 0;
 
           display: flex;
+
           align-items: center;
           justify-content: center;
 
@@ -2406,6 +2399,7 @@ header {
 
           .watch-button {
             display: flex;
+
             align-items: center;
             justify-content: center;
 
@@ -2460,6 +2454,7 @@ header {
 
         .movie-details {
           display: flex;
+
           align-items: center;
           justify-content: space-between;
 
@@ -2481,6 +2476,7 @@ header {
             flex-shrink: 0;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
@@ -2527,6 +2523,7 @@ header {
 
         .card-footer {
           display: flex;
+
           align-items: center;
           justify-content: space-between;
 
@@ -2534,6 +2531,7 @@ header {
             padding: 3px 7px;
 
             border: 1px solid #57534e;
+
             border-radius: 5px;
 
             color: #d6c8b8;
@@ -2544,6 +2542,7 @@ header {
 
           .watch-link {
             display: flex;
+
             align-items: center;
 
             gap: 6px;
@@ -2551,6 +2550,7 @@ header {
             padding: 0;
 
             background: transparent;
+
             color: #f4c542;
 
             border: 0;
@@ -2570,6 +2570,7 @@ header {
             &::before,
             &::after {
               content: none !important;
+
               display: none !important;
             }
 
@@ -2608,45 +2609,112 @@ header {
       }
     }
   }
-}
 
-/* categorias - resposivo */
+  /* =====================================================
+     RESPONSIVO
+     ===================================================== */
 
-@media (max-width: 900px) {
-  .secao_categorias {
-    padding: 75px 24px;
+  @media (max-width: 1024px) {
+    padding: 75px 0 100px;
 
-    .lista_categorias {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-
-      max-width: 600px;
-
-      margin-inline: auto;
-      margin-top: 30px;
-    }
-  }
-}
-
-@media (max-width: 600px) {
-  .secao_categorias {
-    padding: 65px 18px;
+    box-shadow:
+      0 -50px 125px 95px rgba(0, 0, 0, 0.86),
+      0 -23px 55px 45px rgba(0, 0, 0, 0.96);
 
     .topo_da_secao {
-      .text {
-        h2 {
-          font-size: 1.8rem;
-        }
+      padding: 4rem 0 3rem;
 
-        p {
-          font-size: 0.75rem;
+      h2 {
+        margin-bottom: 10px;
+
+        font-size: 2.8rem;
+      }
+
+      p {
+        font-size: 1.25rem;
+      }
+
+      button {
+        gap: 8px;
+
+        font-size: 0.9rem;
+
+        img {
+          width: 16px;
+          height: 16px;
         }
       }
     }
 
     .filtros_categorias {
+      gap: 8px;
+
+      .filtro_categoria {
+        min-width: 95px;
+
+        padding: 8px 16px;
+
+        font-size: 0.82rem;
+      }
+    }
+
+    .lista_categorias {
+      grid-template-columns: repeat(2, minmax(240px, 280px));
+
+      justify-content: center;
+
+      gap: 24px;
+
+      margin-top: 30px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 65px 0 90px;
+
+    box-shadow:
+      0 -45px 110px 80px rgba(0, 0, 0, 0.82),
+      0 -22px 50px 40px rgba(0, 0, 0, 0.94);
+
+    .topo_da_secao {
+      flex-direction: column;
+
+      align-items: flex-start;
+
+      gap: 1.2rem;
+
+      padding: 3.5rem 0 2.5rem;
+
+      h2 {
+        margin-bottom: 8px;
+
+        font-size: 2.5rem;
+
+        line-height: 1;
+      }
+
+      p {
+        font-size: 1.1rem;
+
+        line-height: 1.3;
+      }
+
+      button {
+        font-size: 0.85rem;
+
+        img {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
+
+    .filtros_categorias {
+      width: 100%;
+
       display: grid;
 
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
 
       gap: 8px;
 
@@ -2654,15 +2722,80 @@ header {
         width: 100%;
 
         min-width: 0;
+
+        padding: 9px 14px;
+
+        font-size: 0.82rem;
       }
     }
 
     .lista_categorias {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(210px, 250px));
 
-      width: min(280px, 100%);
+      justify-content: center;
 
-      margin-inline: auto;
+      gap: 20px;
+
+      margin-top: 30px;
+    }
+  }
+
+  @media (max-width: 468px) {
+    padding: 55px 18px 80px;
+
+    box-shadow:
+      0 -40px 95px 65px rgba(0, 0, 0, 0.78),
+      0 -20px 45px 35px rgba(0, 0, 0, 0.9);
+
+    .topo_da_secao {
+      gap: 1rem;
+
+      padding: 3rem 0 2rem;
+
+      h2 {
+        font-size: 2.1rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      button {
+        gap: 6px;
+
+        font-size: 0.8rem;
+
+        img {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+
+    .filtros_categorias {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+
+      gap: 8px;
+
+      .filtro_categoria {
+        width: 100%;
+
+        min-width: 0;
+
+        padding: 9px 10px;
+
+        font-size: 0.78rem;
+      }
+    }
+
+    .lista_categorias {
+      grid-template-columns: minmax(240px, 280px);
+
+      justify-content: center;
+
+      gap: 18px;
+
+      margin-top: 28px;
 
       .card {
         .info_card {
