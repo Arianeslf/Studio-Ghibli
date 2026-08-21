@@ -189,30 +189,41 @@ img {
 
 header {
   position: absolute;
+
   top: 0;
+
   left: 0;
+
   width: 100%;
+
   z-index: 10;
 
   .navigation {
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
     padding: 20px 0;
 
     font-weight: bold;
+
     color: #fff8e8;
 
     .logo {
       color: #fff8e8;
+
       font-size: 2rem;
+
       font-weight: bold;
+
       cursor: pointer;
     }
 
     h1 {
       font-size: 2rem;
+
       cursor: pointer;
     }
 
@@ -227,6 +238,7 @@ header {
 
       &:hover {
         color: #f4c542;
+
         border-bottom: 3px solid #f4c542;
       }
     }
@@ -234,33 +246,43 @@ header {
 
   .menu {
     display: flex;
+
     align-items: center;
+
     gap: 20px;
   }
 
   .icon {
     display: flex;
+
     align-items: center;
+
     gap: 30px;
 
     .search-box {
       display: flex;
+
       align-items: center;
+
       justify-content: flex-end;
+
       gap: 10px;
 
       input {
         width: 0;
+
         padding: 0;
 
         opacity: 0;
 
         border: 1.5px solid transparent;
+
         outline: none;
 
         pointer-events: none;
 
         background: rgba(8, 48, 64, 0.82);
+
         backdrop-filter: blur(10px);
 
         color: #fff8e8;
@@ -268,6 +290,7 @@ header {
         border-radius: 999px;
 
         font-family: "Nunito", sans-serif;
+
         font-size: 0.95rem;
 
         transition:
@@ -279,6 +302,7 @@ header {
 
       input::-webkit-search-cancel-button {
         cursor: pointer;
+
         opacity: 0.9;
 
         filter: invert(86%) sepia(18%) saturate(765%) hue-rotate(155deg)
@@ -291,15 +315,18 @@ header {
 
       img {
         cursor: pointer;
+
         flex-shrink: 0;
       }
 
       &:hover input,
       &:focus-within input {
         width: 220px;
+
         padding: 8px 18px;
 
         opacity: 1;
+
         pointer-events: auto;
       }
     }
@@ -312,23 +339,28 @@ header {
       display: none;
 
       width: 34px;
+
       height: 34px;
 
       padding: 0;
 
       background: transparent;
+
       border: 0;
 
       cursor: pointer;
 
       flex-direction: column;
+
       justify-content: center;
+
       gap: 5px;
 
       span {
         display: block;
 
         width: 24px;
+
         height: 2px;
 
         border-radius: 999px;
@@ -353,117 +385,308 @@ header {
       }
     }
   }
-}
 
+  /* =====================================================
+     RESPONSIVO — TABLET / NOTEBOOK
+  ===================================================== */
 
-/* =========================================================
-   RESPONSIVIDADE HEADER
-========================================================= */
+  @media (max-width: 1000px) {
+    .navigation {
+      position: relative;
 
-header {
-  .navigation {
-    padding-inline: clamp(18px, 5vw, 70px);
-    padding-block: clamp(16px, 2vw, 25px);
+      padding: 2vw 3vw;
 
-    .logo,
-    h1 {
-      font-size: clamp(1.5rem, 3vw, 2rem);
-    }
+      .logo {
+        font-size: 3vw;
+      }
 
-    ul {
-      display: flex;
-      align-items: center;
-      gap: clamp(15px, 2vw, 35px);
+      /*
+        O HTML possui:
 
-      li a {
-        font-size: clamp(0.95rem, 1.4vw, 1.125rem);
-        padding: 8px;
+        nav.nav-menu
+          ul.menu
+            li
+              a
+
+        Por isso o flex-direction precisa ser aplicado
+        no .menu, e não somente no .nav-menu.
+      */
+
+      .nav-menu {
+        position: absolute;
+
+        top: calc(100% + 12px);
+
+        right: 0;
+
+        width: min(280px, 80vw);
+
+        padding: 10px;
+
+        background: rgba(8, 48, 64, 0.96);
+
+        backdrop-filter: blur(12px);
+
+        border: 1px solid rgba(255, 248, 232, 0.12);
+
+        border-radius: 14px;
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+
+        transform: translateY(-10px);
+
+        transition:
+          opacity 0.3s ease,
+          visibility 0.3s ease,
+          transform 0.3s ease;
+
+        .menu {
+          width: 100%;
+
+          margin: 0;
+
+          padding: 0;
+
+          display: flex;
+
+          flex-direction: column;
+
+          align-items: stretch;
+
+          gap: 2px;
+
+          list-style: none;
+
+          li {
+            width: 100%;
+
+            display: block;
+
+            a {
+              display: block;
+
+              width: 100%;
+
+              box-sizing: border-box;
+
+              padding: 12px 14px;
+
+              font-size: 1rem;
+
+              text-align: left;
+
+              border-bottom: none;
+
+              border-radius: 8px;
+
+              &:hover {
+                border-bottom: none;
+
+                background: rgba(244, 197, 66, 0.08);
+              }
+            }
+          }
+        }
+
+        &.active {
+          opacity: 1;
+
+          visibility: visible;
+
+          pointer-events: auto;
+
+          transform: translateY(0);
+        }
       }
     }
 
     .icon {
-      gap: clamp(15px, 2vw, 30px);
-
-      .search-box {
-        &:hover input,
-        &:focus-within input {
-          width: clamp(150px, 18vw, 220px);
-        }
-      }
-    }
-  }
-
-  /* tablets */
-  @media (max-width: 900px) {
-    .navigation {
-      ul {
-        gap: 10px;
-
-        li a {
-          font-size: 1rem;
-        }
-      }
-
-      .icon {
-        gap: 15px;
-      }
-    }
-  }
-
-  /* celular */
-  @media (max-width: 768px) {
-    .navigation {
-      padding-inline: 5vw;
-
-      .menu {
-        position: relative;
-      }
-
-      ul {
-        display: none;
-      }
+      gap: 15px;
 
       .menu-toggle {
         display: flex;
       }
 
-      .icon {
-        .search-box {
-          input {
-            &:hover,
-            &:focus {
-              width: 160px;
+      /*
+        A pesquisa só muda de posição
+        nas telas menores.
+      */
+
+      .search-box {
+        position: relative;
+
+        input {
+          position: absolute;
+
+          top: calc(100% + 12px);
+
+          right: 0;
+
+          z-index: 30;
+        }
+
+        &:hover input,
+        &:focus-within input {
+          width: 210px;
+
+          padding: 8px 16px;
+        }
+      }
+    }
+  }
+
+  /* =====================================================
+     RESPONSIVO — CELULAR
+  ===================================================== */
+
+  @media (max-width: 600px) {
+    .navigation {
+      padding: 3vw 4vw;
+
+      .logo {
+        font-size: 4vw;
+      }
+
+      .nav-menu {
+        top: calc(100% + 8px);
+
+        right: 0;
+
+        width: min(280px, 82vw);
+
+        padding: 8px;
+
+        .menu {
+          display: flex;
+
+          flex-direction: column;
+
+          align-items: stretch;
+
+          gap: 2px;
+
+          li {
+            width: 100%;
+
+            a {
+              padding: 12px 14px;
+
+              font-size: 0.95rem;
             }
           }
         }
       }
     }
-  }
 
-  /* celulares menores */
-  @media (max-width: 480px) {
-    .navigation {
-      padding-inline: 4vw;
+    .menu {
+      gap: 10px;
+    }
 
-      .logo,
-      h1 {
-        font-size: clamp(1.35rem, 6vw, 1.6rem);
+    .icon {
+      gap: 10px;
+
+      .search-box {
+        position: relative;
+
+        input {
+          top: calc(100% + 10px);
+
+          right: 0;
+
+          max-width: 70vw;
+        }
+
+        &:hover input,
+        &:focus-within input {
+          width: min(210px, 70vw);
+
+          padding: 8px 14px;
+        }
       }
 
-      .icon {
-        gap: 12px;
+      .menu-toggle {
+        width: 30px;
 
-        .search-box {
-          &:hover input,
-          &:focus-within input {
-            width: 130px;
-            padding-inline: 12px;
+        height: 30px;
+
+        span {
+          width: 22px;
+        }
+      }
+    }
+  }
+
+  /* =====================================================
+     RESPONSIVO — CELULAR PEQUENO
+  ===================================================== */
+
+  @media (max-width: 400px) {
+    .navigation {
+      padding: 3.5vw 4vw;
+
+      .logo {
+        font-size: 3.8vw;
+      }
+
+      .nav-menu {
+        right: 0;
+
+        width: 82vw;
+
+        padding: 7px;
+
+        .menu {
+          flex-direction: column;
+
+          gap: 1px;
+
+          li {
+            width: 100%;
+
+            a {
+              padding: 10px 12px;
+
+              font-size: 0.9rem;
+            }
           }
+        }
+      }
+    }
+
+    .icon {
+      .search-box {
+        input {
+          right: 0;
+
+          max-width: 68vw;
+        }
+
+        &:hover input,
+        &:focus-within input {
+          width: 68vw;
+        }
+      }
+
+      .menu-toggle {
+        width: 28px;
+
+        height: 28px;
+
+        span {
+          width: 20px;
         }
       }
     }
   }
 }
+
+/* =========================================================
+   RESPONSIVIDADE HEADER
+========================================================= */
 
 /* hero */
 
