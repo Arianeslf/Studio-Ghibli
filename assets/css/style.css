@@ -2816,41 +2816,29 @@ header {
 
 .secao_personagens {
   position: relative;
-
   width: 100%;
-
   overflow: hidden;
-
   background: #000;
 
   .cabecalho_personagens {
     position: relative;
-
     z-index: 5;
-
     padding: 5vw 0 1vw;
-
     background: #000;
-
     text-align: center;
 
     h2 {
       margin: 0 0 12px;
-
       color: #fff8e8;
-
       font-family: "Cormorant Garamond", serif;
       font-size: 3.5rem;
       font-weight: 700;
-
       line-height: 1;
     }
 
     p {
       margin: 20px 0 40px;
-
       color: #e7d8aa;
-
       font-family: "Cormorant Garamond", serif;
       font-size: 1.6rem;
       font-weight: 500;
@@ -2859,30 +2847,22 @@ header {
 
   .area_personagens {
     position: relative;
-
     min-height: 840px;
-
     overflow: hidden;
 
     .fundo_personagens {
       position: absolute;
       inset: 0;
-
       background: url("../img/fundo-personagens.webp") center / cover no-repeat;
 
       &::before {
         content: "";
-
         position: absolute;
-
         top: 0;
         left: 0;
-
         z-index: 2;
-
         width: 100%;
         height: 290px;
-
         background: linear-gradient(
           to bottom,
           rgba(0, 0, 0, 1) 0%,
@@ -2891,20 +2871,15 @@ header {
           rgba(0, 0, 0, 0.35) 60%,
           rgba(0, 0, 0, 0) 100%
         );
-
         pointer-events: none;
       }
     }
 
     .conteudo_personagens {
       position: relative;
-
       z-index: 3;
-
       width: 100%;
-
       padding-top: 7vw;
-
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -2912,53 +2887,39 @@ header {
       .nome_personagem {
         display: inline-flex;
         align-items: center;
-
         gap: 18px;
-
         color: #fff;
-
         font-family: "Cormorant Garamond", serif;
         font-size: 2.7rem;
         font-weight: 600;
-
         letter-spacing: 0.04em;
-
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 
         &::before,
         &::after {
           content: "";
-
           width: 35px;
           height: 1px;
-
           background: rgba(255, 255, 255, 0.7);
         }
       }
 
       .conhecer_personagem {
+        position: relative;
+        z-index: 10;
         display: inline-flex;
         align-items: center;
-
         gap: 12px;
-
         margin-top: 35px;
-
         padding: 11px 20px;
-
         background: rgba(255, 255, 255, 0.15);
-
         border: 1px solid rgba(80, 65, 45, 0.35);
         border-radius: 50px;
-
         color: #2f2a24;
-
         font-family: "Manrope", sans-serif;
         font-size: 1.1rem;
         font-weight: 600;
-
         cursor: pointer;
-
         transition:
           color 0.3s ease,
           border-color 0.3s ease,
@@ -2971,11 +2932,8 @@ header {
 
         &:hover {
           color: #6d583c;
-
           border-color: #8a6f47;
-
           background: rgba(200, 184, 154, 0.18);
-
           transform: translateY(-2px);
 
           span {
@@ -2985,51 +2943,37 @@ header {
 
         &:focus-visible {
           outline: 3px solid rgba(138, 111, 71, 0.5);
-
           outline-offset: 4px;
         }
       }
 
       .carrossel_personagens {
         position: relative;
-
+        z-index: 4;
         width: min(1250px, 96%);
-
         margin-top: 120px;
-
         display: flex;
         align-items: center;
         justify-content: center;
 
         .seta_personagem {
           position: absolute;
-
           top: 10%;
-
           z-index: 20;
-
           width: 42px;
           height: 42px;
-
           display: flex;
           align-items: center;
           justify-content: center;
-
           border: 2px solid rgb(32, 32, 28);
           border-radius: 50%;
-
           background: #fff8e8;
           color: #15120d;
-
           font-size: 1.2rem;
           font-weight: bold;
-
           cursor: pointer;
-
           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
           transform: translateY(-50%);
-
           transition:
             transform 0.3s ease,
             background 0.3s ease,
@@ -3037,9 +2981,7 @@ header {
 
           &:hover {
             background: #f4c542;
-
             transform: translateY(-50%) scale(1.08);
-
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
           }
 
@@ -3058,69 +3000,46 @@ header {
 
         .lista_personagens {
           width: min(1080px, 91%);
-
           min-height: 410px;
-
           display: flex;
           align-items: flex-end;
           justify-content: center;
-
           gap: clamp(2px, 0.7vw, 12px);
 
           .personagem {
             position: relative;
-
             width: clamp(170px, 18vw, 240px);
             height: 360px;
-
             flex-shrink: 0;
-
             display: flex;
             align-items: flex-end;
             justify-content: center;
-
             padding: 0;
-
             background: transparent;
-
             border: none;
-
             cursor: pointer;
-
             transform-origin: center bottom;
 
             &::after {
               content: "";
-
               position: absolute;
-
               left: 50%;
               bottom: 7px;
-
               z-index: -1;
-
               width: 70%;
               height: 23px;
-
               border-radius: 50%;
-
               background: rgba(0, 0, 0, 0.3);
-
               filter: blur(9px);
-
               transform: translateX(-50%);
             }
 
             img {
               width: 100%;
               height: 100%;
-
               display: block;
-
               object-fit: contain;
-
               object-position: center bottom;
-
               transition:
                 filter 0.5s ease,
                 opacity 0.45s ease,
@@ -3136,9 +3055,7 @@ header {
               &:hover {
                 img {
                   filter: grayscale(65%);
-
                   opacity: 1;
-
                   transform: translateY(-5px);
                 }
               }
@@ -3146,14 +3063,11 @@ header {
 
             &.selecionado {
               z-index: 10;
-
               cursor: default;
-
               transform: scale(1.4);
 
               img {
                 filter: grayscale(0%);
-
                 opacity: 1;
               }
             }
@@ -3162,12 +3076,12 @@ header {
       }
     }
   }
-}
 
-/* personagens - responsivo  */
+  /* =========================================
+     RESPONSIVO
+  ========================================= */
 
-@media (max-width: 1024px) {
-  .secao_personagens {
+  @media (max-width: 1024px) {
     .cabecalho_personagens {
       padding-top: 60px;
 
@@ -3191,7 +3105,13 @@ header {
         }
 
         .carrossel_personagens {
-          margin-top: 90px;
+          width: 96%;
+
+          /*
+            MAIS ESPAÇO ENTRE O BOTÃO E OS PERSONAGENS
+            para o selecionado não subir no texto
+          */
+          margin-top: 120px;
 
           .lista_personagens {
             width: 92%;
@@ -3206,21 +3126,24 @@ header {
             }
           }
 
+          .seta_personagem {
+            width: 40px;
+            height: 40px;
+          }
+
           .seta_personagem:first-child {
-            left: -5px;
+            left: 0;
           }
 
           .seta_personagem:last-child {
-            right: -5px;
+            right: 0;
           }
         }
       }
     }
   }
-}
 
-@media (max-width: 768px) {
-  .secao_personagens {
+  @media (max-width: 768px) {
     .cabecalho_personagens {
       padding: 50px 20px 10px;
 
@@ -3230,13 +3153,12 @@ header {
 
       p {
         margin: 15px 0 25px;
-
         font-size: 1.25rem;
       }
     }
 
     .area_personagens {
-      min-height: 620px;
+      min-height: 650px;
 
       .fundo_personagens {
         background-position: center;
@@ -3247,7 +3169,6 @@ header {
 
         .nome_personagem {
           font-size: 2.2rem;
-
           gap: 12px;
 
           &::before,
@@ -3258,25 +3179,27 @@ header {
 
         .conhecer_personagem {
           margin-top: 25px;
-
           padding: 9px 17px;
-
           font-size: 0.95rem;
         }
 
         .carrossel_personagens {
+          /*
+            AQUI ESTÁ A PRINCIPAL CORREÇÃO
+            Antes estava 70px.
+            O personagem selecionado escala para cima,
+            então precisamos deixar uma distância maior.
+          */
           width: 100%;
-
-          margin-top: 70px;
+          margin-top: 125px;
+          padding: 0 8px;
+          box-sizing: border-box;
 
           .lista_personagens {
-            width: 90%;
-
+            width: calc(100% - 70px);
             min-height: 330px;
-
             gap: 0;
-
-            overflow: hidden;
+            overflow: visible;
 
             .personagem {
               width: 170px;
@@ -3289,27 +3212,25 @@ header {
           }
 
           .seta_personagem {
+            top: 50%;
             width: 38px;
             height: 38px;
-
             font-size: 1rem;
           }
 
           .seta_personagem:first-child {
-            left: 5px;
+            left: 8px;
           }
 
           .seta_personagem:last-child {
-            right: 5px;
+            right: 8px;
           }
         }
       }
     }
   }
-}
 
-@media (max-width: 600px) {
-  .secao_personagens {
+  @media (max-width: 600px) {
     .cabecalho_personagens {
       padding: 45px 18px 5px;
 
@@ -3319,13 +3240,12 @@ header {
 
       p {
         margin: 12px 0 20px;
-
         font-size: 1.05rem;
       }
     }
 
     .area_personagens {
-      min-height: 560px;
+      min-height: 600px;
 
       .fundo_personagens {
         background-position: center;
@@ -3336,7 +3256,6 @@ header {
 
         .nome_personagem {
           font-size: 1.9rem;
-
           gap: 10px;
 
           &::before,
@@ -3347,19 +3266,22 @@ header {
 
         .conhecer_personagem {
           margin-top: 20px;
-
           padding: 8px 15px;
-
           font-size: 0.85rem;
         }
 
         .carrossel_personagens {
-          margin-top: 55px;
+          /*
+            Mais espaço para a Chihiro não encostar
+            no botão.
+          */
+          margin-top: 105px;
 
           .lista_personagens {
-            width: 85%;
-
+            width: calc(100% - 64px);
             min-height: 290px;
+            gap: 0;
+            overflow: visible;
 
             .personagem {
               width: 145px;
@@ -3372,10 +3294,80 @@ header {
           }
 
           .seta_personagem {
+            top: 50%;
             width: 35px;
             height: 35px;
-
             font-size: 0.9rem;
+          }
+
+          .seta_personagem:first-child {
+            left: 4px;
+          }
+
+          .seta_personagem:last-child {
+            right: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 468px) {
+    .cabecalho_personagens {
+      padding: 40px 16px 5px;
+
+      h2 {
+        font-size: 2.1rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+
+    .area_personagens {
+      min-height: 575px;
+
+      .conteudo_personagens {
+        padding-top: 40px;
+
+        .nome_personagem {
+          font-size: 1.75rem;
+          gap: 8px;
+
+          &::before,
+          &::after {
+            width: 16px;
+          }
+        }
+
+        .conhecer_personagem {
+          margin-top: 18px;
+          padding: 8px 14px;
+          font-size: 0.8rem;
+        }
+
+        .carrossel_personagens {
+          margin-top: 90px;
+
+          .lista_personagens {
+            width: calc(100% - 58px);
+            min-height: 270px;
+
+            .personagem {
+              width: 135px;
+              height: 245px;
+
+              &.selecionado {
+                transform: scale(1.16);
+              }
+            }
+          }
+
+          .seta_personagem {
+            width: 34px;
+            height: 34px;
+            font-size: 0.85rem;
           }
 
           .seta_personagem:first-child {
@@ -3389,54 +3381,78 @@ header {
       }
     }
   }
-}
 
-@media (max-width: 400px) {
-  .secao_personagens {
+  @media (max-width: 400px) {
     .cabecalho_personagens {
+      padding: 35px 14px 5px;
+
       h2 {
-        font-size: 2rem;
+        font-size: 1.95rem;
       }
 
       p {
-        font-size: 0.95rem;
+        font-size: 0.92rem;
       }
     }
 
     .area_personagens {
-      min-height: 510px;
+      min-height: 550px;
 
       .conteudo_personagens {
+        padding-top: 35px;
+
         .nome_personagem {
-          font-size: 1.7rem;
+          font-size: 1.65rem;
+          gap: 6px;
+
+          &::before,
+          &::after {
+            width: 13px;
+          }
+        }
+
+        .conhecer_personagem {
+          margin-top: 16px;
+          padding: 7px 13px;
+          font-size: 0.76rem;
         }
 
         .carrossel_personagens {
-          margin-top: 45px;
+          margin-top: 80px;
 
           .lista_personagens {
-            min-height: 260px;
+            width: calc(100% - 54px);
+            min-height: 250px;
 
             .personagem {
               width: 125px;
-              height: 230px;
+              height: 225px;
 
               &.selecionado {
-                transform: scale(1.15);
+                transform: scale(1.12);
               }
             }
           }
 
           .seta_personagem {
+            top: 50%;
             width: 32px;
             height: 32px;
+            font-size: 0.8rem;
+          }
+
+          .seta_personagem:first-child {
+            left: 1px;
+          }
+
+          .seta_personagem:last-child {
+            right: 1px;
           }
         }
       }
     }
   }
 }
-
 /* seção Musica */
 .secao_musicas {
   position: relative;
