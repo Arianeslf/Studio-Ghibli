@@ -3448,6 +3448,8 @@ header {
   }
 }
 
+/* falta arrumar aqui */
+
 /* seção Musica */
 .secao_musicas {
   position: relative;
@@ -5043,7 +5045,6 @@ footer {
 .footer {
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
 }
 
 /* As folhas estão propositalmente para fora,
