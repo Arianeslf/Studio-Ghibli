@@ -148,20 +148,12 @@ img {
     drop-shadow(0 0 10px rgba(255, 255, 255, 0.45));
 }
 
-/* =========================
-   RESPONSIVO MOBILE
-   ========================= */
-
 @media (max-width: 768px) {
   #preloader svg {
     width: 90vw;
     max-width: none;
   }
 }
-
-/* =========================
-   CELULARES PEQUENOS
-   ========================= */
 
 @media (max-width: 480px) {
   #preloader svg {
