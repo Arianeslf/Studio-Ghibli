@@ -35,15 +35,17 @@ function iniciarPreloader() {
   });
 
   if (path) {
+    // CONTORNO — mesma velocidade do exemplo
     timelinePreloader.to(path, {
       strokeDashoffset: 0,
-      duration: 2.5,
+      duration: 1,
       ease: "power2.inOut",
     });
 
+    // PREENCHIMENTO — mesma velocidade do exemplo
     timelinePreloader.to(path, {
       fill: "#ffffff",
-      duration: 0.7,
+      duration: 0.5,
       ease: "power2.out",
     });
   }
@@ -992,19 +994,28 @@ if (secaoMusicas) {
     },
   });
 
-  gsap.from(cardsMusicas, {
-    opacity: 0,
-    y: 35,
-    duration: 0.7,
-    stagger: 0.15,
-    ease: "power2.out",
-    clearProps: "transform",
-    scrollTrigger: {
-      trigger: ".lista_musicas",
-      start: "top 80%",
-      once: true,
+  gsap.fromTo(
+    cardsMusicas,
+    {
+      opacity: 0,
+      y: 30,
+      filter: "blur(10px)",
     },
-  });
+    {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      duration: 0.8,
+      stagger: 0.08,
+      ease: "power2.out",
+      clearProps: "transform,opacity,filter",
+      scrollTrigger: {
+        trigger: ".lista_musicas",
+        start: "top 80%",
+        once: true,
+      },
+    },
+  );
 }
 
 document.querySelectorAll(".card_musica").forEach((card) => {
