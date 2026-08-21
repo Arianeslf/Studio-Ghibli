@@ -355,6 +355,116 @@ header {
   }
 }
 
+
+/* =========================================================
+   RESPONSIVIDADE HEADER
+========================================================= */
+
+header {
+  .navigation {
+    padding-inline: clamp(18px, 5vw, 70px);
+    padding-block: clamp(16px, 2vw, 25px);
+
+    .logo,
+    h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      gap: clamp(15px, 2vw, 35px);
+
+      li a {
+        font-size: clamp(0.95rem, 1.4vw, 1.125rem);
+        padding: 8px;
+      }
+    }
+
+    .icon {
+      gap: clamp(15px, 2vw, 30px);
+
+      .search-box {
+        &:hover input,
+        &:focus-within input {
+          width: clamp(150px, 18vw, 220px);
+        }
+      }
+    }
+  }
+
+  /* tablets */
+  @media (max-width: 900px) {
+    .navigation {
+      ul {
+        gap: 10px;
+
+        li a {
+          font-size: 1rem;
+        }
+      }
+
+      .icon {
+        gap: 15px;
+      }
+    }
+  }
+
+  /* celular */
+  @media (max-width: 768px) {
+    .navigation {
+      padding-inline: 5vw;
+
+      .menu {
+        position: relative;
+      }
+
+      ul {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .icon {
+        .search-box {
+          input {
+            &:hover,
+            &:focus {
+              width: 160px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* celulares menores */
+  @media (max-width: 480px) {
+    .navigation {
+      padding-inline: 4vw;
+
+      .logo,
+      h1 {
+        font-size: clamp(1.35rem, 6vw, 1.6rem);
+      }
+
+      .icon {
+        gap: 12px;
+
+        .search-box {
+          &:hover input,
+          &:focus-within input {
+            width: 130px;
+            padding-inline: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
 /* hero */
 
 .hero_bg {
@@ -530,26 +640,6 @@ header {
     padding-inline: 24px;
   }
 
-  header {
-    .navigation {
-      .logo {
-        font-size: 1.65rem;
-      }
-
-      .menu {
-        gap: 8px;
-
-        a {
-          font-size: 1rem;
-        }
-      }
-
-      .icon {
-        gap: 18px;
-      }
-    }
-  }
-
   .hero_bg {
     img {
       object-fit: cover;
@@ -624,103 +714,6 @@ header {
 }
 
 @media (max-width: 768px) {
-  header {
-    .navigation {
-      position: relative;
-
-      padding: 16px 0;
-
-      .logo {
-        font-size: 1.45rem;
-        color: #fff8e8;
-      }
-
-      .nav-menu {
-        position: absolute;
-
-        top: 75px;
-        right: 0;
-
-        width: 230px;
-
-        padding: 12px;
-
-        background: rgba(8, 48, 64, 0.9);
-
-        backdrop-filter: blur(18px);
-
-        border: 1px solid rgba(255, 248, 232, 0.12);
-        border-radius: 14px;
-
-        opacity: 0;
-        visibility: hidden;
-
-        transform: translateY(-10px) scale(0.96);
-        transform-origin: top right;
-
-        transition: 0.3s ease;
-
-        .menu {
-          display: flex;
-          flex-direction: column;
-
-          gap: 4px;
-
-          li {
-            width: 100%;
-          }
-
-          a {
-            display: block;
-
-            width: 100%;
-
-            padding: 10px 12px;
-
-            color: #fff8e8;
-
-            font-size: 0.95rem;
-
-            border-radius: 8px;
-
-            transition: 0.25s ease;
-
-            &:hover {
-              padding-left: 17px;
-
-              color: #f4c542;
-
-              background: rgba(255, 248, 232, 0.06);
-
-              border-bottom: none;
-            }
-          }
-        }
-      }
-
-      .nav-menu.active {
-        opacity: 1;
-        visibility: visible;
-
-        transform: translateY(0) scale(1);
-      }
-
-      .menu-toggle {
-        display: flex;
-
-        width: 30px;
-        height: 30px;
-
-        span {
-          width: 22px;
-          height: 2.5px;
-
-          background: #fff8e8;
-        }
-      }
-    }
-  }
-
   .hero_bg {
     img {
       object-fit: cover;
@@ -812,34 +805,6 @@ header {
   .container {
     padding-inline: 18px;
   }
-
-  header {
-    .navigation {
-      .logo {
-        font-size: 1.2rem;
-      }
-
-      .icon {
-        gap: 14px;
-
-        .heart-header {
-          width: 24px;
-        }
-
-        .search-box {
-          > img {
-            width: 24px;
-          }
-
-          &:hover input,
-          &:focus-within input {
-            width: min(150px, 45vw);
-          }
-        }
-      }
-    }
-  }
-
   .hero_bg {
     img {
       object-fit: cover;
