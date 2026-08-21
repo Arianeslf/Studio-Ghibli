@@ -822,8 +822,6 @@ header {
      ========================================= */
 
   @media (max-width: 1024px) {
-    .fundo {
-    }
     .bg_transparent {
       .hero_flex {
         gap: clamp(1.5rem, 3vw, 2.5rem);
@@ -1084,6 +1082,21 @@ header {
           }
         }
       }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero_bg {
+      width: 100vw;
+      max-width: none;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+    }
+
+    .hero_bg .bg_transparent,
+    .hero_bg .hero_flex {
+      width: 100%;
+      max-width: none;
     }
   }
 }
