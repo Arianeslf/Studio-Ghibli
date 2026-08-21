@@ -29,22 +29,15 @@ img {
   padding: 0 15px;
 }
 
-/* =====================================================
-   PRELOADER — CÉU GHIBLI
-===================================================== */
-
 #preloader {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100vh;
-
   z-index: 99999;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   overflow: hidden;
 
   /* céu azul escuro */
@@ -69,16 +62,10 @@ img {
     linear-gradient(180deg, #315f7a 0%, #3b7695 45%, #4a88a8 100%);
 }
 
-/* =====================================================
-   NUVENS
-===================================================== */
-
 #preloader::before {
   content: "";
-
   position: absolute;
   inset: 0;
-
   pointer-events: none;
 
   background:
@@ -104,16 +91,10 @@ img {
   opacity: 0.9;
 }
 
-/* =====================================================
-   ESTRELAS / PARTÍCULAS
-===================================================== */
-
 #preloader::after {
   content: "";
-
   position: absolute;
   inset: 0;
-
   pointer-events: none;
 
   background-image:
@@ -146,36 +127,20 @@ img {
   opacity: 0.75;
 }
 
-/* =====================================================
-   SVG / LOGO
-===================================================== */
-
 #preloader svg {
   position: relative;
-
   z-index: 2;
-
   width: min(40vw, 520px);
   height: auto;
-
   display: block;
-
   background: transparent !important;
-
   overflow: visible;
 }
 
-/* =====================================================
-   DESENHO BRANCO
-===================================================== */
-
 #preloader path {
   fill: rgba(255, 255, 255, 0.08);
-
   stroke: #ffffff;
-
   stroke-width: 1.5;
-
   stroke-dasharray: 640;
   stroke-dashoffset: 640;
 
@@ -183,9 +148,29 @@ img {
     drop-shadow(0 0 10px rgba(255, 255, 255, 0.45));
 }
 
-/* =========================================================
-   HEADER
-========================================================= */
+/* =========================
+   RESPONSIVO MOBILE
+   ========================= */
+
+@media (max-width: 768px) {
+  #preloader svg {
+    width: 90vw;
+    max-width: none;
+  }
+}
+
+/* =========================
+   CELULARES PEQUENOS
+   ========================= */
+
+@media (max-width: 480px) {
+  #preloader svg {
+    width: 92vw;
+    max-width: none;
+  }
+}
+
+/* HEADER */
 
 header {
   position: absolute;
@@ -4956,9 +4941,7 @@ header {
   }
 }
 
-/* =====================================================
-   CORREÇÃO — SCROLL HORIZONTAL
-===================================================== */
+/* CORREÇÃO — SCROLL HORIZONTAL */
 
 html,
 body {
@@ -4971,7 +4954,6 @@ body {
   position: relative;
 }
 
-/* Impede elementos internos de criarem largura extra */
 #smooth-wrapper,
 #smooth-content,
 main,
@@ -5015,7 +4997,6 @@ footer {
   max-width: 100%;
 }
 
-/* Pseudo-elementos das músicas não podem gerar largura */
 .secao_musicas::before,
 .secao_musicas::after,
 .secao_musicas .fundo_transicao_musicas {
@@ -5033,7 +5014,6 @@ footer {
   max-width: 100%;
 }
 
-/* O nowrap pode estourar a tela em celulares */
 @media (max-width: 768px) {
   .secao_final .conteudo_final h2 {
     white-space: normal;
@@ -5047,8 +5027,6 @@ footer {
   max-width: 100%;
 }
 
-/* As folhas estão propositalmente para fora,
-   mas não podem criar scroll da página */
 .footer .folha-esquerda,
 .footer .folha-direita {
   max-width: none;
@@ -5064,7 +5042,6 @@ header .navigation {
   max-width: 100%;
 }
 
-/* Evita que o campo de pesquisa aumente além da tela */
 @media (max-width: 480px) {
   header .icon {
     min-width: 0;
