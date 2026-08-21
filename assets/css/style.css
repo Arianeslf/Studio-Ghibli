@@ -1422,6 +1422,8 @@ header {
      ===================================================== */
 
   @media (max-width: 1024px) {
+    padding: 75px 24px 100px;
+
     box-shadow:
       0 -50px 125px 95px rgba(0, 0, 0, 0.86),
       0 -23px 55px 45px rgba(0, 0, 0, 0.96);
@@ -1506,6 +1508,8 @@ header {
   }
 
   @media (max-width: 468px) {
+    padding: 65px 20px 90px;
+
     box-shadow:
       0 -40px 95px 65px rgba(0, 0, 0, 0.78),
       0 -20px 45px 35px rgba(0, 0, 0, 0.9);
@@ -2615,7 +2619,7 @@ header {
      ===================================================== */
 
   @media (max-width: 1024px) {
-    padding: 75px 0 100px;
+    padding: 75px 24px 100px;
 
     box-shadow:
       0 -50px 125px 95px rgba(0, 0, 0, 0.86),
@@ -2670,7 +2674,7 @@ header {
   }
 
   @media (max-width: 768px) {
-    padding: 65px 0 90px;
+    padding: 65px 20px 90px;
 
     box-shadow:
       0 -45px 110px 80px rgba(0, 0, 0, 0.82),
