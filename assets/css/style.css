@@ -1105,9 +1105,7 @@ header {
 
 .filme_bg {
   position: relative;
-
   padding-bottom: 12vw;
-
   background: #000;
 
   box-shadow:
@@ -1119,14 +1117,11 @@ header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-
       padding: 6vw 0 4vw;
 
       h2 {
         margin-bottom: 15px;
-
         color: #fff8e8;
-
         font-size: 3.5rem;
 
         span {
@@ -1136,23 +1131,17 @@ header {
 
       p {
         color: #d6c8b8;
-
         font-size: 1.6rem;
       }
 
       button {
         display: inline-flex;
         align-items: center;
-
         gap: 10px;
-
         background: transparent;
         color: #d6c8b8;
-
         border: none;
-
         cursor: pointer;
-
         font-family: "Nunito", sans-serif;
         font-size: 1rem;
         font-weight: 500;
@@ -1160,9 +1149,7 @@ header {
         img {
           width: 18px;
           height: 18px;
-
           display: inline-block;
-
           transition: transform 0.3s ease;
         }
 
@@ -1174,19 +1161,14 @@ header {
 
     .lista_filmes {
       display: grid;
-
       grid-template-columns: repeat(4, minmax(0, 1fr));
-
       gap: 20px;
 
       .card {
         position: relative;
-
         overflow: hidden;
-
         border: 1.2px solid #57534e;
         border-radius: 12px;
-
         cursor: pointer;
 
         transition:
@@ -1196,21 +1178,15 @@ header {
 
         .card-image {
           position: relative;
-
           width: 100%;
-
           aspect-ratio: 4 / 3;
-
           overflow: hidden;
-
           background: #111;
 
           > img {
             width: 100%;
             height: 100%;
-
             display: block;
-
             object-fit: cover;
 
             transition:
@@ -1220,25 +1196,20 @@ header {
 
           .card-rating {
             position: absolute;
-
             top: 12px;
             left: 12px;
-
             z-index: 3;
 
             display: flex;
             align-items: center;
-
             gap: 4px;
 
             padding: 5px 9px;
 
             background: rgba(0, 0, 0, 0.78);
-
             border-radius: 20px;
 
             color: #fff8e8;
-
             font-family: "Nunito", sans-serif;
             font-size: 0.72rem;
             font-weight: 700;
@@ -1265,7 +1236,6 @@ header {
             .watch-button {
               display: flex;
               align-items: center;
-
               gap: 8px;
 
               padding: 10px 16px;
@@ -1283,7 +1253,6 @@ header {
               cursor: pointer;
 
               opacity: 0;
-
               transform: translateY(12px);
 
               transition:
@@ -1309,7 +1278,6 @@ header {
             font-family: "Cormorant Garamond", serif;
             font-size: 1.35rem;
             font-weight: 600;
-
             line-height: 1.05;
           }
 
@@ -1317,7 +1285,6 @@ header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             gap: 10px;
 
             p {
@@ -1344,7 +1311,6 @@ header {
               justify-content: center;
 
               border: none;
-
               background: transparent;
 
               cursor: pointer;
@@ -1394,14 +1360,13 @@ header {
             .watch-link {
               display: flex;
               align-items: center;
-
               gap: 6px;
 
               padding: 0;
 
               border: none;
-
               background: transparent;
+
               color: #f4c542;
 
               font-family: "Nunito", sans-serif;
@@ -1418,7 +1383,6 @@ header {
 
               &:hover {
                 color: #fff;
-
                 transition: all 0.3s ease;
               }
             }
@@ -1457,6 +1421,10 @@ header {
 
 @media (max-width: 1024px) {
   .filme_bg {
+    box-shadow:
+      0 -50px 125px 95px rgba(0, 0, 0, 0.86),
+      0 -23px 55px 45px rgba(0, 0, 0, 0.96);
+
     .info_filmes {
       .topo_da_secao {
         padding: 4rem 0 3rem;
@@ -1485,7 +1453,6 @@ header {
         grid-template-columns: repeat(2, minmax(240px, 280px));
 
         justify-content: center;
-
         gap: 24px;
       }
     }
@@ -1494,6 +1461,10 @@ header {
 
 @media (max-width: 768px) {
   .filme_bg {
+    box-shadow:
+      0 -45px 110px 80px rgba(0, 0, 0, 0.82),
+      0 -22px 50px 40px rgba(0, 0, 0, 0.94);
+
     .info_filmes {
       .topo_da_secao {
         flex-direction: column;
@@ -1538,6 +1509,10 @@ header {
 
 @media (max-width: 468px) {
   .filme_bg {
+    box-shadow:
+      0 -40px 95px 65px rgba(0, 0, 0, 0.78),
+      0 -20px 45px 35px rgba(0, 0, 0, 0.9);
+
     .info_filmes {
       .topo_da_secao {
         gap: 1rem;
@@ -1554,7 +1529,6 @@ header {
 
         button {
           gap: 6px;
-
           font-size: 0.8rem;
 
           img {
