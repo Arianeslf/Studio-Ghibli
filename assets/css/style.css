@@ -3184,12 +3184,6 @@ header {
         }
 
         .carrossel_personagens {
-          /*
-            AQUI ESTÁ A PRINCIPAL CORREÇÃO
-            Antes estava 70px.
-            O personagem selecionado escala para cima,
-            então precisamos deixar uma distância maior.
-          */
           width: 100%;
           margin-top: 125px;
           padding: 0 8px;
@@ -3453,6 +3447,7 @@ header {
     }
   }
 }
+
 /* seção Musica */
 .secao_musicas {
   position: relative;
