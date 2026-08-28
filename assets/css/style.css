@@ -5047,3 +5047,342 @@ header .navigation {
     max-width: 45vw;
   }
 }
+/* TELAS MAIORES */
+
+@media (min-width: 1537px) {
+  .hero_bg {
+    width: 100%;
+    height: 760px;
+    min-height: 760px;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .hero_bg .fundo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 760px;
+    object-fit: cover;
+    object-position: center -80px;
+
+    transform: translate3d(0, 0, 0) !important;
+    will-change: auto;
+  }
+
+  .hero_bg .bg_transparent {
+    position: relative;
+    z-index: 2;
+  }
+
+  .secao_personagens {
+    .cabecalho_personagens {
+      padding-top: clamp(60px, 4vw, 90px);
+
+      h2 {
+        font-size: clamp(3.5rem, 3.5vw, 4.5rem);
+      }
+
+      p {
+        font-size: clamp(1.5rem, 1.5vw, 1.8rem);
+        margin-bottom: clamp(35px, 3vw, 50px);
+      }
+    }
+
+    .area_personagens {
+      min-height: clamp(720px, 48vw, 900px);
+
+      .fundo_personagens {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center center;
+
+        &::before {
+          width: 100%;
+          height: clamp(250px, 20vw, 330px);
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -1px;
+          width: 100%;
+          height: clamp(130px, 10vw, 190px);
+          background-size: 100% 100%;
+          background-position: center bottom;
+          background-repeat: no-repeat;
+          z-index: 5;
+          pointer-events: none;
+        }
+      }
+
+      .conteudo_personagens {
+        width: 100%;
+        padding-top: clamp(70px, 5vw, 100px);
+
+        .nome_personagem {
+          font-size: clamp(2.7rem, 2.8vw, 3.5rem);
+        }
+
+        .conhecer_personagem {
+          margin-top: clamp(25px, 2vw, 35px);
+          font-size: clamp(1rem, 1.1vw, 1.2rem);
+        }
+
+        .carrossel_personagens {
+          width: min(1450px, 94vw);
+          margin-top: clamp(90px, 7vw, 125px);
+
+          .lista_personagens {
+            width: min(1250px, 90vw);
+            min-height: clamp(390px, 27vw, 470px);
+            gap: clamp(4px, 0.8vw, 14px);
+
+            .personagem {
+              width: clamp(190px, 16vw, 270px);
+              height: clamp(370px, 27vw, 440px);
+
+              img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                object-position: center bottom;
+              }
+
+              &.selecionado {
+                transform: scale(1.25);
+              }
+            }
+          }
+
+          .seta_personagem {
+            width: clamp(42px, 3vw, 50px);
+            height: clamp(42px, 3vw, 50px);
+            font-size: clamp(1.1rem, 1.2vw, 1.4rem);
+          }
+
+          .seta_personagem:first-child {
+            left: 0;
+          }
+
+          .seta_personagem:last-child {
+            right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .secao_musicas {
+    min-height: clamp(850px, 62vw, 1100px);
+
+    .fundo_transicao_musicas {
+      top: -500px;
+      width: 100%;
+      height: 700px;
+      background-size: 100% auto;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+
+    &::before {
+      top: clamp(100px, 8vw, 150px);
+      width: 100%;
+      height: clamp(600px, 45vw, 750px);
+      background-size: 100% auto;
+      background-position: center top;
+    }
+
+    &::after {
+      height: clamp(300px, 25vw, 420px);
+      background-size: 100% auto;
+      background-position: center bottom;
+    }
+
+    .conteudo_musicas {
+      width: min(1400px, 90vw);
+      padding-top: clamp(100px, 8vw, 150px);
+      padding-bottom: clamp(100px, 8vw, 150px);
+
+      .cabecalho_musicas {
+        h2 {
+          font-size: clamp(3.5rem, 4vw, 5rem);
+        }
+
+        p {
+          font-size: clamp(1.4rem, 1.5vw, 1.8rem);
+        }
+      }
+
+      .lista_musicas {
+        width: 100%;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(25px, 2vw, 35px);
+        margin-top: clamp(50px, 4vw, 70px);
+
+        .card_musica {
+          padding: clamp(1.2rem, 1.5vw, 1.6rem);
+          border-radius: 18px;
+
+          .imagem_musica {
+            height: clamp(210px, 15vw, 280px);
+            border-radius: 12px;
+          }
+
+          .info_musica {
+            h3 {
+              font-size: clamp(1.5rem, 1.5vw, 1.8rem);
+            }
+
+            .filme_musica {
+              font-size: clamp(0.75rem, 0.8vw, 0.9rem);
+            }
+          }
+        }
+      }
+
+      .acoes_musicas {
+        margin-top: clamp(60px, 6vw, 100px);
+
+        .botao_trilhas {
+          padding: 1.2rem 2.2rem;
+          font-size: clamp(1rem, 1vw, 1.15rem);
+        }
+      }
+    }
+  }
+
+  .secao_final {
+    min-height: clamp(650px, 48vw, 850px);
+
+    .fundo_final {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center center;
+    }
+
+    .conteudo_final {
+      width: min(1100px, 85vw);
+      max-width: none;
+      padding-top: clamp(100px, 8vw, 150px);
+      padding-bottom: clamp(100px, 8vw, 150px);
+
+      h2 {
+        font-size: clamp(4rem, 5vw, 6rem);
+        line-height: 1.05;
+        margin-bottom: clamp(35px, 3vw, 50px);
+      }
+
+      .botao_final {
+        padding: 14px 25px;
+        font-size: clamp(0.9rem, 1vw, 1.05rem);
+      }
+    }
+
+    &::after {
+      width: 110%;
+      height: clamp(80px, 7vw, 120px);
+      filter: blur(12px);
+    }
+
+    &::before {
+      width: 100%;
+      height: clamp(55px, 5vw, 80px);
+      filter: blur(10px);
+    }
+  }
+
+  .footer {
+    margin-top: clamp(-100px, -6vw, -80px);
+    min-height: clamp(380px, 27vw, 480px);
+    height: clamp(380px, 27vw, 480px);
+    border-top-left-radius: clamp(100px, 8vw, 150px);
+    border-top-right-radius: clamp(100px, 8vw, 150px);
+
+    .footer-conteudo {
+      width: min(1250px, 82vw);
+      padding-top: clamp(60px, 5vw, 90px);
+
+      grid-template-columns:
+        minmax(280px, 1.2fr)
+        minmax(180px, 0.8fr)
+        minmax(180px, 0.8fr);
+
+      column-gap: clamp(40px, 4vw, 80px);
+    }
+
+    .footer-logo {
+      width: clamp(75px, 5vw, 95px);
+      height: clamp(75px, 5vw, 95px);
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .footer-marca-texto {
+      h2 {
+        font-size: clamp(1.6rem, 1.5vw, 2rem);
+      }
+
+      p {
+        font-size: clamp(0.9rem, 0.8vw, 1.05rem);
+        max-width: 280px;
+      }
+    }
+
+    .footer-navegacao,
+    .footer-social {
+      h3 {
+        font-size: clamp(1.5rem, 1.4vw, 1.8rem);
+      }
+    }
+
+    .footer-navegacao {
+      a {
+        font-size: clamp(0.9rem, 0.8vw, 1rem);
+      }
+    }
+
+    .footer-social {
+      .redes {
+        gap: clamp(12px, 1vw, 16px);
+
+        a {
+          width: clamp(40px, 3vw, 46px);
+          height: clamp(40px, 3vw, 46px);
+
+          img {
+            width: clamp(19px, 1.4vw, 22px);
+            height: clamp(19px, 1.4vw, 22px);
+          }
+        }
+      }
+    }
+
+    .footer-bottom {
+      bottom: clamp(20px, 2vw, 30px);
+
+      p {
+        font-size: clamp(0.7rem, 0.7vw, 0.9rem);
+      }
+    }
+
+    .folha-esquerda {
+      left: clamp(-100px, -5vw, -70px);
+      top: clamp(-220px, -12vw, -170px);
+      width: clamp(350px, 30vw, 500px);
+    }
+
+    .folha-direita {
+      right: clamp(-100px, -5vw, -70px);
+      width: clamp(270px, 23vw, 400px);
+    }
+  }
+}
